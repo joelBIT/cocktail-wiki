@@ -1,0 +1,23 @@
+header {
+  background-color: #554466;
+
+  nav {
+    ul {
+      display: flex;
+      gap: 2rem;
+      
+      li {
+        display: block;
+
+        a {
+          margin: 0 1rem;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  font-weight: bold;
+  color: orange;
+}

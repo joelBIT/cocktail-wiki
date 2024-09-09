@@ -1,7 +1,31 @@
 import { ReactElement } from 'react';
 import './App.css';
+import LandingPage from './LandingPage';
+import Header from './Header';
+import { Route, Routes } from 'react-router-dom';
+import SearchPage from './SearchPage';
+import FavouritesPage from './FavouritesPage';
+import NotFound from './NotFound';
+import CocktailInfoPage from './CocktailInfoPage';
+import IngredientPage from './IngredientPage';
+import Footer from './Footer';
 
 export default function App(): ReactElement {
  
-  return <></>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/cocktailinfo/:id" element={<CocktailInfoPage />} />
+          <Route path="/ingredients/:name" element={<IngredientPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
 }

@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
-
+import { useParams } from "react-router-dom";
 
 export default function IngredientPage(): ReactElement {
-  return <>Ingredient Page</>;
+  const { name } = useParams();
+
+  return <>{name} Ingredient Page</>;
 }

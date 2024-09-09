@@ -1,6 +1,12 @@
-import { ReactElement } from "react";
-
+import { ReactElement, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function CocktailInfoPage(): ReactElement {
-  return <>Cocktail Info Page</>;
+  const { id } = useParams();
+
+  useEffect(() => {
+
+  });
+
+  return <>{id} Cocktail Info Page</>;
 }
