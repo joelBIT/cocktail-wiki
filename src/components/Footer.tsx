@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
 
-export default function Footer(): ReactElement {
-  return <></>;
+export function Footer(): ReactElement {
+    return <></>;
 }

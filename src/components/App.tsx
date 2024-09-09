@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Header, Footer } from ".";
 
 export function App(): ReactElement {
     return (
@@ -11,6 +10,6 @@ export function App(): ReactElement {
                 <Outlet />
             </main>
             <Footer />
-        </>            
+        </>
     );
 }

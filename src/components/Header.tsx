@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Header(): ReactElement {
+export function Header(): ReactElement {
     return (
         <header>
             <nav>

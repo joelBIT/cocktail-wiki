@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import { CocktailInfoPage, 
-    FavouritesPage, 
-    IngredientPage, 
-    LandingPage, 
+import {
+    CocktailInfoPage,
+    FavouritesPage,
+    IngredientPage,
+    LandingPage,
     NotFound,
-    SearchPage } from "./pages";
-import { App } from "./components/App";
+    SearchPage,
+} from "./pages";
+import { App } from "./components";
 
 export const router = createBrowserRouter([
     {
-        path: '/',
+        path: "/",
         element: <App />,
         children: [
             {
@@ -17,26 +19,25 @@ export const router = createBrowserRouter([
                 element: <LandingPage />,
             },
             {
-                path: '/search',
+                path: "/search",
                 element: <SearchPage />,
             },
             {
-                path: '/favourites',
+                path: "/favourites",
                 element: <FavouritesPage />,
             },
             {
-                path: '/cocktailinfo/:id',
+                path: "/cocktailinfo/:id",
                 element: <CocktailInfoPage />,
             },
             {
-                path: '/ingredient/:name',
+                path: "/ingredient/:name",
                 element: <IngredientPage />,
             },
             {
-                path: '*',
+                path: "*",
                 element: <NotFound />,
             },
         ],
-    }
+    },
 ]);
-
