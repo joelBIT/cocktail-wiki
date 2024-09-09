@@ -1,7 +1,16 @@
 import { ReactElement } from "react";
-import { router } from "./Router";
-import { RouterProvider } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export function App(): ReactElement {
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+            <Footer />
+        </>            
+    );
 }

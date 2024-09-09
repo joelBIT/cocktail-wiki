@@ -1,23 +1,20 @@
-import { createBrowserRouter, 
-    Outlet } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { CocktailInfoPage, 
     FavouritesPage, 
     IngredientPage, 
     LandingPage, 
-    NotFound, 
+    NotFound,
     SearchPage } from "../pages";
-import { ReactElement } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import { App } from "./App";
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <HomeComponent />,
+        element: <App />,
         children: [
             {
-              index: true,
-              element: <LandingPage />,
+                index: true,
+                element: <LandingPage />,
             },
             {
                 path: '/search',
@@ -43,14 +40,3 @@ export const router = createBrowserRouter([
     }
 ]);
 
-function HomeComponent(): ReactElement {
-    return (
-        <>
-            <Header />
-                <main>
-                    <Outlet />
-                </main>
-            <Footer />
-        </>            
-    );
-}
