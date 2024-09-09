@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import LandingPage from "./LandingPage";
 import Header from "./Header";
 import { Route, Routes } from "react-router-dom";
-import SearchPage from "./SearchPage";
-import FavouritesPage from "./FavouritesPage";
-import NotFound from "./NotFound";
-import CocktailInfoPage from "./CocktailInfoPage";
-import IngredientPage from "./IngredientPage";
 import Footer from "./Footer";
+import LandingPage from "../pages/LandingPage";
+import SearchPage from "../pages/SearchPage";
+import FavouritesPage from "../pages/FavouritesPage";
+import CocktailInfoPage from "../pages/CocktailInfoPage";
+import IngredientPage from "../pages/IngredientPage";
+import NotFound from "../pages/NotFound";
 
 export function App(): ReactElement {
     return (
