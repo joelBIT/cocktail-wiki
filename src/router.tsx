@@ -4,8 +4,8 @@ import { CocktailInfoPage,
     IngredientPage, 
     LandingPage, 
     NotFound,
-    SearchPage } from "../pages";
-import { App } from "./App";
+    SearchPage } from "./pages";
+import { App } from "./components/App";
 
 export const router = createBrowserRouter([
     {
