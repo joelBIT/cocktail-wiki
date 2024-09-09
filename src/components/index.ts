@@ -3,6 +3,7 @@ export * from "../pages/CocktailInfoPage";
 export * from "../pages/FavouritesPage";
 export * from "./Footer";
 export * from "./Header";
+export * from "./Router";
 export * from "../pages/IngredientPage";
 export * from "../pages/LandingPage";
 export * from "../pages/NotFound";
