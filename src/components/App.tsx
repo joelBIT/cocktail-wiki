@@ -9,7 +9,7 @@ import CocktailInfoPage from "./CocktailInfoPage";
 import IngredientPage from "./IngredientPage";
 import Footer from "./Footer";
 
-export default function App(): ReactElement {
+export function App(): ReactElement {
     return (
         <>
             <Header />
