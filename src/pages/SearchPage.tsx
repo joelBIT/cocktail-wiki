@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 
-
-export default function SearchPage(): ReactElement {
-  return <>Search Page</>;
+export function SearchPage(): ReactElement {
+    return <>Search Page</>;
 }
