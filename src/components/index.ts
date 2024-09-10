@@ -1,4 +1,5 @@
 export * from "./App";
+export * from "./DrinkCard";
 export * from "../pages/CocktailInfoPage";
 export * from "../pages/FavouritesPage";
 export * from "./Footer";

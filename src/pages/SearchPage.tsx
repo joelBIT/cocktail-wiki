@@ -1,14 +1,13 @@
 import { FormEvent, ReactElement, useState } from "react";
-import { DrinksList } from "../components/DrinksList";
+import { IFoundDrink } from "../interfaces";
+import { DrinkCard } from "../components";
 
 export function SearchPage(): ReactElement {
     const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<string[]>([]);
+    const [drinks, setDrinks] = useState<IFoundDrink[] | undefined>();
 
     // Fetch drink from API when search form is submitted
-    const handleOnSubmit = async (
-        e: FormEvent<HTMLFormElement>
-    ): Promise<void> => {
+    const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Send fetch request
@@ -17,15 +16,19 @@ export function SearchPage(): ReactElement {
             `${baseURL}/search.php?s=${searchDrink}`
         );
         const data = await response.json();
-        const receivedDrinks = data["drinks"];
 
-        // Store name of drinks in state
-        const drinkNames: string[] = receivedDrinks.map(
-            (drink: { strDrink: string }) => {
-                return drink.strDrink;
-            }
-        );
-        setDrinks(drinkNames);
+        // Extract relevant data of found drinks into a new list
+        const foundDrinks: IFoundDrink[] = data["drinks"].map((drink: any) => {
+            return {
+                id: drink.idDrink,
+                name: drink.strDrink,
+                alcoholic: drink.strAlcoholic,
+                image: drink.strDrinkThumb,
+            };
+        });
+
+        // Add found drinks to state
+        setDrinks(foundDrinks);
 
         // Reset input field
         setSearchDrink("");
@@ -33,10 +36,9 @@ export function SearchPage(): ReactElement {
 
     return (
         <>
-            {/* Search drink form */}
             <form className="form--search-drink" onSubmit={handleOnSubmit}>
                 <label className="label" htmlFor="searchFormInput">
-                    Search for a drink
+                    What do you want to drink?
                 </label>
                 <input
                     autoFocus
@@ -49,9 +51,14 @@ export function SearchPage(): ReactElement {
                 />
                 <button className="button">Search</button>
             </form>
-
-            {/* List drinks from search */}
-            <DrinksList drinks={drinks} />
+            <article id="searchResult">
+                {drinks ? <h2>Search Result</h2> : undefined}
+                <section id="searchCardContainer">
+                    {drinks?.map((drink) => (
+                        <DrinkCard key={drink.id} drink={drink} />
+                    ))}
+                </section>
+            </article>
         </>
     );
 }
