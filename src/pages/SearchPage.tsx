@@ -3,6 +3,7 @@ import { FormEvent, ReactElement, useState } from "react";
 export function SearchPage(): ReactElement {
     const [searchDrink, setSearchDrink] = useState<string>("");
 
+    // Fetch drink from API when search form is submitted
     const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(searchDrink);
@@ -15,6 +16,7 @@ export function SearchPage(): ReactElement {
 
     return (
         <>
+            {/* Search drink form */}
             <form className="form--search-drink" onSubmit={handleOnSubmit}>
                 <label className="label" htmlFor="searchFormInput">
                     Search for a drink
