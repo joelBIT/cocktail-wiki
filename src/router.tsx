@@ -8,6 +8,7 @@ import {
     SearchPage,
 } from "./pages";
 import { App } from "./components";
+import { cocktailInfoLoader } from "./loaders/cocktailInfoLoader";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: "/cocktailinfo/:id",
                 element: <CocktailInfoPage />,
+                loader: cocktailInfoLoader,
             },
             {
                 path: "/ingredient/:name",
