@@ -3,12 +3,16 @@ interface IDrinksProps {
 }
 
 export function DrinksList({ drinks }: IDrinksProps) {
-    return (
-        <>
-            <p>These are the drinsk found</p>
-            {drinks.map((drink: string) => {
-                <p>{drink}</p>;
-            })}
-        </>
-    );
+    if (drinks.length > 0) {
+        return (
+            <>
+                <p>These are the drinsk found</p>
+                {drinks.map((drink: string) => {
+                    return <p>{drink}</p>;
+                })}
+            </>
+        );
+    }
+
+    return <p>No drinks found yet</p>;
 }
