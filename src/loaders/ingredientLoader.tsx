@@ -1,4 +1,4 @@
-import { IngredientInformation } from "../types/types";
+import { Cocktail, IngredientInformation } from "../types/types";
 
 export const ingredientLoader = async ({params}: any) => {
     try {
@@ -31,7 +31,12 @@ async function getCocktails(ingredient: IngredientInformation, name: string) {
         const { drinks } = await cocktailsResponse.json();
 
         for (let i = 0; i < drinks.length; i++) {
-            ingredient.cocktails.push(drinks[i].strDrink);
+            const cocktail: Cocktail = {
+                id: drinks[i].idDrink,
+                name: drinks[i].strDrink
+            }
+
+            ingredient.cocktails.push(cocktail);
         }
     } catch (error) {
         console.log(error);

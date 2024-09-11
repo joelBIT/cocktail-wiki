@@ -11,10 +11,15 @@ export type CocktailInformation = {
     amountPerIngredient: string[]
 }
 
+export type Cocktail = {
+    id: string,
+    name: string
+}
+
 export type IngredientInformation = {
     name: string,
     type: string,
     alcohol: string,
     description: string,
-    cocktails: string[]
+    cocktails: Cocktail[]
 }
