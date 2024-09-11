@@ -1,0 +1,21 @@
+.ingredient-information {
+    display: flex;
+    grid-column: 2 / 6;
+    background-color: #f7f7f8;
+    padding-right: 1rem;
+    margin-top: 6rem;
+
+    p {
+        display: inline;
+        font-weight: 400;
+    }
+
+    li {
+        display: block;
+    }
+
+    .ingredient-description {
+        padding-right: 10rem;
+        margin-top: 4rem
+    }
+}
