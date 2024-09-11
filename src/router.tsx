@@ -20,11 +20,11 @@ export const router = createBrowserRouter([
 			{
 				path: "/favourites",
 				element: <FavouritesPage />,
-				loader: cocktailInfoLoader,
 			},
 			{
 				path: "/cocktailinfo/:id",
 				element: <CocktailInfoPage />,
+				loader: cocktailInfoLoader,
 			},
 			{
 				path: "/ingredient/:name",
