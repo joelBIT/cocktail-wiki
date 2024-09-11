@@ -6,7 +6,6 @@ interface IFoundDrinkProps {
 }
 
 export function DrinkCard({ drink }: IFoundDrinkProps) {
-    console.log(drink);
     return (
         <section className="drink-card">
             <figure>

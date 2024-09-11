@@ -1,29 +1,25 @@
-.drink-card * {
-    margin: 0;
-    padding: 0;
-}
-.drink-card {
+#searchResult .drink-card {
     margin: 1rem;
     width: 15rem;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
-.drink-card > figure {
+#searchResult .drink-card > figure {
     width: 100%;
 }
 
-.drink-card > figure > img {
+#searchResult .drink-card > figure > img {
     width: 100%;
 }
 
-.drink-card > .drink-info {
-    padding: 0.5rem 1rem 1rem 1rem;
+#searchResult .drink-card > .drink-info {
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 0.5rem;
 }
 
-.drink-card > .drink-info > a {
+#searchResult .drink-card > .drink-info > a {
     text-align: left;
 }
