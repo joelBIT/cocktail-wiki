@@ -14,10 +14,14 @@ export function CocktailCard({ cocktail }: ICocktailCardProps) {
 				{/* <figcaption>Coctail photo</figcaption> */}
 			</figure>
 			<h3 className="cocktail-card-name">{cocktail.strDrink}</h3>
+			<p>{cocktail.strAlcoholic}</p>
+
+			{/*
 			<section className="cocktail-card-tags">
 				<div className="cocktail-card-tag tag">Expensive</div>
 				<div className="cocktail-card-tag tag">Classic</div>
 			</section>
+			*/}
 		</article>
 	);
 }
