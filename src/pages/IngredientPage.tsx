@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { IngredientInformation } from "../types/types";
-import { List } from "../components";
 import "../css/IngredientPage.css";
 
 export function IngredientPage(): ReactElement {
@@ -17,7 +16,13 @@ export function IngredientPage(): ReactElement {
                     <h3>Type: <p>{ingredient.type}</p></h3>
                     <h3>Contains alcohol: <p>{ingredient.alcohol}</p></h3>
                     <h3>Drinks containing {ingredient.name}: </h3>
-                    <List list={ingredient.cocktails}/>
+                    <ul>
+                        {ingredient.cocktails.map((cocktail, index) => (
+                            <li key={index}>
+                                <Link to={`/cocktailinfo/${cocktail.id}`}>{cocktail.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
                 </article>
                 <article className="ingredient-description">
                     <h1>Ingredient: <p>{ingredient.name}</p></h1>
