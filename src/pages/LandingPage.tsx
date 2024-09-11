@@ -80,15 +80,14 @@ export function LandingPage(): ReactElement {
 		navigate(0); //detta triggar loadern för den aktuella sidan
 	};
 	const handleDetailsButton = () => {
-		navigate("/cocktailinfo/" + "11007"); //detta triggar loadern för den aktuella sidan
+		navigate("/cocktailinfo/" + randomCocktail[0].idDrink);
 	};
 
 	return (
 		<>
 			<h1>Landing Page</h1>
-			{randomCocktail && randomCocktail.map((cocktail, i) => <CocktailCard cocktail={cocktail} key={i} />)}
-
-			<div className="cocktail-card-buttons">
+			{randomCocktail && randomCocktail.map((cocktail, i) => <CocktailCard cocktail={cocktail} key={i} />)};
+			<div className="cocktail-card-buttons" id="TEST">
 				<button onClick={handleDetailsButton} className="button-details">
 					Details
 				</button>
