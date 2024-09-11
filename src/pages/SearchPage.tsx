@@ -5,6 +5,10 @@ import { DrinkCard } from "../components";
 export function SearchPage(): ReactElement {
     const [searchDrink, setSearchDrink] = useState<string>("");
     const [drinks, setDrinks] = useState<IFoundDrink[] | undefined>();
+    const [paginated, setPaginated] = useState<IFoundDrink[] | undefined>();
+
+    // Set a pagination constant
+    const N: number = 3;
 
     // Extract relevant data from parsed API response
     const extractDrinkData = (data: any): IFoundDrink[] => {
@@ -20,6 +24,47 @@ export function SearchPage(): ReactElement {
         return extractedData;
     };
 
+    // Acquire drink index for pagination
+    const getDrinkIndex = (id: string) => {
+        if (drinks) {
+            for (let drink of drinks) {
+                if (drink.id === id) {
+                    return drinks.indexOf(drink);
+                }
+            }
+        }
+        return -1;
+    };
+
+    // Next Drinks button clicked
+    const handleNextDrinks = () => {
+        if (paginated && drinks) {
+            // Get id of last drink in paginated state
+            const drinkId: string = paginated[paginated.length - 1].id;
+
+            // Find drink with above ID in drinks state
+            const drinkIndex: number = getDrinkIndex(drinkId);
+
+            // Update paginated state with next slice from drinks
+            setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+        }
+    };
+
+    // Previous Drinks button clicked
+    const handlePreviousDrinks = () => {
+        console.log("Previous Drinks button clicked");
+        if (paginated && drinks) {
+            // Get id of first drink in paginated state
+            const drinkId: string = paginated[0].id;
+
+            // Find drink with above ID in drinks state
+            const drinkIndex: number = getDrinkIndex(drinkId);
+
+            // Update paginated state with next slice from drinks
+            setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+        }
+    };
+
     // Fetch drink from API when search form is submitted
     const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,8 +76,11 @@ export function SearchPage(): ReactElement {
         );
         const data = await response.json();
 
-        // Add found drinks to state
+        // Add found drinks to drinks state
         setDrinks(extractDrinkData(data));
+
+        // Put first N drinks into paginated state
+        setPaginated(extractDrinkData(data).slice(0, N));
 
         // Reset input field
         setSearchDrink("");
@@ -58,9 +106,15 @@ export function SearchPage(): ReactElement {
                 </div>
             </form>
             <article id="searchResult">
-                {drinks ? <h2>Search Result</h2> : undefined}
+                <h2>Search Result</h2>
+                <button id="previousDrinks" onClick={handlePreviousDrinks}>
+                    Previous
+                </button>
+                <button id="nextDrinks" onClick={handleNextDrinks}>
+                    Next
+                </button>
                 <section id="searchCardContainer">
-                    {drinks?.map((drink) => (
+                    {paginated?.map((drink) => (
                         <DrinkCard key={drink.id} drink={drink} />
                     ))}
                 </section>
