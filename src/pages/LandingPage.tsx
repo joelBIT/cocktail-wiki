@@ -2,17 +2,6 @@ import { ReactElement, useEffect, useState } from "react";
 import "../css/LandingPage.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { CocktailCard } from "../components/CocktailCard";
-/*
-// mock data:
-const data = require("./mockData.json");
-console.log(data);
- */
-/* 
-export function Cocktails() {
-	const cocktails = useLoaderData();
-	// ...
-}
- */
 
 type Nullable = string | null;
 export interface ICocktail {
@@ -70,25 +59,15 @@ export interface ICocktail {
 }
 
 export const cocktailsLoader = async (): Promise<ICocktail[]> => {
-	// const resp = await fetch("./cocktails.json");
 	const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
 
-	// return await resp;
-	// const data = await resp.json();
-
 	const data = await resp.json();
-
 	return data.drinks;
 };
 
 export function LandingPage(): ReactElement {
-	// console.log("Cocktails:");
-	// console.log(Cocktails());
-
 	const navigate = useNavigate();
-
 	const cocktails = useLoaderData() as ICocktail[];
-
 	const [randomCocktail, setRandomCocktail] = useState<ICocktail[]>([]);
 
 	useEffect(() => {
@@ -96,16 +75,23 @@ export function LandingPage(): ReactElement {
 			setRandomCocktail(cocktails);
 		}
 	}, []);
+
 	const handleUpdateRandomDrink = () => {
 		navigate(0); //detta triggar loadern för den aktuella sidan
 	};
+	const handleDetailsButton = () => {
+		navigate("/cocktailinfo/" + "11007"); //detta triggar loadern för den aktuella sidan
+	};
+
 	return (
 		<>
 			<h1>Landing Page</h1>
 			{randomCocktail && randomCocktail.map((cocktail, i) => <CocktailCard cocktail={cocktail} key={i} />)}
 
 			<div className="cocktail-card-buttons">
-				<button className="button-details">Details</button>
+				<button onClick={handleDetailsButton} className="button-details">
+					Details
+				</button>
 				<button onClick={handleUpdateRandomDrink} className="button-show-another">
 					Show another
 				</button>
@@ -113,31 +99,3 @@ export function LandingPage(): ReactElement {
 		</>
 	);
 }
-/* 
-// loader function
-export const landingLoader = async () => {
-	const urlToFetchFrom = "";
-	const res = await fetch(urlToFetchFrom);
-
-	return res.json();
-};
- */
-/* 
-export async function landingLoaderMockupData() {
-	const res = await fetch("/cocktails_a.json")
-		.then((result) => {
-			const drinks = result.drinks; // Extract the "drinks" array
-			console.log(drinks); // Log the array to the console
-		})
-		.catch((error) => {
-			console.error("Error:", error);
-		});
-	return res.json();
-}
- */
-/* 
-export const getDrinksPromise = () => {
-	return fetch("./cocktails_a.json") // Replace with actual API
-		.then((response) => response.json());
-};
- */
