@@ -24,26 +24,26 @@ export function SearchPage(): ReactElement {
         return extractedData;
     };
 
+    // Acquire drink index for pagination
+    const getDrinkIndex = (id: string) => {
+        if (drinks) {
+            for (let drink of drinks) {
+                if (drink.id === id) {
+                    return drinks.indexOf(drink);
+                }
+            }
+        }
+        return -1;
+    };
+
     // Next Drinks button clicked
     const handleNextDrinks = () => {
-        console.log("Drinks:", drinks);
-        console.log("Paginated:", paginated);
-
-        // Get id of last drink in paginated state
-        const lastDrinkId: string | undefined = paginated
-            ? paginated[paginated.length - 1].id
-            : undefined;
-        console.log("lastDrinkId:", lastDrinkId);
-
-        // Find drink with above ID in drinks state
         if (paginated && drinks) {
-            let drinkIndex: number = 0;
-            drinks.forEach((drink) => {
-                if (drink.id === lastDrinkId) {
-                    drinkIndex = drinks.indexOf(drink);
-                }
-            });
-            console.log("drinkIndex:", drinkIndex);
+            // Get id of last drink in paginated state
+            const drinkId: string = paginated[paginated.length - 1].id;
+
+            // Find drink with above ID in drinks state
+            const drinkIndex: number = getDrinkIndex(drinkId);
 
             // Update paginated state with next slice from drinks
             setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
@@ -53,6 +53,16 @@ export function SearchPage(): ReactElement {
     // Previous Drinks button clicked
     const handlePreviousDrinks = () => {
         console.log("Previous Drinks button clicked");
+        if (paginated && drinks) {
+            // Get id of first drink in paginated state
+            const drinkId: string = paginated[0].id;
+
+            // Find drink with above ID in drinks state
+            const drinkIndex: number = getDrinkIndex(drinkId);
+
+            // Update paginated state with next slice from drinks
+            setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+        }
     };
 
     // Fetch drink from API when search form is submitted
