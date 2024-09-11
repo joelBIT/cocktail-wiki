@@ -35,21 +35,23 @@ export function SearchPage(): ReactElement {
     };
 
     return (
-        <article className="search">
-            <form className="form--search-drink" onSubmit={handleOnSubmit}>
+        <article id="searchDrink">
+            <form id="searchDrinkForm" onSubmit={handleOnSubmit}>
                 <label className="label" htmlFor="searchFormInput">
                     What do you want to drink?
                 </label>
-                <input
-                    autoFocus
-                    className="input"
-                    id="searchFormInput"
-                    onChange={(e) => setSearchDrink(e.target.value)}
-                    placeholder="I feel like a..."
-                    type="text"
-                    value={searchDrink}
-                />
-                <button className="button">Search</button>
+                <div>
+                    <input
+                        autoFocus
+                        className="input"
+                        id="searchFormInput"
+                        onChange={(e) => setSearchDrink(e.target.value)}
+                        placeholder="I feel like a..."
+                        type="text"
+                        value={searchDrink}
+                    />
+                    <button className="button">Search</button>
+                </div>
             </form>
             <article id="searchResult">
                 {drinks ? <h2>Search Result</h2> : undefined}

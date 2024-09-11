@@ -1,13 +1,54 @@
-#searchCardContainer {
+#searchDrink * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#searchDrink {
+    margin-top: 3rem;
+}
+
+#searchDrink > #searchDrinkForm > .label {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+#searchDrinkForm > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+#searchDrinkForm input,
+#searchDrinkForm button {
+    height: 2.7rem;
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+#searchDrinkForm button {
+    background-color: rgb(225, 225, 225);
+    transition: 0.25s;
+}
+
+#searchDrinkForm button:hover {
+    background-color: rgb(192, 218, 192);
+}
+
+#searchResult > h2 {
+    margin-top: 1.5rem;
+}
+
+#searchResult > #searchCardContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
-/* #searchResult {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-} */
