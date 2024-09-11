@@ -45,14 +45,16 @@ export function SearchPage(): ReactElement {
             // Find drink with above ID in drinks state
             const drinkIndex: number = getDrinkIndex(drinkId);
 
-            // Update paginated state with next slice from drinks
-            setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+            // Check if last drink in search result is reached
+            if (drinkIndex !== drinks.length - 1 && drinkIndex !== -1) {
+                // Update paginated state with next slice from drinks
+                setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+            }
         }
     };
 
     // Previous Drinks button clicked
     const handlePreviousDrinks = () => {
-        console.log("Previous Drinks button clicked");
         if (paginated && drinks) {
             // Get id of first drink in paginated state
             const drinkId: string = paginated[0].id;
@@ -60,8 +62,11 @@ export function SearchPage(): ReactElement {
             // Find drink with above ID in drinks state
             const drinkIndex: number = getDrinkIndex(drinkId);
 
-            // Update paginated state with next slice from drinks
-            setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+            // Check if first drink in search result is reached
+            if (drinkIndex !== 0 && drinkIndex !== -1) {
+                // Update paginated state with previous slice from drinks
+                setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+            }
         }
     };
 
