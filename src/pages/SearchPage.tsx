@@ -35,7 +35,7 @@ export function SearchPage(): ReactElement {
     };
 
     return (
-        <>
+        <article className="search">
             <form className="form--search-drink" onSubmit={handleOnSubmit}>
                 <label className="label" htmlFor="searchFormInput">
                     What do you want to drink?
@@ -59,6 +59,6 @@ export function SearchPage(): ReactElement {
                     ))}
                 </section>
             </article>
-        </>
+        </article>
     );
 }
