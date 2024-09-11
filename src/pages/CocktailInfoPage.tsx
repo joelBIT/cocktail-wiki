@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import '../css/CocktailInfoPage.css';
 import { CocktailInformation } from "../types/types";
 import { List } from "../components";
@@ -19,7 +19,13 @@ export function CocktailInfoPage(): ReactElement {
                     <h3>Tags: </h3>
                     <List list={cocktail.tags}/>
                     <h3>Ingredients: </h3>
-                    <List list={cocktail.amountPerIngredient}/>
+                    <ul>
+                        {cocktail.amountPerIngredient.map((ingredient, index) => (
+                            <li key={index}>
+                                <Link to={`/ingredient/${cocktail.ingredients[index]}`}>{ingredient}</Link>
+                            </li>
+                        ))}
+                    </ul>
                     <h3>Serve in: <p>{cocktail.glass}</p></h3>
                     <h3>Instructions: <p>{cocktail.instructions}</p></h3>
                 </article>
