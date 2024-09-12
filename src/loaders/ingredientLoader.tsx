@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom";
-import { IFoundDrink, IIngredientInformation } from "../interfaces";
+import { IDrinkCard, IIngredientInformation } from "../interfaces";
 
 export const ingredientLoader = async ({params}: any) => {
     try {
@@ -30,7 +30,7 @@ async function getCocktails(ingredient: IIngredientInformation, name: string) {
         const { drinks } = await cocktailsResponse.json();
 
         for (let i = 0; i < drinks.length; i++) {
-            const cocktail: IFoundDrink = {
+            const cocktail: IDrinkCard = {
                 id: drinks[i].idDrink,
                 name: drinks[i].strDrink,
                 alcoholic: "",
