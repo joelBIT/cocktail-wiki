@@ -1,10 +1,12 @@
+import { redirect } from "react-router-dom";
 import { ICocktailInformation } from "../interfaces";
 
 export const cocktailInfoLoader = async ({params}: any) => {
+
     try {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`);
         const { drinks } = await response.json();
-        const drink = drinks[0] ? drinks[0] : createEmptyCocktail();
+        const drink = drinks[0];
 
         const cocktail: ICocktailInformation = {
             drink: drink.strDrink,
@@ -38,21 +40,5 @@ export const cocktailInfoLoader = async ({params}: any) => {
         console.log(error);
     }
 
-    return createEmptyCocktail();
-}
-
-function createEmptyCocktail() {
-    const cocktail: ICocktailInformation = {
-        drink: "",
-        tags: [],
-        category: "",
-        glass: "",
-        instructions: "",
-        ingredients: [],
-        amountPerIngredient: [],
-        measures: [],
-        imageAddress: ""
-    };
-
-    return cocktail;
+    return redirect("*");
 }
