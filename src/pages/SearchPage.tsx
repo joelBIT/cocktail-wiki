@@ -1,17 +1,17 @@
 import { FormEvent, ReactElement, useState } from "react";
-import { IFoundDrink } from "../interfaces";
+import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
 
 export function SearchPage(): ReactElement {
     const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<IFoundDrink[] | undefined>();
-    const [paginated, setPaginated] = useState<IFoundDrink[] | undefined>();
+    const [drinks, setDrinks] = useState<IDrinkCard[] | undefined>();
+    const [paginated, setPaginated] = useState<IDrinkCard[] | undefined>();
 
     // Set a pagination constant
     const N: number = 3;
 
     // Extract relevant data from parsed API response
-    const extractDrinkData = (data: any): IFoundDrink[] => {
+    const extractDrinkData = (data: any): IDrinkCard[] => {
         const extractedData = data["drinks"].map((drink: any) => {
             return {
                 id: drink.idDrink,
