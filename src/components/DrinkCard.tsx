@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
-import { IFoundDrink } from "../interfaces";
+import { IDrinkCard } from "../interfaces";
 
-interface IFoundDrinkProps {
-    drink: IFoundDrink;
-}
-
-export function DrinkCard({ drink }: IFoundDrinkProps) {
+export function DrinkCard({ drink }: {drink: IDrinkCard}) {
     return (
         <section className="drink-card">
             <figure>

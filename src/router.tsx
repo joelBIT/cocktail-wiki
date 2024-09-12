@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { CocktailInfoPage, FavouritesPage, IngredientPage, LandingPage, NotFound, SearchPage, cocktailsLoader } from "./pages";
+import { CocktailInfoPage, FavouritesPage, IngredientPage, LandingPage, NotFound, SearchPage } from "./pages";
 import { App } from "./components";
-import { cocktailInfoLoader, ingredientLoader } from "./loaders";
+import { cocktailInfoLoader, randomCocktailLoader, ingredientLoader } from "./loaders";
 
 export const router = createBrowserRouter([
 	{
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <LandingPage />,
-				loader: cocktailsLoader,
+				loader: randomCocktailLoader,
 			},
 			{
 				path: "/search",
