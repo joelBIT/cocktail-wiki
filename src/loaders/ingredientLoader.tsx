@@ -1,6 +1,14 @@
 import { redirect } from "react-router-dom";
 import { IDrinkCard, IIngredientInformation } from "../interfaces";
 
+/**
+ * Retrieves an ingredient from the API that corresponds to the supplied name parameter. The response is converted into
+ * an IIngredientInformation object. After another API call has been made that populates a list of all cocktails that 
+ * uses this ingredient, the IIngredientInformation object is returned to the IngredientPage.
+ * 
+ * @param name      the name of the ingredient
+ * @returns         an IIngredientInformation object
+ */
 export const ingredientLoader = async ({params}: any) => {
     try {
         const ingredientResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${params.name}`);
@@ -14,7 +22,7 @@ export const ingredientLoader = async ({params}: any) => {
             cocktails: []
         };
 
-        ingredient = await getCocktails(ingredient, params.name);
+        ingredient = await getCocktails(ingredient);
 
         return ingredient;
     } catch (error) {
@@ -24,9 +32,16 @@ export const ingredientLoader = async ({params}: any) => {
     return redirect("*");
 }
 
-async function getCocktails(ingredient: IIngredientInformation, name: string) {
+/**
+ * Retrieves a list from the API. This list consists of all cocktails containing the supplied ingredient.
+ * All cocktails are pushed into the list of cocktails in the IIngredientInformation object.
+ * 
+ * @param ingredient    the ingredient of interest
+ * @returns 
+ */
+async function getCocktails(ingredient: IIngredientInformation) {
     try {
-        const cocktailsResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`);
+        const cocktailsResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.name}`);
         const { drinks } = await cocktailsResponse.json();
 
         for (let i = 0; i < drinks.length; i++) {

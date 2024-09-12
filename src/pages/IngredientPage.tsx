@@ -2,6 +2,12 @@ import { ReactElement } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { IIngredientInformation } from "../interfaces";
 
+/**
+ * The ingredient page contains information such as if the ingredient contains alcohol, cocktails
+ * containing the ingredient, and a description.
+ * 
+ * @returns the ingredient page containing information about an ingredient
+ */
 export function IngredientPage(): ReactElement {
     const ingredient = useLoaderData() as IIngredientInformation;
 

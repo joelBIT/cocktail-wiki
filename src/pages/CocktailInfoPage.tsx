@@ -3,6 +3,12 @@ import { Link, useLoaderData } from "react-router-dom";
 import { List } from "../components";
 import { ICocktailInformation } from "../interfaces";
 
+/**
+ * The cocktail info page includes information such as drink name, ingredients, and instructions 
+ * about how to make the drink.
+ * 
+ * @returns the cocktail info page displaying information about a specific cocktail
+ */
 export function CocktailInfoPage(): ReactElement {
     const cocktail = useLoaderData() as ICocktailInformation;
 
@@ -23,13 +29,13 @@ export function CocktailInfoPage(): ReactElement {
                     <List list={cocktail.tags} />
                     <h3>Ingredients: </h3>
                     <ul>
-                        {cocktail.amountPerIngredient.map(
+                        {cocktail.ingredients.map(
                             (ingredient, index) => (
                                 <li key={index}>
                                     <Link
-                                        to={`/ingredient/${cocktail.ingredients[index]}`}
+                                        to={`/ingredient/${ingredient}`}
                                     >
-                                        {ingredient}
+                                        {cocktail.measures[index]} { ingredient}
                                     </Link>
                                 </li>
                             )
