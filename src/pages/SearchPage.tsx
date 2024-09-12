@@ -75,20 +75,24 @@ export function SearchPage(): ReactElement {
         e.preventDefault();
 
         // Send fetch request
-        const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
-        const response: Response = await fetch(
-            `${baseURL}/search.php?s=${searchDrink}`
-        );
-        const data = await response.json();
+        try {
+            const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
+            const response: Response = await fetch(
+                `${baseURL}/search.php?s=${searchDrink}`
+            );
+            const data = await response.json();
 
-        // Add found drinks to drinks state
-        setDrinks(extractDrinkData(data));
+            // Add found drinks to drinks state
+            setDrinks(extractDrinkData(data));
 
-        // Put first N drinks into paginated state
-        setPaginated(extractDrinkData(data).slice(0, N));
+            // Put first N drinks into paginated state
+            setPaginated(extractDrinkData(data).slice(0, N));
 
-        // Reset input field
-        setSearchDrink("");
+            // Reset input field
+            setSearchDrink("");
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (
