@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { CocktailInfoPage, FavouritesPage, IngredientPage, LandingPage, NotFound, SearchPage, cocktailsLoader } from "./pages";
 import { App } from "./components";
-import { cocktailInfoLoader } from "./loaders/cocktailInfoLoader";
-import { ingredientLoader } from "./loaders/ingredientLoader";
+import { cocktailInfoLoader, ingredientLoader } from "./loaders";
 
 export const router = createBrowserRouter([
 	{
