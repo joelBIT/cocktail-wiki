@@ -1,17 +1,16 @@
+import { redirect } from "react-router-dom";
 import { IFoundDrink, IIngredientInformation } from "../interfaces";
 
 export const ingredientLoader = async ({params}: any) => {
     try {
         const ingredientResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${params.name}`);
         const { ingredients } = await ingredientResponse.json();
-
-        const retrievedIngredient = ingredients[0] ? ingredients[0] : createEmptyIngredient();
         
         let ingredient: IIngredientInformation = {
-            name: retrievedIngredient.strIngredient,
-            type: retrievedIngredient.strType,
-            description: retrievedIngredient.strDescription,
-            alcohol: retrievedIngredient.strAlcohol,
+            name: ingredients[0].strIngredient,
+            type: ingredients[0].strType,
+            description: ingredients[0].strDescription,
+            alcohol: ingredients[0].strAlcohol,
             cocktails: []
         };
 
@@ -22,7 +21,7 @@ export const ingredientLoader = async ({params}: any) => {
         console.log(error);
     }
 
-    return createEmptyIngredient();
+    return redirect("*");
 }
 
 async function getCocktails(ingredient: IIngredientInformation, name: string) {
@@ -43,17 +42,5 @@ async function getCocktails(ingredient: IIngredientInformation, name: string) {
     } catch (error) {
         console.log(error);
     }
-    return ingredient;
-}
-
-function createEmptyIngredient() {
-    const ingredient: IIngredientInformation = {
-        name: "",
-        type: "",
-        description: "",
-        alcohol: "",
-        cocktails: []
-    };
-
     return ingredient;
 }
