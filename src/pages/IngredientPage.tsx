@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { IngredientInformation } from "../types/types";
 import "../css/IngredientPage.css";
+import { IIngredientInformation } from "../interfaces";
 
 export function IngredientPage(): ReactElement {
-    const ingredient = useLoaderData() as IngredientInformation;
+    const ingredient = useLoaderData() as IIngredientInformation;
 
     return (
         <>

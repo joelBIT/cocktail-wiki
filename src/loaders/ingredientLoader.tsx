@@ -1,4 +1,4 @@
-import { Cocktail, IngredientInformation } from "../types/types";
+import { IFoundDrink, IIngredientInformation } from "../interfaces";
 
 export const ingredientLoader = async ({params}: any) => {
     try {
@@ -7,7 +7,7 @@ export const ingredientLoader = async ({params}: any) => {
 
         const retrievedIngredient = ingredients[0] ? ingredients[0] : createEmptyIngredient();
         
-        let ingredient: IngredientInformation = {
+        let ingredient: IIngredientInformation = {
             name: retrievedIngredient.strIngredient,
             type: retrievedIngredient.strType,
             description: retrievedIngredient.strDescription,
@@ -25,15 +25,17 @@ export const ingredientLoader = async ({params}: any) => {
     return createEmptyIngredient();
 }
 
-async function getCocktails(ingredient: IngredientInformation, name: string) {
+async function getCocktails(ingredient: IIngredientInformation, name: string) {
     try {
         const cocktailsResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`);
         const { drinks } = await cocktailsResponse.json();
 
         for (let i = 0; i < drinks.length; i++) {
-            const cocktail: Cocktail = {
+            const cocktail: IFoundDrink = {
                 id: drinks[i].idDrink,
-                name: drinks[i].strDrink
+                name: drinks[i].strDrink,
+                alcoholic: "",
+                image: ""
             }
 
             ingredient.cocktails.push(cocktail);
@@ -45,7 +47,7 @@ async function getCocktails(ingredient: IngredientInformation, name: string) {
 }
 
 function createEmptyIngredient() {
-    const ingredient: IngredientInformation = {
+    const ingredient: IIngredientInformation = {
         name: "",
         type: "",
         description: "",
