@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import '../css/CocktailInfoPage.css';
-import { CocktailInformation } from "../types/types";
 import { List } from "../components";
+import { ICocktailInformation } from "../interfaces";
 
 export function CocktailInfoPage(): ReactElement {
-    const cocktail = useLoaderData() as CocktailInformation;
+    const cocktail = useLoaderData() as ICocktailInformation;
 
     return (
         <>

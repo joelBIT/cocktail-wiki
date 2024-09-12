@@ -1,4 +1,4 @@
-import { CocktailInformation } from "../types/types";
+import { ICocktailInformation } from "../interfaces";
 
 export const cocktailInfoLoader = async ({params}: any) => {
     try {
@@ -6,7 +6,7 @@ export const cocktailInfoLoader = async ({params}: any) => {
         const { drinks } = await response.json();
         const drink = drinks[0] ? drinks[0] : createEmptyCocktail();
 
-        const cocktail: CocktailInformation = {
+        const cocktail: ICocktailInformation = {
             drink: drink.strDrink,
             tags: drink.strTags ? drink.strTags.split(',') : [],
             category: drink.strCategory,
@@ -42,7 +42,7 @@ export const cocktailInfoLoader = async ({params}: any) => {
 }
 
 function createEmptyCocktail() {
-    const cocktail: CocktailInformation = {
+    const cocktail: ICocktailInformation = {
         drink: "",
         tags: [],
         category: "",
