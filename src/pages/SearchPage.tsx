@@ -3,12 +3,27 @@ import { IDrinkCard } from "../interfaces";
 import { SearchResult } from "../components";
 
 export function SearchPage(): ReactElement {
+    // States for search
     const [searchDrink, setSearchDrink] = useState<string>("");
     const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
+    // States for pagination
     const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
+    const [totalPages, setTotalPages] = useState<number>(1);
+    const [currentPage, setCurrentPage] = useState<number>(1);
 
     // Set a pagination constant
     const N: number = 10;
+
+    // Calculate pagination
+    const calculatePagination = (index: number) => {
+        if (drinks && paginated) {
+            // Calculate total number of pages
+            setTotalPages(Math.ceil(drinks.length / N));
+
+            // Calculate current page
+            setCurrentPage(Math.floor(index / N) + 1);
+        }
+    };
 
     // Extract relevant data from parsed API response
     const extractDrinkData = (data: any): IDrinkCard[] => {
@@ -50,6 +65,7 @@ export function SearchPage(): ReactElement {
             if (drinkIndex !== drinks.length - 1 && drinkIndex !== -1) {
                 // Update paginated state with next slice from drinks
                 setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+                calculatePagination(drinkIndex + 1);
             }
         }
     };
@@ -67,6 +83,7 @@ export function SearchPage(): ReactElement {
             if (drinkIndex !== 0 && drinkIndex !== -1) {
                 // Update paginated state with previous slice from drinks
                 setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+                calculatePagination(drinkIndex - 1);
             }
         }
     };
@@ -88,6 +105,10 @@ export function SearchPage(): ReactElement {
 
             // Put first N drinks into paginated state
             setPaginated(extractDrinkData(data).slice(0, N));
+
+            // Calculate states for pagination info
+            setTotalPages(Math.ceil(data["drinks"].length / N));
+            setCurrentPage(1);
 
             // Reset input field
             setSearchDrink("");
@@ -118,9 +139,11 @@ export function SearchPage(): ReactElement {
 
             {paginated && (
                 <SearchResult
+                    currentPage={currentPage}
                     handleNextDrinks={handleNextDrinks}
                     handlePreviousDrinks={handlePreviousDrinks}
                     paginated={paginated}
+                    totalPages={totalPages}
                 />
             )}
         </article>

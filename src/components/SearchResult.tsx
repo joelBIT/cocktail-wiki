@@ -2,9 +2,11 @@ import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "./DrinkCard";
 
 interface ISearchResultProps {
+    currentPage: number;
     handlePreviousDrinks: () => void;
     handleNextDrinks: () => void;
     paginated: IDrinkCard[];
+    totalPages: number;
 }
 
 export function SearchResult(props: ISearchResultProps) {
@@ -14,7 +16,9 @@ export function SearchResult(props: ISearchResultProps) {
             <button id="previousDrinks" onClick={props.handlePreviousDrinks}>
                 Previous
             </button>
-            <span>? / ?</span>
+            <span>
+                {props.currentPage} / {props.totalPages}
+            </span>
             <button id="nextDrinks" onClick={props.handleNextDrinks}>
                 Next
             </button>
