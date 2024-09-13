@@ -1,11 +1,11 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { IDrinkCard } from "../interfaces";
-import { DrinkCard } from "../components";
+import { SearchResult } from "../components";
 
 export function SearchPage(): ReactElement {
     const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<IDrinkCard[] | undefined>();
-    const [paginated, setPaginated] = useState<IDrinkCard[] | undefined>();
+    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
+    const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
 
     // Set a pagination constant
     const N: number = 10;
@@ -33,6 +33,7 @@ export function SearchPage(): ReactElement {
                 }
             }
         }
+        // Drink not found
         return -1;
     };
 
@@ -114,20 +115,8 @@ export function SearchPage(): ReactElement {
                     <button className="button">Search</button>
                 </div>
             </form>
-            <article id="searchResult">
-                <h2>Search Result</h2>
-                <button id="previousDrinks" onClick={handlePreviousDrinks}>
-                    Previous
-                </button>
-                <button id="nextDrinks" onClick={handleNextDrinks}>
-                    Next
-                </button>
-                <section id="searchCardContainer">
-                    {paginated?.map((drink) => (
-                        <DrinkCard key={drink.id} drink={drink} />
-                    ))}
-                </section>
-            </article>
+
+            <SearchResult />
         </article>
     );
 }
