@@ -7,7 +7,6 @@ import { IDrinkCard } from "../interfaces";
  * @returns     an IDrinkCard object for use in LandingPage. Or redirects to 404 page if it failed.
  */
 
-// export const randomCocktailLoader = async () => {
 export const randomCocktailLoader = async () => {
 	try {
 		// Send fetch request
