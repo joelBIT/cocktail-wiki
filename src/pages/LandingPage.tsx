@@ -8,7 +8,7 @@ export function LandingPage(): ReactElement {
 	const [drink, setDrink] = useState<IDrinkCard>(drink_old);
 
 	// fetches a new random drink from API
-	async function fetchNewRandomDrink<IDrinkCard>() {
+	async function fetchNewRandomDrink() {
 		const resp: Response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
 		// data massaging
 		const { drinks } = await resp.json();
@@ -23,7 +23,7 @@ export function LandingPage(): ReactElement {
 
 	const handleUpdateRandomDrink = async () => {
 		// fetches new drink to display
-		const newDrink = await fetchNewRandomDrink<IDrinkCard>();
+		const newDrink = await fetchNewRandomDrink();
 		setDrink(newDrink);
 	};
 
