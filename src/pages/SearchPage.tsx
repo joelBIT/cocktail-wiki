@@ -116,7 +116,13 @@ export function SearchPage(): ReactElement {
                 </div>
             </form>
 
-            <SearchResult />
+            {paginated && (
+                <SearchResult
+                    handleNextDrinks={handleNextDrinks}
+                    handlePreviousDrinks={handlePreviousDrinks}
+                    paginated={paginated}
+                />
+            )}
         </article>
     );
 }
