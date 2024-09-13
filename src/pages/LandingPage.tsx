@@ -1,13 +1,10 @@
 import { ReactElement, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
 
 export function LandingPage(): ReactElement {
-	const navigate = useNavigate();
 	const drink_old = useLoaderData() as IDrinkCard;
-	// const drink2 = useLoaderData() as IDrinkCard;
-	// const [drink, setDrink] = useState<IDrinkCard | undefined>(drink_old);
 	const [drink, setDrink] = useState<IDrinkCard>(drink_old);
 
 	// fetches a new random drink from API
