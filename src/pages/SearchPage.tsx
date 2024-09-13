@@ -79,8 +79,12 @@ export function SearchPage(): ReactElement {
             // Find drink with above ID in drinks state
             const drinkIndex: number = getDrinkIndex(drinkId);
 
-            // Check if first drink in search result is reached
-            if (drinkIndex !== 0 && drinkIndex !== -1) {
+            // Check if approaching beginning of drinks list
+            if (drinkIndex > 0 && drinkIndex < N) {
+                // Update paginated state with slice from 0 to N
+                setPaginated(drinks.slice(0, N));
+                calculatePagination(drinkIndex - 1);
+            } else if (drinkIndex > 0) {
                 // Update paginated state with previous slice from drinks
                 setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
                 calculatePagination(drinkIndex - 1);
