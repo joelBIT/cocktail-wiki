@@ -23,7 +23,9 @@
 }
 
 #searchDrinkForm input,
-#searchDrinkForm button {
+#searchDrinkForm button,
+#previousDrinks,
+#nextDrinks {
     height: 2.7rem;
     font-size: 1.2rem;
     margin: 0.5rem;
@@ -33,13 +35,16 @@
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
-#searchDrinkForm button {
-    background-color: rgb(225, 225, 225);
+#searchDrinkForm button,
+#previousDrinks,
+#nextDrinks {
     transition: 0.25s;
 }
 
-#searchDrinkForm button:hover {
-    background-color: rgb(192, 218, 192);
+#searchDrinkForm button:hover,
+#previousDrinks:hover,
+#nextDrinks:hover {
+    background-color: #213547;
 }
 
 #searchResult > h2 {
