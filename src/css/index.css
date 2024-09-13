@@ -5,6 +5,7 @@
 @import url("./IngredientPage.css");
 @import url("./LandingPage.css");
 @import url("./SearchPage.css");
+@import url("./SearchResult.css");
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
