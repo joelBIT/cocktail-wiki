@@ -8,7 +8,7 @@ export function SearchPage(): ReactElement {
     const [paginated, setPaginated] = useState<IDrinkCard[] | undefined>();
 
     // Set a pagination constant
-    const N: number = 3;
+    const N: number = 10;
 
     // Extract relevant data from parsed API response
     const extractDrinkData = (data: any): IDrinkCard[] => {
