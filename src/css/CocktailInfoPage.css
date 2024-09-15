@@ -1,15 +1,41 @@
-.cocktail-information {
+#cocktailInformation {
     display: flex;
     grid-column: 2 / 6;
     background-color: #f7f7f8;
     padding-right: 1rem;
 
-    p {
-        display: inline;
-        font-weight: 400;
-    }
+    article {
+        padding: 0 3rem;
 
-    li {
-        display: block;
+        #tags {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+
+                li {
+                    background-color: plum;
+                    font-size: larger;
+                    font-weight: 600;
+                    border-radius: 8px;
+                    padding: 0 1rem;
+                }
+            }
+        }
+
+        h1 {
+            font-size: 3.2em;
+            line-height: 1.1;
+        }
+    
+        p {
+            display: inline;
+            font-weight: 400;
+        }
+    
+        li {
+            display: block;
+        }
     }
 }

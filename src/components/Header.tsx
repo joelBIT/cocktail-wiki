@@ -11,20 +11,20 @@ export function Header(): ReactElement {
                             to="/"
                             className={({ isActive }) => {
                                 return isActive
-                                    ? "active nav-link"
-                                    : "nav-link";
+                                    ? "active"
+                                    : "";
                             }}
                         >
                             Home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="nav-link" to="/search">
+                        <NavLink to="/search">
                             Search
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className="nav-link" to="/favourites">
+                        <NavLink to="/favourites">
                             Favourites
                         </NavLink>
                     </li>

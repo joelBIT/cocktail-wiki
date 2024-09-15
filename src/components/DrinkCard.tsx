@@ -3,11 +3,11 @@ import { IDrinkCard } from "../interfaces";
 
 export function DrinkCard({ drink }: {drink: IDrinkCard}) {
     return (
-        <section className="drink-card">
+        <section className="drinkCard">
             <figure>
                 <img src={drink.image} alt="Drink" />
             </figure>
-            <div className="drink-info">
+            <div className="drinkInfo">
                 <Link to={`/cocktailinfo/${drink.id}`}>{drink.name}</Link>
                 <p>{drink.alcoholic}</p>
             </div>
