@@ -8,6 +8,7 @@ export function SearchPage(): ReactElement {
     const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
     // States for pagination
     const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
+    const [drinksPerPage, setDrinksPerPage] = useState<number>(10);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -144,9 +145,11 @@ export function SearchPage(): ReactElement {
             {paginated && (
                 <SearchResult
                     currentPage={currentPage}
+                    drinksPerPage={drinksPerPage}
                     handleNextDrinks={handleNextDrinks}
                     handlePreviousDrinks={handlePreviousDrinks}
                     paginated={paginated}
+                    setDrinksPerPage={setDrinksPerPage}
                     totalPages={totalPages}
                 />
             )}

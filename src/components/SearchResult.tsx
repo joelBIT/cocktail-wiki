@@ -1,11 +1,14 @@
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "./DrinkCard";
+import { PaginationForm } from "./PaginationForm";
 
 interface ISearchResultProps {
     currentPage: number;
+    drinksPerPage: number;
     handlePreviousDrinks: () => void;
     handleNextDrinks: () => void;
     paginated: IDrinkCard[];
+    setDrinksPerPage: (drinksPerPage: number) => void;
     totalPages: number;
 }
 
@@ -13,6 +16,10 @@ export function SearchResult(props: ISearchResultProps) {
     return (
         <article id="searchResult">
             <h2>Search Result</h2>
+            <PaginationForm
+                drinksPerPage={props.drinksPerPage}
+                setDrinksPerPage={props.setDrinksPerPage}
+            />
             <div id="paginateNav">
                 <button
                     id="previousDrinks"
