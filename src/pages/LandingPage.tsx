@@ -31,13 +31,11 @@ export function LandingPage(): ReactElement {
 	}
 
 	return (
-		<>
+		<section id="landingPage">
 			<DrinkCard drink={drink} />
-			<div className="cocktail-card-buttons" id="TEST">
-				<button onClick={handleRandomDrinkButton} className="button-show-another">
-					Show another
-				</button>
-			</div>
-		</>
+			<button onClick={handleRandomDrinkButton}>
+				Show another
+			</button>
+		</section>
 	);
 }

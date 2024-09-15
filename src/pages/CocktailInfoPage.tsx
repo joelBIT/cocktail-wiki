@@ -13,42 +13,41 @@ export function CocktailInfoPage(): ReactElement {
     const cocktail = useLoaderData() as ICocktailInformation;
 
     return (
-        <>
-            <section className="cocktail-information">
-                <figure>
-                    <img src={cocktail.imageAddress} />
-                </figure>
-                <article>
-                    <h1>
-                        Drink: <p>{cocktail.drink}</p>
-                    </h1>
-                    <h3>
-                        Category: <p>{cocktail.category}</p>
-                    </h3>
-                    <h3>Tags: </h3>
+        <section id="cocktailInformation">
+            <figure>
+                <img src={cocktail.imageAddress} />
+            </figure>
+            <article>
+                <h1>
+                    Drink: <p>{cocktail.drink}</p>
+                </h1>
+                <div id="tags">
                     <List list={cocktail.tags} />
-                    <h3>Ingredients: </h3>
-                    <ul>
-                        {cocktail.ingredients.map(
-                            (ingredient, index) => (
-                                <li key={index}>
-                                    <Link
-                                        to={`/ingredient/${ingredient}`}
-                                    >
-                                        {cocktail.measures[index]} { ingredient}
-                                    </Link>
-                                </li>
-                            )
-                        )}
-                    </ul>
-                    <h3>
-                        Serve in: <p>{cocktail.glass}</p>
-                    </h3>
-                    <h3>
-                        Instructions: <p>{cocktail.instructions}</p>
-                    </h3>
-                </article>
-            </section>
-        </>
+                </div>
+                <h3>
+                    Category: <p>{cocktail.category}</p>
+                </h3>
+                <h3>Ingredients: </h3>
+                <ul>
+                    {cocktail.ingredients.map(
+                        (ingredient, index) => (
+                            <li key={index}>
+                                <Link
+                                    to={`/ingredient/${ingredient}`}
+                                >
+                                    {cocktail.measures[index]} { ingredient}
+                                </Link>
+                            </li>
+                        )
+                    )}
+                </ul>
+                <h3>
+                    Serve in: <p>{cocktail.glass}</p>
+                </h3>
+                <h3>
+                    Instructions: <p>{cocktail.instructions}</p>
+                </h3>
+            </article>
+        </section>
     );
 }

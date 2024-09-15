@@ -1,25 +1,25 @@
-#searchResult .drink-card {
-    margin: 1rem;
+.drinkCard {
+    margin: 0;
     width: 15rem;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
-}
-
-#searchResult .drink-card > figure {
-    width: 100%;
-}
-
-#searchResult .drink-card > figure > img {
-    width: 100%;
-}
-
-#searchResult .drink-card > .drink-info {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 0.5rem;
-}
-
-#searchResult .drink-card > .drink-info > a {
     text-align: left;
+
+    figure {
+        margin: 0;
+
+        > img {
+            width: 100%;
+        }
+    }
+
+    .drinkInfo {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        p {
+            margin: 0;
+        }
+    }
 }

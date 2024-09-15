@@ -1,9 +1,14 @@
-.ingredient-information {
+#ingredientInformation {
     display: flex;
     grid-column: 2 / 6;
     background-color: #f7f7f8;
     padding-right: 1rem;
     margin-top: 6rem;
+
+    h1 {
+        font-size: 3.2em;
+        line-height: 1.1;
+    }
 
     p {
         display: inline;
@@ -14,7 +19,7 @@
         display: block;
     }
 
-    .ingredient-description {
+    #ingredientDescription {
         padding-right: 10rem;
         margin-top: 4rem
     }

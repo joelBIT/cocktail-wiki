@@ -98,7 +98,7 @@ export function SearchPage(): ReactElement {
     return (
         <article id="searchDrink">
             <form id="searchDrinkForm" onSubmit={handleOnSubmit}>
-                <label className="label" htmlFor="searchFormInput">
+                <label htmlFor="searchFormInput">
                     What do you want to drink?
                 </label>
                 <div>
@@ -111,15 +111,15 @@ export function SearchPage(): ReactElement {
                         type="text"
                         value={searchDrink}
                     />
-                    <button className="button">Search</button>
+                    <button>Search</button>
                 </div>
             </form>
             <article id="searchResult">
                 <h2>Search Result</h2>
-                <button id="previousDrinks" onClick={handlePreviousDrinks}>
+                <button onClick={handlePreviousDrinks}>
                     Previous
                 </button>
-                <button id="nextDrinks" onClick={handleNextDrinks}>
+                <button onClick={handleNextDrinks}>
                     Next
                 </button>
                 <section id="searchCardContainer">
