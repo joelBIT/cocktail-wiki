@@ -63,7 +63,7 @@ export function SearchPage(): ReactElement {
 
             // Check if last drink in search result is reached
             if (drinkIndex !== drinks.length - 1 && drinkIndex !== -1) {
-                // Update paginated state with next slice from drinks
+                // If not, update paginated state with next slice from drinks
                 setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
                 calculatePagination(drinkIndex + 1);
             }
@@ -81,7 +81,7 @@ export function SearchPage(): ReactElement {
 
             // Check if approaching beginning of drinks list
             if (drinkIndex > 0 && drinkIndex < N) {
-                // Update paginated state with slice from 0 to N
+                // If so, update paginated state with slice from 0 to N
                 setPaginated(drinks.slice(0, N));
                 calculatePagination(drinkIndex - 1);
             } else if (drinkIndex > 0) {
