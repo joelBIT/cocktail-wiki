@@ -2,10 +2,17 @@ import { ReactElement, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
+import { useFavouritesContext } from "../contexts/FavouritesContextProvider";
 
 export function LandingPage(): ReactElement {
 	const drink_old = useLoaderData() as IDrinkCard;
 	const [drink, setDrink] = useState<IDrinkCard>(drink_old);
+	const {favouritesList, setFavouritesList} = useFavouritesContext();
+
+	// Only used for testing the context
+	function addToFavourites() {
+		setFavouritesList([...favouritesList, drink]);
+	}
 
 	// Fetches a new random drink from API
 	async function handleRandomDrinkButton() {
@@ -35,6 +42,9 @@ export function LandingPage(): ReactElement {
 			<DrinkCard drink={drink} />
 			<button onClick={handleRandomDrinkButton}>
 				Show another
+			</button>
+			<button onClick={() => addToFavourites()}>
+				Add to Favourites
 			</button>
 		</section>
 	);
