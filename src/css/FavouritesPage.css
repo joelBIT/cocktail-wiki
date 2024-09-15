@@ -1,0 +1,7 @@
+#favouritesPage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 3rem;
+    justify-content: center;
+}
