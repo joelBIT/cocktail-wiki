@@ -12,17 +12,17 @@ export function SearchPage(): ReactElement {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
 
-    // Set a pagination constant
-    const N: number = 10;
-
     // Calculate pagination
-    const calculatePagination = (index: number) => {
+    const calculatePagination = (
+        index: number,
+        currentDrinksPerPage: number = drinksPerPage
+    ) => {
         if (drinks && paginated) {
             // Calculate total number of pages
-            setTotalPages(Math.ceil(drinks.length / N));
+            setTotalPages(Math.ceil(drinks.length / currentDrinksPerPage));
 
             // Calculate current page
-            setCurrentPage(Math.floor(index / N) + 1);
+            setCurrentPage(Math.floor(index / currentDrinksPerPage) + 1);
         }
     };
 
@@ -65,7 +65,9 @@ export function SearchPage(): ReactElement {
             // Check if last drink in search result is reached
             if (drinkIndex !== drinks.length - 1 && drinkIndex !== -1) {
                 // If not, update paginated state with next slice from drinks
-                setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+                setPaginated(
+                    drinks.slice(drinkIndex + 1, drinkIndex + 1 + drinksPerPage)
+                );
                 calculatePagination(drinkIndex + 1);
             }
         }
@@ -81,20 +83,34 @@ export function SearchPage(): ReactElement {
             const drinkIndex: number = getDrinkIndex(drinkId);
 
             // Check if approaching beginning of drinks list
-            if (drinkIndex > 0 && drinkIndex < N) {
-                // If so, update paginated state with slice from 0 to N
-                setPaginated(drinks.slice(0, N));
+            if (drinkIndex > 0 && drinkIndex < drinksPerPage) {
+                // If so, update paginated state with slice from 0 to drinksPerPage
+                setPaginated(drinks.slice(0, drinksPerPage));
                 calculatePagination(drinkIndex - 1);
             } else if (drinkIndex > 0) {
                 // Update paginated state with previous slice from drinks
-                setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+                setPaginated(
+                    drinks.slice(drinkIndex - drinksPerPage, drinkIndex)
+                );
                 calculatePagination(drinkIndex - 1);
             }
         }
     };
 
+    // Reset search display when drinksPerPage state is updated
+    const handleSetDrinksPerPage = (drinksPerPage: number) => {
+        console.log("Called setDrinksPerPage with number:", drinksPerPage);
+
+        // Set new state for drinksPerPage
+        setDrinksPerPage(drinksPerPage);
+
+        // Update pagination with new number of drinksPerPage
+        setPaginated(drinks?.slice(0, drinksPerPage));
+        calculatePagination(0, drinksPerPage);
+    };
+
     // Fetch drink from API when search form is submitted
-    const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmitSearch = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // Send fetch request
@@ -108,11 +124,11 @@ export function SearchPage(): ReactElement {
             // Add found drinks to drinks state
             setDrinks(extractDrinkData(data));
 
-            // Put first N drinks into paginated state
-            setPaginated(extractDrinkData(data).slice(0, N));
+            // Put first drinksPerPage number of drinks into paginated state
+            setPaginated(extractDrinkData(data).slice(0, drinksPerPage));
 
             // Calculate states for pagination info
-            setTotalPages(Math.ceil(data["drinks"].length / N));
+            setTotalPages(Math.ceil(data["drinks"].length / drinksPerPage));
             setCurrentPage(1);
 
             // Reset input field
@@ -124,7 +140,7 @@ export function SearchPage(): ReactElement {
 
     return (
         <article id="searchDrink">
-            <form id="searchDrinkForm" onSubmit={handleOnSubmit}>
+            <form id="searchDrinkForm" onSubmit={handleSubmitSearch}>
                 <label htmlFor="searchFormInput">
                     What do you want to drink?
                 </label>
@@ -148,8 +164,8 @@ export function SearchPage(): ReactElement {
                     drinksPerPage={drinksPerPage}
                     handleNextDrinks={handleNextDrinks}
                     handlePreviousDrinks={handlePreviousDrinks}
+                    handleSetDrinksPerPage={handleSetDrinksPerPage}
                     paginated={paginated}
-                    setDrinksPerPage={setDrinksPerPage}
                     totalPages={totalPages}
                 />
             )}
