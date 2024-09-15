@@ -4,6 +4,7 @@
 @import url("./IngredientPage.css");
 @import url("./SearchPage.css");
 @import url("./LandingPage.css");
+@import url("./SearchResult.css");
 
 /******************
 * General Styling *
@@ -11,7 +12,7 @@
 
 #root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;    
+    line-height: 1.5;
     height: 100vh;
     margin: 0;
     text-align: center;

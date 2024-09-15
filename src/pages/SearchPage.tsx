@@ -1,14 +1,29 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { IDrinkCard } from "../interfaces";
-import { DrinkCard } from "../components";
+import { SearchResult } from "../components";
 
 export function SearchPage(): ReactElement {
+    // States for search
     const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<IDrinkCard[] | undefined>();
-    const [paginated, setPaginated] = useState<IDrinkCard[] | undefined>();
+    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
+    // States for pagination
+    const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
+    const [totalPages, setTotalPages] = useState<number>(1);
+    const [currentPage, setCurrentPage] = useState<number>(1);
 
     // Set a pagination constant
     const N: number = 10;
+
+    // Calculate pagination
+    const calculatePagination = (index: number) => {
+        if (drinks && paginated) {
+            // Calculate total number of pages
+            setTotalPages(Math.ceil(drinks.length / N));
+
+            // Calculate current page
+            setCurrentPage(Math.floor(index / N) + 1);
+        }
+    };
 
     // Extract relevant data from parsed API response
     const extractDrinkData = (data: any): IDrinkCard[] => {
@@ -33,6 +48,7 @@ export function SearchPage(): ReactElement {
                 }
             }
         }
+        // Drink not found
         return -1;
     };
 
@@ -49,6 +65,7 @@ export function SearchPage(): ReactElement {
             if (drinkIndex !== drinks.length - 1 && drinkIndex !== -1) {
                 // Update paginated state with next slice from drinks
                 setPaginated(drinks.slice(drinkIndex + 1, drinkIndex + 1 + N));
+                calculatePagination(drinkIndex + 1);
             }
         }
     };
@@ -62,10 +79,15 @@ export function SearchPage(): ReactElement {
             // Find drink with above ID in drinks state
             const drinkIndex: number = getDrinkIndex(drinkId);
 
-            // Check if first drink in search result is reached
-            if (drinkIndex !== 0 && drinkIndex !== -1) {
+            // Check if approaching beginning of drinks list
+            if (drinkIndex > 0 && drinkIndex < N) {
+                // Update paginated state with slice from 0 to N
+                setPaginated(drinks.slice(0, N));
+                calculatePagination(drinkIndex - 1);
+            } else if (drinkIndex > 0) {
                 // Update paginated state with previous slice from drinks
                 setPaginated(drinks.slice(drinkIndex - N, drinkIndex));
+                calculatePagination(drinkIndex - 1);
             }
         }
     };
@@ -87,6 +109,10 @@ export function SearchPage(): ReactElement {
 
             // Put first N drinks into paginated state
             setPaginated(extractDrinkData(data).slice(0, N));
+
+            // Calculate states for pagination info
+            setTotalPages(Math.ceil(data["drinks"].length / N));
+            setCurrentPage(1);
 
             // Reset input field
             setSearchDrink("");
@@ -114,20 +140,16 @@ export function SearchPage(): ReactElement {
                     <button>Search</button>
                 </div>
             </form>
-            <article id="searchResult">
-                <h2>Search Result</h2>
-                <button onClick={handlePreviousDrinks}>
-                    Previous
-                </button>
-                <button onClick={handleNextDrinks}>
-                    Next
-                </button>
-                <section id="searchCardContainer">
-                    {paginated?.map((drink) => (
-                        <DrinkCard key={drink.id} drink={drink} />
-                    ))}
-                </section>
-            </article>
+
+            {paginated && (
+                <SearchResult
+                    currentPage={currentPage}
+                    handleNextDrinks={handleNextDrinks}
+                    handlePreviousDrinks={handlePreviousDrinks}
+                    paginated={paginated}
+                    totalPages={totalPages}
+                />
+            )}
         </article>
     );
 }
