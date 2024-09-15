@@ -1,6 +1,7 @@
 import { createContext, ReactElement, ReactNode, useState } from "react";
 import { IDrinkCard } from "../interfaces";
 
+// TODO: move interfaces to ../interfaces
 interface IFavouritesContext {
     favouritesList: IDrinkCard[];
     setFavouritesList: (favouritesList: IDrinkCard[]) => void;
