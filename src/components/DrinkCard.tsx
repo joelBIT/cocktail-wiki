@@ -27,7 +27,6 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }) {
 			<figure>
 				<Link to={`/cocktailinfo/${drink.id}`}>
 					<div className="card-image-container">
-						{/* <img src={drink.image} alt="Drink" /> */}
 						<img src={drink.image} alt="Example" className="image" />
 						<div className="card-hover-text">
 							<h5>Go to details</h5>
