@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "./DrinkCard";
-import { PaginateButtons } from "./PaginateButtons";
-import { PaginationForm } from "./PaginationForm";
+import { PaginateButtons, PaginationForm } from ".";
 
 interface ISearchResultProps {
     currentPage: number;
