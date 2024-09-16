@@ -1,6 +1,5 @@
 #ingredientInformation {
     display: flex;
-    grid-column: 2 / 6;
     background-color: #f7f7f8;
     padding-right: 1rem;
     margin-top: 6rem;
