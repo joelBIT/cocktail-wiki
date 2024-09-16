@@ -1,15 +1,9 @@
-import { createContext, ReactElement, ReactNode, useState } from "react";
-import { IDrinkCard } from "../interfaces";
-
-// TODO: move interfaces to ../interfaces
-interface IFavouritesContext {
-    favouritesList: IDrinkCard[];
-    setFavouritesList: (favouritesList: IDrinkCard[]) => void;
-}
-
-interface IFavouritesContextProviderChildren {
-    children: ReactNode;
-}
+import { createContext, ReactElement, useState } from "react";
+import {
+    IDrinkCard,
+    IFavouritesContext,
+    IFavouritesContextProviderChildren,
+} from "../interfaces";
 
 export const FavouritesContext = createContext<IFavouritesContext>(
     {} as IFavouritesContext
