@@ -3,6 +3,7 @@ import { IDrinkCard } from "../interfaces";
 import { SearchResult } from "../components";
 
 export function SearchPage(): ReactElement {
+    const [errorMessage, setErrorMessage] = useState("");
     // States for search
     const [searchDrink, setSearchDrink] = useState<string>("");
     const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
@@ -110,6 +111,7 @@ export function SearchPage(): ReactElement {
     // Fetch drink from API when search form is submitted
     const handleSubmitSearch = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setErrorMessage("");
 
         // Send fetch request
         try {
@@ -133,11 +135,13 @@ export function SearchPage(): ReactElement {
             setSearchDrink("");
         } catch (e) {
             console.error(e);
+            setErrorMessage("An error occurred while searching for cocktails");
         }
     };
 
     return (
         <article id="searchDrink">
+            <h1 className="errorMessage">{errorMessage}</h1>
             <form id="searchDrinkForm" onSubmit={handleSubmitSearch}>
                 <label htmlFor="searchFormInput">
                     What do you want to drink?

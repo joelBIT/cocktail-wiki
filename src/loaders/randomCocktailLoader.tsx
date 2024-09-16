@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 
 /**
@@ -6,25 +5,19 @@ import { IDrinkCard } from "../interfaces";
  *
  * @returns     an IDrinkCard object for use in LandingPage. Or redirects to 404 page if it failed.
  */
-
 export const randomCocktailLoader = async () => {
-	try {
-		// Send fetch request
-		const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+	// Send fetch request
+	const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
 
-		// Data massaging
-		const { drinks } = await resp.json();
-		const drink = drinks[0];
-		const randomDrink: IDrinkCard = {
-			id: drink.idDrink,
-			name: drink.strDrink,
-			alcoholic: drink.strAlcoholic,
-			image: drink.strDrinkThumb,
-		};
+	// Data massaging
+	const { drinks } = await resp.json();
+	const drink = drinks[0];
+	const randomDrink: IDrinkCard = {
+		id: drink.idDrink,
+		name: drink.strDrink,
+		alcoholic: drink.strAlcoholic,
+		image: drink.strDrinkThumb,
+	};
 
-		return randomDrink;
-	} catch (e) {
-		console.error(e);
-		return redirect("*");
-	}
+	return randomDrink;
 };

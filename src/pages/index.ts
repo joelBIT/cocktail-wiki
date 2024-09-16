@@ -4,3 +4,4 @@ export * from "./IngredientPage";
 export * from "./LandingPage";
 export * from "./NotFound";
 export * from "./SearchPage";
+export * from "./ErrorPage";

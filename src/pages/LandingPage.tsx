@@ -1,21 +1,17 @@
-import { ReactElement, useContext, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
-import { FavouritesContext } from "../contexts/FavouritesContextProvider";
 
 export function LandingPage(): ReactElement {
 	const drink_old = useLoaderData() as IDrinkCard;
 	const [drink, setDrink] = useState<IDrinkCard>(drink_old);
-	const { favouritesList, setFavouritesList } = useContext(FavouritesContext);
-
-	// Only used for testing the context
-	function addToFavourites() {
-		setFavouritesList([...favouritesList, drink]);
-	}
+	const [errorMessage, setErrorMessage] = useState("");
 
 	// Fetches a new random drink from API
 	async function handleRandomDrinkButton() {
+		setErrorMessage("");
+
 		try {
 			// Send fetch request
 			const resp: Response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
@@ -34,11 +30,13 @@ export function LandingPage(): ReactElement {
 			setDrink(newDrink);
 		} catch (e) {
 			console.error(e);
+			setErrorMessage("Error when trying to get a random cocktail");
 		}
 	}
 
 	return (
 		<section id="landingPage">
+			<h1 className="errorMessage">{errorMessage}</h1>
 			<DrinkCard drink={drink} />
 			<button onClick={handleRandomDrinkButton}>Show another</button>
 		</section>
