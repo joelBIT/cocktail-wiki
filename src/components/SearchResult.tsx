@@ -1,6 +1,7 @@
+import { ReactElement } from "react";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "./DrinkCard";
-import { PaginationForm } from "./PaginationForm";
+import { PaginateButtons, PaginationForm } from ".";
 
 interface ISearchResultProps {
     currentPage: number;
@@ -12,7 +13,7 @@ interface ISearchResultProps {
     totalPages: number;
 }
 
-export function SearchResult(props: ISearchResultProps) {
+export function SearchResult(props: ISearchResultProps): ReactElement {
     return (
         <article id="searchResult">
             <h2>Search Result</h2>
@@ -20,28 +21,23 @@ export function SearchResult(props: ISearchResultProps) {
                 drinksPerPage={props.drinksPerPage}
                 handleSetDrinksPerPage={props.handleSetDrinksPerPage}
             />
-            <div id="paginateNav">
-                <button
-                    id="previousDrinks"
-                    onClick={props.handlePreviousDrinks}
-                >
-                    <span className="material-symbols-outlined">
-                        skip_previous
-                    </span>
-                </button>
-                <p>
-                    {props.currentPage} / {props.totalPages}
-                </p>
-                <button id="nextDrinks" onClick={props.handleNextDrinks}>
-                    <span className="material-symbols-outlined">skip_next</span>
-                </button>
-            </div>
-
+            <PaginateButtons
+                currentPage={props.currentPage}
+                handleNextDrinks={props.handleNextDrinks}
+                handlePreviousDrinks={props.handlePreviousDrinks}
+                totalPages={props.totalPages}
+            />
             <section id="searchCardContainer">
                 {props.paginated.map((drink) => (
                     <DrinkCard key={drink.id} drink={drink} />
                 ))}
             </section>
+            <PaginateButtons
+                currentPage={props.currentPage}
+                handleNextDrinks={props.handleNextDrinks}
+                handlePreviousDrinks={props.handlePreviousDrinks}
+                totalPages={props.totalPages}
+            />
         </article>
     );
 }
