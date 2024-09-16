@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { CocktailInfoPage, FavouritesPage, IngredientPage, LandingPage, NotFound, SearchPage } from "./pages";
+import { CocktailInfoPage, ErrorPage, FavouritesPage, IngredientPage, LandingPage, NotFound, SearchPage } from "./pages";
 import { App } from "./components";
 import { cocktailInfoLoader, randomCocktailLoader, ingredientLoader } from "./loaders";
 
@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <LandingPage />,
 				loader: randomCocktailLoader,
+				errorElement: <ErrorPage />,
 			},
 			{
 				path: "/search",
@@ -25,11 +26,13 @@ export const router = createBrowserRouter([
 				path: "/cocktailinfo/:id",
 				element: <CocktailInfoPage />,
 				loader: cocktailInfoLoader,
+				errorElement: <ErrorPage />,
 			},
 			{
 				path: "/ingredient/:name",
 				element: <IngredientPage />,
 				loader: ingredientLoader,
+				errorElement: <ErrorPage />,
 			},
 			{
 				path: "*",
