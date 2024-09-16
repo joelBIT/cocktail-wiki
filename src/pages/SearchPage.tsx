@@ -99,8 +99,6 @@ export function SearchPage(): ReactElement {
 
     // Reset search display when drinksPerPage state is updated
     const handleSetDrinksPerPage = (drinksPerPage: number) => {
-        console.log("Called setDrinksPerPage with number:", drinksPerPage);
-
         // Set new state for drinksPerPage
         setDrinksPerPage(drinksPerPage);
 
