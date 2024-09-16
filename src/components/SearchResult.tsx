@@ -1,5 +1,6 @@
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "./DrinkCard";
+import { PaginateButtons } from "./PaginateButtons";
 import { PaginationForm } from "./PaginationForm";
 
 interface ISearchResultProps {
@@ -20,6 +21,7 @@ export function SearchResult(props: ISearchResultProps) {
                 drinksPerPage={props.drinksPerPage}
                 handleSetDrinksPerPage={props.handleSetDrinksPerPage}
             />
+            <PaginateButtons />
             <div id="paginateNav">
                 <button
                     id="previousDrinks"
@@ -42,6 +44,7 @@ export function SearchResult(props: ISearchResultProps) {
                     <DrinkCard key={drink.id} drink={drink} />
                 ))}
             </section>
+            <PaginateButtons />
         </article>
     );
 }
