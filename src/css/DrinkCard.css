@@ -1,25 +1,54 @@
 .drinkCard {
-    margin: 0;
-    width: 15rem;
-    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
-    text-align: left;
+	margin: 0;
+	width: 15rem;
+	box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+	text-align: left;
 
-    figure {
-        margin: 0;
+	figure {
+		margin: 0;
 
-        > img {
-            width: 100%;
-        }
-    }
+		img {
+			width: 100%;
+		}
+	}
 
-    .drinkInfo {
-        padding: 0.5rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 0.5rem;
+	.drinkInfo {
+		padding: 0rem 0rem;
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
 
-        p {
-            margin: 0;
-        }
-    }
+		p {
+			margin: 0;
+		}
+	}
+
+	.card-image-container {
+		position: relative;
+	}
+
+	.image {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.card-hover-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		background-color: rgba(0, 0, 0, 0.6); /* Slight dark overlay */
+		padding: 0rem 1rem;
+		border-radius: 5px;
+		text-align: center;
+		font-size: 18px;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.card-image-container:hover .card-hover-text {
+		opacity: 1;
+	}
 }
