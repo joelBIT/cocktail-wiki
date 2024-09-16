@@ -1,9 +1,4 @@
-export interface IDrinkCard {
-    id: string;
-    name: string;
-    alcoholic: string;
-    image: string;
-}
+import { ReactNode } from "react";
 
 export interface ICocktailInformation {
     drink: string;
@@ -15,6 +10,22 @@ export interface ICocktailInformation {
     imageAddress: string;
     measures: string[];
     amountPerIngredient: string[];
+}
+
+export interface IDrinkCard {
+    id: string;
+    name: string;
+    alcoholic: string;
+    image: string;
+}
+
+export interface IFavouritesContext {
+    favouritesList: IDrinkCard[];
+    setFavouritesList: (favouritesList: IDrinkCard[]) => void;
+}
+
+export interface IFavouritesContextProviderChildren {
+    children: ReactNode;
 }
 
 export interface IIngredientInformation {
