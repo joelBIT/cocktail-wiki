@@ -135,7 +135,7 @@ export function SearchPage(): ReactElement {
             setSearchDrink("");
         } catch (e) {
             console.error(e);
-            setErrorMessage("An error occurred while searching for cocktails");
+            setErrorMessage("Could not find that drink");
         }
     };
 

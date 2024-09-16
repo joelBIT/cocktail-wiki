@@ -30,7 +30,7 @@ export function LandingPage(): ReactElement {
 			setDrink(newDrink);
 		} catch (e) {
 			console.error(e);
-			setErrorMessage("Error when trying to get a random cocktail");
+			setErrorMessage("Could not retrieve another drink");
 		}
 	}
 
