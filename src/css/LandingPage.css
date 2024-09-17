@@ -1,12 +1,8 @@
 #landingPage {
-    display: inline-block;
-    margin-top: 2rem;
+	display: inline-block;
+	margin-top: 2rem;
 
-    section {
-        width: 30rem;
-    }
-
-    button {
-        margin-top: 2rem;
-    }
+	section {
+		width: 30rem;
+	}
 }

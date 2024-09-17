@@ -34,11 +34,20 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }) {
 					</div>
 				</Link>
 			</figure>
-			<div className="drinkInfo">
-				<Link to={`/cocktailinfo/${drink.id}`}>{drink.name}</Link>
+			<Link to={`/cocktailinfo/${drink.id}`}>
+				<h3 className="card-name">{drink.name}</h3>
+			</Link>
+			<div className="card-flex-row">
 				<p>{drink.alcoholic}</p>
+				<div className="button-fav-wrapper">
+					<button
+						onClick={() => handleAddToFavourites()}
+						className={isFavorite ? "material-symbols-outlined button-fav button-remove" : "material-symbols-outlined button-fav button-add"}
+						title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+					></button>
+					{/* dynamic button content is handled by :hover and ::after selectors in DrinkCard.css */}
+				</div>
 			</div>
-			<button onClick={() => handleAddToFavourites()}>{isFavorite ? "Remove from Favorites" : "Add to Favorites"}</button>
 		</section>
 	);
 }
