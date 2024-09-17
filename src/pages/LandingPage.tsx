@@ -36,7 +36,7 @@ export function LandingPage(): ReactElement {
 		<section id="landingPage">
 			<h1 className="errorMessage">{errorMessage}</h1>
 			{ loading ? <Spinner /> : <DrinkCard drink={drink} />}
-			<button id="randomDrinkButton" onClick={handleRandomDrinkButton}>Show another</button>
+			<button onClick={handleRandomDrinkButton}>Show another</button>
 		</section>
 	);
 }
