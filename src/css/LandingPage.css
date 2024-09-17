@@ -1,8 +1,14 @@
 #landingPage {
-	display: inline-block;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
 	margin-top: 2rem;
 
 	section {
 		width: 30rem;
+		
+		#randomDrinkButton {
+			display: block;
+		}
 	}
 }
