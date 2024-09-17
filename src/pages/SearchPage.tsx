@@ -1,7 +1,7 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { ICocktailResponse, IDrinkCard } from "../interfaces";
 import { SearchResult } from "../components";
-import { createDrinkCard } from "../utils";
+import { baseURL, createDrinkCard } from "../utils";
 
 export function SearchPage(): ReactElement {
     const [errorMessage, setErrorMessage] = useState("");
@@ -111,7 +111,6 @@ export function SearchPage(): ReactElement {
 
         // Send fetch request
         try {
-            const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
             const response: Response = await fetch(
                 `${baseURL}/search.php?s=${searchDrink}`
             );

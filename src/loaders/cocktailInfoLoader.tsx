@@ -1,4 +1,4 @@
-import { createCocktail } from "../utils";
+import { baseURL, createCocktail } from "../utils";
 
 /**
  * Retrieves information about a cocktail from the API. The data of interest is stored in a created object of
@@ -10,7 +10,7 @@ import { createCocktail } from "../utils";
  */
 export const cocktailInfoLoader = async ({params}: any) => {
 
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.id}`);
+    const response = await fetch(`${baseURL}/lookup.php?i=${params.id}`);
     const { drinks } = await response.json();
     const drink = drinks[0];
     const cocktail = createCocktail(drink);

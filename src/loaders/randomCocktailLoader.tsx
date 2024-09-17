@@ -1,4 +1,4 @@
-import { createDrinkCard } from "../utils";
+import { baseURL, createDrinkCard } from "../utils";
 
 /**
  * Retrieves information about a cocktail from the API. Massages the data a bit, and the returns what is of interest as an object of type IDrinkCard.
@@ -7,7 +7,7 @@ import { createDrinkCard } from "../utils";
  */
 export const randomCocktailLoader = async () => {
 	// Send fetch request
-	const resp = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+	const resp = await fetch(`${baseURL}/random.php`);
 
 	// Data massaging
 	const { drinks } = await resp.json();
