@@ -8,12 +8,8 @@
 }
 
 #searchResult {
-    #searchCardContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 1rem;
-        gap: 1rem;
+    h2 {
+        margin-top: 1.5rem;
     }
 
     #paginateNav {
@@ -26,7 +22,11 @@
         }
     }
 
-    h2 {
-        margin-top: 1.5rem;
+    #searchCardContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 1rem;
     }
 }
