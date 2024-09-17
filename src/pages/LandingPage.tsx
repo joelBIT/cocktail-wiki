@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
-import { createDrinkCard } from "../utils";
+import { baseURL, createDrinkCard } from "../utils";
 
 export function LandingPage(): ReactElement {
 	const drink_old = useLoaderData() as IDrinkCard;
@@ -15,7 +15,7 @@ export function LandingPage(): ReactElement {
 
 		try {
 			// Send fetch request
-			const resp: Response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+			const resp: Response = await fetch(`${baseURL}/random.php`);
 
 			// Data massaging
 			const { drinks } = await resp.json();

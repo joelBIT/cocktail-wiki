@@ -32,3 +32,5 @@ export function createIngredient(ingredient: IIngredientResponse): IIngredientIn
         cocktails: []
     }
 }
+
+export const baseURL = 'https://www.thecocktaildb.com/api/json/v1/1';
