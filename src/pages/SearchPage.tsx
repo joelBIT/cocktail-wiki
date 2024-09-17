@@ -1,5 +1,5 @@
 import { FormEvent, ReactElement, useState } from "react";
-import { IDrinkCard } from "../interfaces";
+import { ICocktailResponse, IDrinkCard } from "../interfaces";
 import { SearchResult } from "../components";
 import { createDrinkCard } from "../utils";
 
@@ -29,8 +29,8 @@ export function SearchPage(): ReactElement {
     };
 
     // Extract relevant data from parsed API response
-    const extractDrinkData = (data: any): IDrinkCard[] => {
-        const extractedData = data["drinks"].map((drink: any) => {
+    const extractDrinkData = (drinks: ICocktailResponse[]): IDrinkCard[] => {
+        const extractedData = drinks.map((drink: ICocktailResponse) => {
             return createDrinkCard(drink);
         });
 
@@ -115,16 +115,16 @@ export function SearchPage(): ReactElement {
             const response: Response = await fetch(
                 `${baseURL}/search.php?s=${searchDrink}`
             );
-            const data = await response.json();
+            const { drinks } = await response.json();
 
             // Add found drinks to drinks state
-            setDrinks(extractDrinkData(data));
+            setDrinks(extractDrinkData(drinks));
 
             // Put first drinksPerPage number of drinks into paginated state
-            setPaginated(extractDrinkData(data).slice(0, drinksPerPage));
+            setPaginated(extractDrinkData(drinks).slice(0, drinksPerPage));
 
             // Calculate states for pagination info
-            setTotalPages(Math.ceil(data["drinks"].length / drinksPerPage));
+            setTotalPages(Math.ceil(drinks.length / drinksPerPage));
             setCurrentPage(1);
 
             // Reset input field
