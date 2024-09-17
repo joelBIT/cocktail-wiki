@@ -28,18 +28,4 @@
             margin: 1rem;
         }
     }
-
-    #searchResult {
-        #searchCardContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1rem;
-            gap: 1rem;
-        }
-
-        h2 {
-            margin-top: 1.5rem;
-        }
-    }
 }
