@@ -1,4 +1,4 @@
-import { IDrinkCard } from "../interfaces";
+import { createDrinkCard } from "../utils";
 
 /**
  * Retrieves information about a cocktail from the API. Massages the data a bit, and the returns what is of interest as an object of type IDrinkCard.
@@ -11,13 +11,6 @@ export const randomCocktailLoader = async () => {
 
 	// Data massaging
 	const { drinks } = await resp.json();
-	const drink = drinks[0];
-	const randomDrink: IDrinkCard = {
-		id: drink.idDrink,
-		name: drink.strDrink,
-		alcoholic: drink.strAlcoholic,
-		image: drink.strDrinkThumb,
-	};
 
-	return randomDrink;
+	return createDrinkCard(drinks[0]);
 };

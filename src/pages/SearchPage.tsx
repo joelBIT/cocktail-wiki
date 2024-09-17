@@ -1,6 +1,7 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { IDrinkCard } from "../interfaces";
 import { SearchResult } from "../components";
+import { createDrinkCard } from "../utils";
 
 export function SearchPage(): ReactElement {
     const [errorMessage, setErrorMessage] = useState("");
@@ -30,12 +31,7 @@ export function SearchPage(): ReactElement {
     // Extract relevant data from parsed API response
     const extractDrinkData = (data: any): IDrinkCard[] => {
         const extractedData = data["drinks"].map((drink: any) => {
-            return {
-                id: drink.idDrink,
-                name: drink.strDrink,
-                alcoholic: drink.strAlcoholic,
-                image: drink.strDrinkThumb,
-            };
+            return createDrinkCard(drink);
         });
 
         return extractedData;

@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { DrinkCard } from "../components";
+import { createDrinkCard } from "../utils";
 
 export function LandingPage(): ReactElement {
 	const drink_old = useLoaderData() as IDrinkCard;
@@ -18,16 +19,9 @@ export function LandingPage(): ReactElement {
 
 			// Data massaging
 			const { drinks } = await resp.json();
-			const drink = drinks[0];
-			const newDrink = {
-				id: drink.idDrink,
-				name: drink.strDrink,
-				alcoholic: drink.strAlcoholic,
-				image: drink.strDrinkThumb,
-			};
 
 			// Update data to display
-			setDrink(newDrink);
+			setDrink(createDrinkCard(drinks[0]));
 		} catch (e) {
 			console.error(e);
 			setErrorMessage("Could not retrieve another drink");
