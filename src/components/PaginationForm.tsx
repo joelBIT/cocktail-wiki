@@ -15,7 +15,7 @@ export function PaginationForm({
             onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}
         >
             <label htmlFor="paginationFormInput">
-                Showing {drinksPerPage} drinks per page
+                Showing <span>{drinksPerPage}</span> drinks per page
             </label>
             <input
                 id="paginationFormInput"
