@@ -1,4 +1,5 @@
-import { IDrinkCard, IIngredientInformation } from "../interfaces";
+import { IIngredientInformation } from "../interfaces";
+import { createDrinkCard, createIngredient } from "../utils";
 
 /**
  * Retrieves an ingredient from the API that corresponds to the supplied name parameter. The response is converted into
@@ -12,14 +13,7 @@ export const ingredientLoader = async ({params}: any) => {
     const ingredientResponse = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${params.name}`);
     const { ingredients } = await ingredientResponse.json();
     
-    let ingredient: IIngredientInformation = {
-        name: ingredients[0].strIngredient,
-        type: ingredients[0].strType,
-        description: ingredients[0].strDescription,
-        alcohol: ingredients[0].strAlcohol,
-        cocktails: []
-    };
-
+    let ingredient = createIngredient(ingredients[0]);
     ingredient = await getCocktails(ingredient);
 
     return ingredient;
@@ -37,14 +31,7 @@ async function getCocktails(ingredient: IIngredientInformation) {
     const { drinks } = await cocktailsResponse.json();
 
     for (let i = 0; i < drinks.length; i++) {
-        const cocktail: IDrinkCard = {
-            id: drinks[i].idDrink,
-            name: drinks[i].strDrink,
-            alcoholic: "",
-            image: ""
-        }
-
-        ingredient.cocktails.push(cocktail);
+        ingredient.cocktails.push(createDrinkCard(drinks[i]));
     }
 
     return ingredient;

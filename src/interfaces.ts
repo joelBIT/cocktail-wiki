@@ -9,7 +9,17 @@ export interface ICocktailInformation {
     ingredients: string[];
     imageAddress: string;
     measures: string[];
-    amountPerIngredient: string[];
+}
+
+export interface ICocktailResponse {
+    idDrink: string,
+    strDrink: string,
+    strAlcoholic: string,
+    strDrinkThumb: string,
+    strTags: string,
+    strInstructions: string,
+    strGlass: string,
+    strCategory: string
 }
 
 export interface IDrinkCard {
@@ -34,4 +44,11 @@ export interface IIngredientInformation {
     alcohol: string;
     description: string;
     cocktails: IDrinkCard[];
+}
+
+export interface IIngredientResponse {
+    strIngredient: string,
+    strType: string,
+    strDescription: string,
+    strAlcohol: string
 }
