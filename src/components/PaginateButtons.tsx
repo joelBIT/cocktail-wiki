@@ -9,7 +9,7 @@ interface IPaginateButtonsProps {
 
 export function PaginateButtons(props: IPaginateButtonsProps): ReactElement {
     return (
-        <div id="paginateNav">
+        <section id="paginateNav">
             <button id="previousDrinks" onClick={props.handlePreviousDrinks}>
                 <span className="material-symbols-outlined">skip_previous</span>
             </button>
@@ -19,6 +19,6 @@ export function PaginateButtons(props: IPaginateButtonsProps): ReactElement {
             <button id="nextDrinks" onClick={props.handleNextDrinks}>
                 <span className="material-symbols-outlined">skip_next</span>
             </button>
-        </div>
+        </section>
     );
 }
