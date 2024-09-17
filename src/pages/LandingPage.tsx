@@ -35,8 +35,17 @@ export function LandingPage(): ReactElement {
 	return (
 		<section id="landingPage">
 			<h1 className="errorMessage">{errorMessage}</h1>
-			{ loading ? <Spinner /> : <DrinkCard drink={drink} />}
-			<button onClick={handleRandomDrinkButton}>Show another</button>
+			{/* if loading=true, display spinner, if not, display card and button: */}
+			{loading ? (
+				<Spinner />
+			) : (
+				<>
+					<DrinkCard drink={drink} />{" "}
+					<button id="randomDrinkButton" onClick={handleRandomDrinkButton}>
+						Show another
+					</button>
+				</>
+			)}
 		</section>
 	);
 }
