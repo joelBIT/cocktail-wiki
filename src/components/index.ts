@@ -6,3 +6,4 @@ export * from "./List";
 export * from "./PaginateButtons";
 export * from "./PaginationForm";
 export * from "./SearchResult";
+export * from "./Spinner";

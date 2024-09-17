@@ -1,10 +1,11 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { ICocktailResponse, IDrinkCard } from "../interfaces";
-import { SearchResult } from "../components";
+import { SearchResult, Spinner } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
 
 export function SearchPage(): ReactElement {
     const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(false);
     // States for search
     const [searchDrink, setSearchDrink] = useState<string>("");
     const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
@@ -108,6 +109,7 @@ export function SearchPage(): ReactElement {
     const handleSubmitSearch = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrorMessage("");
+        setLoading(true);
 
         // Send fetch request
         try {
@@ -115,6 +117,7 @@ export function SearchPage(): ReactElement {
                 `${baseURL}/search.php?s=${searchDrink}`
             );
             const { drinks } = await response.json();
+            setLoading(false);
 
             // Add found drinks to drinks state
             setDrinks(extractDrinkData(drinks));
@@ -131,6 +134,7 @@ export function SearchPage(): ReactElement {
         } catch (e) {
             console.error(e);
             setErrorMessage("Could not find that drink");
+            setLoading(false);
         }
     };
 
@@ -155,7 +159,7 @@ export function SearchPage(): ReactElement {
                 </div>
             </form>
 
-            {paginated && (
+            {loading ? <Spinner /> : paginated && (
                 <SearchResult
                     currentPage={currentPage}
                     drinksPerPage={drinksPerPage}
