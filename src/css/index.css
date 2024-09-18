@@ -14,19 +14,22 @@
 ******************/
 
 body {
-    margin: 0;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    text-align: center;
+	margin: 0;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	text-align: center;
 
-    #root {
-        display: flex;
-        flex-direction: column;
-    }
+	background: url("../assets/bar-counter-1.jpg") no-repeat center center;
+	backdrop-filter: blur(6px);
 
-    main {
-        min-height: 80vh;
-    }
+	#root {
+		display: flex;
+		flex-direction: column;
+	}
+
+	main {
+		min-height: 80vh;
+	}
 }
 
 a {
