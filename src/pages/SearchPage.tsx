@@ -46,8 +46,10 @@ export function SearchPage(): ReactElement {
     };
 
     // Extract relevant data from parsed API response
-    const extractDrinkData = (drinks: ICocktailResponse[]): IDrinkCard[] => {
-        const extractedData = drinks.map((drink: ICocktailResponse) => {
+    const extractDrinkData = (
+        foundDrinks: ICocktailResponse[]
+    ): IDrinkCard[] => {
+        const extractedData = foundDrinks.map((drink: ICocktailResponse) => {
             return createDrinkCard(drink);
         });
 
@@ -129,6 +131,8 @@ export function SearchPage(): ReactElement {
         setErrorMessage("");
         setLoading(true);
 
+        let foundDrinks: IDrinkCard[] = [];
+
         // Send fetch request
         try {
             if (nonAlcoholic) {
@@ -147,36 +151,40 @@ export function SearchPage(): ReactElement {
                     }
                 );
 
-                console.log(filteredDrinks);
+                // Acquire card info for all the non-alcoholic drinks found
+                const nonAlcoholicDrinks: IDrinkCard[] = [];
+                for (let drink of filteredDrinks) {
+                    const response: Response = await fetch(
+                        `${baseURL}/lookup.php?i=${drink.idDrink}`
+                    );
+                    const { drinks }: ICocktailResponseList =
+                        await response.json();
 
-                // Acquire info for all the non-alcoholic drinks found
-                const nonAlcoholicDrinks: Promise<ICocktailResponseList> =
-                    filteredDrinks.map(async (drink) => {
-                        const response: Response = await fetch(
-                            `${baseURL}/lookup.php?i=${drink.idDrink}`
-                        );
-                        const { drinks }: ICocktailResponseList =
-                            await response.json();
-                        return drinks;
-                    });
+                    nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
+                }
 
                 console.log(nonAlcoholicDrinks);
+                foundDrinks = [...nonAlcoholicDrinks];
+            } else {
+                // Fetch all kinds of drinks
+                const response: Response = await fetch(
+                    `${baseURL}/search.php?s=${searchDrink}`
+                );
+                const { drinks }: ICocktailResponseList = await response.json();
+
+                foundDrinks = extractDrinkData(drinks);
             }
 
-            const response: Response = await fetch(
-                `${baseURL}/search.php?s=${searchDrink}`
-            );
-            const { drinks } = await response.json();
             setLoading(false);
 
             // Add found drinks to drinks state
-            setDrinks(extractDrinkData(drinks));
+            setDrinks(foundDrinks);
 
             // Put first drinksPerPage number of drinks into paginated state
-            setPaginated(extractDrinkData(drinks).slice(0, drinksPerPage));
+            setPaginated(foundDrinks.slice(0, drinksPerPage));
 
             // Calculate states for pagination info
-            setTotalPages(Math.ceil(drinks.length / drinksPerPage));
+            setTotalPages(Math.ceil(foundDrinks.length / drinksPerPage));
             setCurrentPage(1);
 
             // Reset input field
