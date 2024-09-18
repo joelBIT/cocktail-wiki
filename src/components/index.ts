@@ -1,5 +1,6 @@
 export * from "./App";
 export * from "./DrinkCard";
+export * from "./FilterForm";
 export * from "./Footer";
 export * from "./Header";
 export * from "./List";

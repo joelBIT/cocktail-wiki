@@ -1,25 +1,41 @@
 import { FormEvent, ReactElement, useState } from "react";
 import { ICocktailResponse, IDrinkCard } from "../interfaces";
-import { SearchResult, Spinner } from "../components";
+import { FilterForm, SearchResult, Spinner } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
 
+// TODO: put interface in interfaces file
+interface ICocktailResponseList {
+    drinks: ICocktailResponse[];
+}
+
+interface INonAlcoholicDrink {
+    idDrink: string;
+    strDrink: string;
+}
+
+interface INonAlcoholicDrinkList {
+    drinks: INonAlcoholicDrink[];
+}
+
 export function SearchPage(): ReactElement {
+    // States for page loading
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    // States for search
-    const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
     // States for pagination
     const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
     const [drinksPerPage, setDrinksPerPage] = useState<number>(10);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    // States for search
+    const [nonAlcoholic, setNonAlcoholic] = useState<boolean>(false);
+    const [searchDrink, setSearchDrink] = useState<string>("");
+    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
 
     // Calculate pagination
     const calculatePagination = (
         index: number,
         currentDrinksPerPage: number = drinksPerPage
-    ) => {
+    ): void => {
         if (drinks && paginated) {
             // Calculate total number of pages
             setTotalPages(Math.ceil(drinks.length / currentDrinksPerPage));
@@ -30,8 +46,10 @@ export function SearchPage(): ReactElement {
     };
 
     // Extract relevant data from parsed API response
-    const extractDrinkData = (drinks: ICocktailResponse[]): IDrinkCard[] => {
-        const extractedData = drinks.map((drink: ICocktailResponse) => {
+    const extractDrinkData = (
+        foundDrinks: ICocktailResponse[]
+    ): IDrinkCard[] => {
+        const extractedData = foundDrinks.map((drink: ICocktailResponse) => {
             return createDrinkCard(drink);
         });
 
@@ -39,7 +57,7 @@ export function SearchPage(): ReactElement {
     };
 
     // Acquire drink index for pagination
-    const getDrinkIndex = (id: string) => {
+    const getDrinkIndex = (id: string): number => {
         if (drinks) {
             for (let drink of drinks) {
                 if (drink.id === id) {
@@ -52,7 +70,7 @@ export function SearchPage(): ReactElement {
     };
 
     // Next Drinks button clicked
-    const handleNextDrinks = () => {
+    const handleNextDrinks = (): void => {
         if (paginated && drinks) {
             // Get id of last drink in paginated state
             const drinkId: string = paginated[paginated.length - 1].id;
@@ -72,7 +90,7 @@ export function SearchPage(): ReactElement {
     };
 
     // Previous Drinks button clicked
-    const handlePreviousDrinks = () => {
+    const handlePreviousDrinks = (): void => {
         if (paginated && drinks) {
             // Get id of first drink in paginated state
             const drinkId: string = paginated[0].id;
@@ -96,7 +114,7 @@ export function SearchPage(): ReactElement {
     };
 
     // Reset search display when drinksPerPage state is updated
-    const handleSetDrinksPerPage = (drinksPerPage: number) => {
+    const handleSetDrinksPerPage = (drinksPerPage: number): void => {
         // Set new state for drinksPerPage
         setDrinksPerPage(drinksPerPage);
 
@@ -106,27 +124,67 @@ export function SearchPage(): ReactElement {
     };
 
     // Fetch drink from API when search form is submitted
-    const handleSubmitSearch = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmitSearch = async (
+        e: FormEvent<HTMLFormElement>
+    ): Promise<void> => {
         e.preventDefault();
         setErrorMessage("");
         setLoading(true);
 
+        let foundDrinks: IDrinkCard[] = [];
+
         // Send fetch request
         try {
-            const response: Response = await fetch(
-                `${baseURL}/search.php?s=${searchDrink}`
-            );
-            const { drinks } = await response.json();
+            if (nonAlcoholic) {
+                // Acquire a list of non-alcoholic drinks
+                const response: Response = await fetch(
+                    `${baseURL}/filter.php?a=Non_Alcoholic`
+                );
+                const { drinks }: INonAlcoholicDrinkList =
+                    await response.json();
+
+                const filteredDrinks: INonAlcoholicDrink[] = drinks.filter(
+                    (drink: INonAlcoholicDrink) => {
+                        return drink.strDrink
+                            .toLowerCase()
+                            .includes(searchDrink);
+                    }
+                );
+
+                // Acquire card info for all the non-alcoholic drinks found
+                const nonAlcoholicDrinks: IDrinkCard[] = [];
+                for (let drink of filteredDrinks) {
+                    const response: Response = await fetch(
+                        `${baseURL}/lookup.php?i=${drink.idDrink}`
+                    );
+                    const { drinks }: ICocktailResponseList =
+                        await response.json();
+
+                    nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
+                }
+
+                console.log(nonAlcoholicDrinks);
+                foundDrinks = [...nonAlcoholicDrinks];
+            } else {
+                // Fetch all kinds of drinks
+                const response: Response = await fetch(
+                    `${baseURL}/search.php?s=${searchDrink}`
+                );
+                const { drinks }: ICocktailResponseList = await response.json();
+
+                foundDrinks = extractDrinkData(drinks);
+            }
+
             setLoading(false);
 
             // Add found drinks to drinks state
-            setDrinks(extractDrinkData(drinks));
+            setDrinks(foundDrinks);
 
             // Put first drinksPerPage number of drinks into paginated state
-            setPaginated(extractDrinkData(drinks).slice(0, drinksPerPage));
+            setPaginated(foundDrinks.slice(0, drinksPerPage));
 
             // Calculate states for pagination info
-            setTotalPages(Math.ceil(drinks.length / drinksPerPage));
+            setTotalPages(Math.ceil(foundDrinks.length / drinksPerPage));
             setCurrentPage(1);
 
             // Reset input field
@@ -158,17 +216,25 @@ export function SearchPage(): ReactElement {
                     <button>Search</button>
                 </div>
             </form>
+            <FilterForm
+                nonAlcoholic={nonAlcoholic}
+                setNonAlcoholic={setNonAlcoholic}
+            />
 
-            {loading ? <Spinner /> : paginated && (
-                <SearchResult
-                    currentPage={currentPage}
-                    drinksPerPage={drinksPerPage}
-                    handleNextDrinks={handleNextDrinks}
-                    handlePreviousDrinks={handlePreviousDrinks}
-                    handleSetDrinksPerPage={handleSetDrinksPerPage}
-                    paginated={paginated}
-                    totalPages={totalPages}
-                />
+            {loading ? (
+                <Spinner />
+            ) : (
+                paginated && (
+                    <SearchResult
+                        currentPage={currentPage}
+                        drinksPerPage={drinksPerPage}
+                        handleNextDrinks={handleNextDrinks}
+                        handlePreviousDrinks={handlePreviousDrinks}
+                        handleSetDrinksPerPage={handleSetDrinksPerPage}
+                        paginated={paginated}
+                        totalPages={totalPages}
+                    />
+                )
             )}
         </article>
     );
