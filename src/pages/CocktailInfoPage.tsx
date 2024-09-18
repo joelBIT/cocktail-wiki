@@ -33,7 +33,7 @@ export function CocktailInfoPage(): ReactElement {
                         {cocktail.ingredients.map(
                             (ingredient, index) => (
                                 <li key={index}>
-                                    {cocktail.measures[index] + " "} 
+                                    {cocktail.measures[index] ? cocktail.measures[index] + " " : ""}  
                                     <Link
                                         to={`/ingredient/${ingredient}`}
                                     >
