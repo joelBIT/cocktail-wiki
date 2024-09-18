@@ -1,7 +1,7 @@
 header {
-    background-color: #554466;
-
     nav {
+        background-color: #554466;
+
         ul {
             display: flex;
             gap: 2rem;

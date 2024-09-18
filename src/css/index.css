@@ -7,21 +7,26 @@
 @import url("./SearchResult.css");
 @import url("./FavouritesPage.css");
 @import url("./Spinner.css");
+@import url("./Footer.css");
 
 /******************
 * General Styling *
 ******************/
 
-#root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	height: 100vh;
-	margin: 0;
-	text-align: center;
-}
-
 body {
-	margin: 0;
+    margin: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    text-align: center;
+
+    #root {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        min-height: 80vh;
+    }
 }
 
 a {
