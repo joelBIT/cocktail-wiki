@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, ReactElement } from "react";
 
 interface IPaginationFormProps {
     drinksPerPage: number;
@@ -8,7 +8,7 @@ interface IPaginationFormProps {
 export function PaginationForm({
     drinksPerPage,
     handleSetDrinksPerPage,
-}: IPaginationFormProps) {
+}: IPaginationFormProps): ReactElement {
     return (
         <form
             id="paginationForm"

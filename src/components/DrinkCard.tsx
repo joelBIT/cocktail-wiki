@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
 import { FavouritesContext } from "../contexts/FavouritesContextProvider";
-import { useContext } from "react";
+import { ReactElement, useContext } from "react";
 
-export function DrinkCard({ drink }: { drink: IDrinkCard }) {
+export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 	const { favouritesList, setFavouritesList } = useContext(FavouritesContext);
 	const isFavorite = favouritesList.some((fav) => fav.id === drink.id);
 
