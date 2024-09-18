@@ -38,7 +38,7 @@ export function IngredientPage(): ReactElement {
             </article>
             <article id="ingredientDescription">
                 <h1>
-                    Ingredient: <p>{ingredient.name}</p>
+                    <p>{ingredient.name}</p>
                 </h1>
                 <h3>
                     Description: <p>{ingredient.description}</p>
