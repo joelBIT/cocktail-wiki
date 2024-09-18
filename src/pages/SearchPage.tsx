@@ -4,6 +4,10 @@ import { FilterForm, SearchResult, Spinner } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
 
 // TODO: put interface in interfaces file
+interface ICocktailResponseList {
+    drinks: ICocktailResponse[];
+}
+
 interface INonAlcoholicDrink {
     idDrink: string;
     strDrink: string;
@@ -146,12 +150,17 @@ export function SearchPage(): ReactElement {
                 console.log(filteredDrinks);
 
                 // Acquire info for all the non-alcoholic drinks found
-                const nonAlcoholicDrinks: IDrinkCard[] = filteredDrinks.map(
-                    (drink) => {
-                        const response: Response = await fetch(`${baseURL}/lookup.php?i=${drink.idDrink}`);
-                        
-                    }
-                );
+                const nonAlcoholicDrinks: Promise<ICocktailResponseList> =
+                    filteredDrinks.map(async (drink) => {
+                        const response: Response = await fetch(
+                            `${baseURL}/lookup.php?i=${drink.idDrink}`
+                        );
+                        const { drinks }: ICocktailResponseList =
+                            await response.json();
+                        return drinks;
+                    });
+
+                console.log(nonAlcoholicDrinks);
             }
 
             const response: Response = await fetch(
