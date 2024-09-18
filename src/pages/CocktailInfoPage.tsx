@@ -19,7 +19,7 @@ export function CocktailInfoPage(): ReactElement {
             </figure>
             <article>
                 <h1>
-                    Drink: <p>{cocktail.drink}</p>
+                    <p>{cocktail.drink}</p>
                 </h1>
                 <div id="tags">
                     <List list={cocktail.tags} />
@@ -27,20 +27,23 @@ export function CocktailInfoPage(): ReactElement {
                 <h3>
                     Category: <p>{cocktail.category}</p>
                 </h3>
-                <h3>Ingredients: </h3>
-                <ul>
-                    {cocktail.ingredients.map(
-                        (ingredient, index) => (
-                            <li key={index}>
-                                <Link
-                                    to={`/ingredient/${ingredient}`}
-                                >
-                                    {cocktail.measures[index]} { ingredient}
-                                </Link>
-                            </li>
-                        )
-                    )}
-                </ul>
+                <article id="ingredients">
+                    <h3>Ingredients: </h3>
+                    <ul id="ingredientsList">
+                        {cocktail.ingredients.map(
+                            (ingredient, index) => (
+                                <li key={index}>
+                                    {cocktail.measures[index]} 
+                                    <Link
+                                        to={`/ingredient/${ingredient}`}
+                                    >
+                                        { ingredient}
+                                    </Link>
+                                </li>
+                            )
+                        )}
+                    </ul>
+                </article>
                 <h3>
                     Serve in: <p>{cocktail.glass}</p>
                 </h3>
