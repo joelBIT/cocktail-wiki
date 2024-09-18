@@ -2,18 +2,21 @@ import { FormEvent, ReactElement, useState } from "react";
 import { ICocktailResponse, IDrinkCard } from "../interfaces";
 import { SearchResult, Spinner } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
+import { FilterForm } from "../components/FilterForm";
 
 export function SearchPage(): ReactElement {
+    // States for page loading
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    // States for search
-    const [searchDrink, setSearchDrink] = useState<string>("");
-    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
     // States for pagination
     const [paginated, setPaginated] = useState<IDrinkCard[] | null>();
     const [drinksPerPage, setDrinksPerPage] = useState<number>(10);
     const [totalPages, setTotalPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    // States for search
+    const [nonAlcoholic, setNonAlcoholic] = useState<boolean>(false);
+    const [searchDrink, setSearchDrink] = useState<string>("");
+    const [drinks, setDrinks] = useState<IDrinkCard[] | null>();
 
     // Calculate pagination
     const calculatePagination = (
@@ -158,17 +161,25 @@ export function SearchPage(): ReactElement {
                     <button>Search</button>
                 </div>
             </form>
+            <FilterForm
+                nonAlcoholic={nonAlcoholic}
+                setNonAlcoholic={setNonAlcoholic}
+            />
 
-            {loading ? <Spinner /> : paginated && (
-                <SearchResult
-                    currentPage={currentPage}
-                    drinksPerPage={drinksPerPage}
-                    handleNextDrinks={handleNextDrinks}
-                    handlePreviousDrinks={handlePreviousDrinks}
-                    handleSetDrinksPerPage={handleSetDrinksPerPage}
-                    paginated={paginated}
-                    totalPages={totalPages}
-                />
+            {loading ? (
+                <Spinner />
+            ) : (
+                paginated && (
+                    <SearchResult
+                        currentPage={currentPage}
+                        drinksPerPage={drinksPerPage}
+                        handleNextDrinks={handleNextDrinks}
+                        handlePreviousDrinks={handlePreviousDrinks}
+                        handleSetDrinksPerPage={handleSetDrinksPerPage}
+                        paginated={paginated}
+                        totalPages={totalPages}
+                    />
+                )
             )}
         </article>
     );
