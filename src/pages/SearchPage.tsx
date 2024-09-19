@@ -155,7 +155,6 @@ export function SearchPage(): ReactElement {
                     nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
                 }
 
-                console.log(nonAlcoholicDrinks);
                 foundDrinks = [...nonAlcoholicDrinks];
             } else {
                 // Fetch all kinds of drinks
