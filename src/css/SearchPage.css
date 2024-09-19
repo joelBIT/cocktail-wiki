@@ -6,6 +6,11 @@
     margin-top: 3rem;
 
     #searchDrinkForm {
+        button {
+            background-color: #CBB1CE;
+            color: #434343;
+        }
+
         #searchFormInput {
             height: 2.7rem;
             font-size: 1.2rem;
