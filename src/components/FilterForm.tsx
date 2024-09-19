@@ -9,9 +9,6 @@ export function FilterForm({
     nonAlcoholic,
     setNonAlcoholic,
 }: IFilterFormProps): ReactElement {
-    const handleChange = () => {
-        setNonAlcoholic(!nonAlcoholic);
-    };
 
     return (
         <form id="searchFilters">
@@ -21,7 +18,7 @@ export function FilterForm({
             <input
                 type="checkbox"
                 id="alcoholicFilterInput"
-                onChange={handleChange}
+                onChange={() => setNonAlcoholic(!nonAlcoholic)}
                 checked={nonAlcoholic}
             />
         </form>

@@ -9,12 +9,7 @@ export function Header(): ReactElement {
 			<nav>
 				<ul>
 					<li>
-						<NavLink
-							to="/"
-							className={({ isActive }) => {
-								return isActive ? "active" : "";
-							}}
-						>
+						<NavLink to="/">
 							<h2>Home</h2>
 						</NavLink>
 					</li>

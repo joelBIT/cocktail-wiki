@@ -40,7 +40,7 @@ export function LandingPage(): ReactElement {
 			) : (
 				<>
 					<DrinkCard drink={drink} />
-					<button id="randomDrinkButton" onClick={handleRandomDrinkButton}>
+					<button id="randomDrinkButton" onClick={() => handleRandomDrinkButton()}>
 						Show another
 					</button>
 				</>
