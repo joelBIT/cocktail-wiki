@@ -1,8 +1,8 @@
 #ingredientInformation {
     display: flex;
-    background-color: #f7f7f8;
+    background-color: #CBB1CE;
     padding-right: 1rem;
-    margin-top: 6rem;
+    margin: 0 5rem;
 
     h1 {
         font-size: 3.2em;
@@ -19,7 +19,8 @@
     }
 
     #ingredientDescription {
-        padding-right: 10rem;
+        text-align: left;
+        padding-right: 2rem;
         margin-top: 4rem
     }
 }
