@@ -1,0 +1,22 @@
+#paginateNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    p {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
+    button {
+        background-color: rgb(85, 68, 102);
+        color: white;
+        margin: 0.3rem 1rem 0 1rem;
+
+        span {
+            font-size: 55px;
+        }
+    }
+}
