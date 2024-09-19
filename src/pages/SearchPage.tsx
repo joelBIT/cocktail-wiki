@@ -1,21 +1,13 @@
 import { FormEvent, ReactElement, useState } from "react";
-import { ICocktailResponse, IDrinkCard } from "../interfaces";
+import {
+    ICocktailResponse,
+    ICocktailResponseList,
+    IDrinkCard,
+    INonAlcoholicDrink,
+    INonAlcoholicDrinkList,
+} from "../interfaces";
 import { FilterForm, SearchResult, Spinner } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
-
-// TODO: put interface in interfaces file
-interface ICocktailResponseList {
-    drinks: ICocktailResponse[];
-}
-
-interface INonAlcoholicDrink {
-    idDrink: string;
-    strDrink: string;
-}
-
-interface INonAlcoholicDrinkList {
-    drinks: INonAlcoholicDrink[];
-}
 
 export function SearchPage(): ReactElement {
     // States for page loading
