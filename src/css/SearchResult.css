@@ -36,6 +36,15 @@
             font-size: 1.6rem;
             font-weight: 500;
         }
+
+        button {
+            background-color: rgb(85, 68, 102);
+            color: white;
+            
+            span {
+                font-size: 55px;
+            }
+        }
     }
 
     #searchCardContainer {
