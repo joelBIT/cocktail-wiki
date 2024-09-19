@@ -32,17 +32,11 @@ header {
 	}
 
 	nav {
-		/* margin-right: 1rem;
-		@media (max-width: 900px) {
-			margin-right: 0;
-		} */
 		ul {
 			display: flex;
 			flex-direction: row;
 
 			li {
-				/* margin-left: 8px;
-				margin-right: 8px; */
 				&::marker {
 					/* display: none; */ /* interestingly, this doesn't hide the list item markers, so we'll resort to making them transparent instead.. */
 					color: rgba(0, 0, 0, 0);
