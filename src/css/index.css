@@ -25,13 +25,17 @@ body {
 	#root {
 		display: flex;
 		flex-direction: column;
-		justify-content: start;
+		justify-content: space-between;
 		min-height: 100vh;
 	}
 
 	main {
 		min-height: 80vh;
 		margin-top: 5rem;
+
+		@media (max-width: 900px) {
+			margin-top: 10rem;
+		}
 	}
 
 	a {
