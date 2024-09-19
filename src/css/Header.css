@@ -4,7 +4,6 @@ header {
 	flex-direction: row;
 	justify-content: space-between;
 	background-color: rgb(51, 34, 68);
-	background-color: black;
 
 	position: absolute;
 	@media (max-width: 900px) {
@@ -44,9 +43,6 @@ header {
 				}
 			}
 
-			a {
-			}
-
 			a > * {
 				color: white;
 
@@ -56,8 +52,8 @@ header {
 
 				&:hover {
 					color: #a4abff;
-					background-color: #222;
-					padding: 0.75rem 0.5rem 0rem;
+					background-color: #213;
+					padding: 0.75rem 1rem 0rem;
 					transition: all 0.2s;
 				}
 			}
