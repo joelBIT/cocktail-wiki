@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 export function Header(): ReactElement {
 	return (
 		<header>
+			<h1 id="header-title">Fantastic Ninjas' Cocktail Wiki</h1>
+
 			<nav>
 				<ul>
 					<li>

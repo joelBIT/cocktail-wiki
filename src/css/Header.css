@@ -1,9 +1,16 @@
 header {
 	width: 100%;
-	/* display: flex;
+	display: flex;
 	flex-direction: row;
-	justify-content: space-between; */
+	justify-content: space-between;
+	/* align-items: center; */
 	background-color: black;
+
+	@media (max-width: 900px) {
+		/* background-color: white; */
+		flex-direction: column;
+		align-items: center;
+	}
 
 	&,
 	* {
@@ -13,28 +20,53 @@ header {
 		box-sizing: border-box;
 	}
 
+	#header-title {
+		/* position: absolute; */
+		/* right: 0; */
+		color: #88d;
+		margin-left: 2rem;
+		min-width: 30rem;
+
+		@media (max-width: 900px) {
+			margin-left: 0;
+		}
+	}
+
 	nav {
 		ul {
 			display: flex;
 			flex-direction: row;
-			justify-content: center;
+			/* justify-content: center; */
 
 			li {
 				&::marker {
 					/* display: none; */ /* interestingly, this doesn't hide the list item markers, so we'll resort to making them transparent instead.. */
 					color: rgba(0, 0, 0, 0);
 				}
-				padding: 0.5rem 0.5rem;
-				background-color: #335;
+				/* padding: 0.5rem 0rem 0; */
 			}
 
-			a,
-			a *,
-			* a {
-				/* all three selectors [a, a *, * a] should ensure the following styling applies to the link text with or without a child or parent <h2> element or similar. */
+			a {
+			}
+
+			/* a, */
+			a > * {
+				color: #646bff;
 				min-width: 8rem;
-				border-bottom: 2px #335 solid;
+				padding: 0.5rem 0.5rem 0.25rem;
+				border-bottom: 4px #335 solid;
 				background-color: #111;
+
+				&:hover {
+					color: #a4abff;
+					background-color: #222;
+					/* border-bottom: 5px #335 solid; */
+					/* outline: 8px #335 solid; */
+					padding: 0.75rem 0.5rem 0rem;
+					/* outline-offset: -8px; */
+					/* box-shadow: 0 8px 0 #335; */
+					transition: all 0.2s;
+				}
 			}
 		}
 	}
