@@ -20,9 +20,11 @@ header {
 	}
 
 	#header-title {
-		color: #88d;
-		margin-left: 2rem;
+		color: #fff;
+
 		min-width: 30rem;
+		margin-left: 1rem;
+		margin-top: 0.75rem;
 
 		@media (max-width: 900px) {
 			margin-left: 0;
@@ -30,16 +32,23 @@ header {
 	}
 
 	nav {
+		/* margin-right: 1rem;
+		@media (max-width: 900px) {
+			margin-right: 0;
+		} */
 		ul {
 			display: flex;
 			flex-direction: row;
 
 			li {
+				/* margin-left: 8px;
+				margin-right: 8px; */
 				&::marker {
 					/* display: none; */ /* interestingly, this doesn't hide the list item markers, so we'll resort to making them transparent instead.. */
 					color: rgba(0, 0, 0, 0);
 				}
 				a.active > * {
+					/* highlights current page's navlink */
 					background-color: #213;
 				}
 			}
@@ -47,14 +56,15 @@ header {
 			a > * {
 				color: white;
 
-				min-width: 8rem;
-				padding: 0.5rem 1rem 0.25rem;
-				border-bottom: 4px #335 solid;
+				min-width: 7rem;
+				padding: 1.125rem 1rem 0.625rem;
+
+				border-bottom: 0.25rem #436 solid;
 
 				&:hover {
 					color: #a4abff;
 					background-color: #213;
-					padding: 0.75rem 1rem 0rem;
+					padding: 0.875rem 1rem 0.875rem;
 					transition: all 0.2s;
 				}
 			}
