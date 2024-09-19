@@ -9,7 +9,7 @@ import { baseURL, createDrinkCard, createIngredient } from "../utils";
  * @param name      the name of the ingredient
  * @returns         an IIngredientInformation object
  */
-export const ingredientLoader = async ({params}: any) => {
+export const ingredientLoader = async ({params}: any): Promise<IIngredientInformation> => {
     const ingredientResponse = await fetch(`${baseURL}/search.php?i=${params.name}`);
     const { ingredients } = await ingredientResponse.json();
     
@@ -26,7 +26,7 @@ export const ingredientLoader = async ({params}: any) => {
  * @param ingredient    the ingredient of interest
  * @returns             an array containing all cocktails that uses the supplied ingredient
  */
-async function getCocktails(ingredient: IIngredientInformation) {
+async function getCocktails(ingredient: IIngredientInformation): Promise<IIngredientInformation> {
     const cocktailsResponse = await fetch(`${baseURL}/filter.php?i=${ingredient.name}`);
     const { drinks } = await cocktailsResponse.json();
 

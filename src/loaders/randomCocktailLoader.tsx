@@ -1,3 +1,4 @@
+import { IDrinkCard } from "../interfaces";
 import { baseURL, createDrinkCard } from "../utils";
 
 /**
@@ -5,7 +6,7 @@ import { baseURL, createDrinkCard } from "../utils";
  *
  * @returns     an IDrinkCard object for use in LandingPage. Or redirects to 404 page if it failed.
  */
-export const randomCocktailLoader = async () => {
+export const randomCocktailLoader = async (): Promise<IDrinkCard> => {
 	// Send fetch request
 	const resp = await fetch(`${baseURL}/random.php`);
 

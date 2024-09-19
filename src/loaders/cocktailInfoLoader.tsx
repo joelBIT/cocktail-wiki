@@ -1,3 +1,4 @@
+import { ICocktailInformation } from "../interfaces";
 import { baseURL, createCocktail } from "../utils";
 
 /**
@@ -8,7 +9,7 @@ import { baseURL, createCocktail } from "../utils";
  * @param id    the id of the cocktail which has its info retrieved from the API
  * @returns     an ICocktailInformation object for use in the CocktailInfoPage.
  */
-export const cocktailInfoLoader = async ({params}: any) => {
+export const cocktailInfoLoader = async ({params}: any): Promise<ICocktailInformation> => {
 
     const response = await fetch(`${baseURL}/lookup.php?i=${params.id}`);
     const { drinks } = await response.json();
