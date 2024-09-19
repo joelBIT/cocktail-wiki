@@ -8,7 +8,7 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 	const isFavorite = favouritesList.some((fav) => fav.id === drink.id);
 
 	// Only used for testing the context
-	function handleAddToFavourites() {
+	function handleAddToFavourites(): void {
 		try {
 			if (!isFavorite) {
 				// if the current drink is not already in favoritesList, add it.

@@ -11,7 +11,7 @@ export function LandingPage(): ReactElement {
 	const [loading, setLoading] = useState(false);
 
 	// Fetches a new random drink from API
-	async function handleRandomDrinkButton() {
+	async function handleRandomDrinkButton(): Promise<void> {
 		setErrorMessage("");
 		setLoading(true);
 
