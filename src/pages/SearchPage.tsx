@@ -218,6 +218,7 @@ export function SearchPage(): ReactElement {
                 paginated && (
                     <SearchResult
                         currentPage={currentPage}
+                        drinks={drinks ? drinks : []}
                         drinksPerPage={drinksPerPage}
                         handleNextDrinks={handleNextDrinks}
                         handlePreviousDrinks={handlePreviousDrinks}
