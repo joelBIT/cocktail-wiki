@@ -5,6 +5,7 @@ import { PaginateButtons, PaginationForm } from ".";
 
 interface ISearchResultProps {
     currentPage: number;
+    drinks: IDrinkCard[];
     drinksPerPage: number;
     handleNextDrinks: () => void;
     handlePreviousDrinks: () => void;
@@ -16,7 +17,10 @@ interface ISearchResultProps {
 export function SearchResult(props: ISearchResultProps): ReactElement {
     return (
         <article id="searchResult">
-            <h2>Search Result</h2>
+            <p>
+                <span>{props.drinks.length}</span>
+                <span>Drinks found</span>
+            </p>
             <PaginationForm
                 drinksPerPage={props.drinksPerPage}
                 handleSetDrinksPerPage={props.handleSetDrinksPerPage}
