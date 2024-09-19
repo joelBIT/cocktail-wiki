@@ -19,9 +19,7 @@ body {
 	line-height: 1.5;
 	text-align: center;
 
-	background: url("../assets/bar-counter-1.jpg") no-repeat center center;
-	background-size: cover;
-	backdrop-filter: grayscale(90%) blur(6px);
+	background-color: rgb(85, 68, 102);
 	min-height: 100vh;
 
 	#root {

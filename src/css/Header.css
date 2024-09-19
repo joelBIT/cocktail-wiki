@@ -3,8 +3,7 @@ header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	/* align-items: center; */
-	background-color: black;
+	background-color: rgb(51, 34, 68);
 
 	@media (max-width: 900px) {
 		/* background-color: white; */
@@ -23,7 +22,9 @@ header {
 	#header-title {
 		/* position: absolute; */
 		/* right: 0; */
-		color: #88d;
+		/* color: #88d; */
+		color: white;
+
 		margin-left: 2rem;
 		min-width: 30rem;
 
@@ -43,28 +44,24 @@ header {
 					/* display: none; */ /* interestingly, this doesn't hide the list item markers, so we'll resort to making them transparent instead.. */
 					color: rgba(0, 0, 0, 0);
 				}
-				/* padding: 0.5rem 0rem 0; */
-			}
-
-			a {
+				a.active > * {
+					background-color: #213;
+				}
 			}
 
 			/* a, */
 			a > * {
-				color: #646bff;
+				color: white;
+
 				min-width: 8rem;
-				padding: 0.5rem 0.5rem 0.25rem;
+				padding: 0.5rem 1rem 0.25rem;
 				border-bottom: 4px #335 solid;
-				background-color: #111;
 
 				&:hover {
 					color: #a4abff;
-					background-color: #222;
-					/* border-bottom: 5px #335 solid; */
-					/* outline: 8px #335 solid; */
-					padding: 0.75rem 0.5rem 0rem;
-					/* outline-offset: -8px; */
-					/* box-shadow: 0 8px 0 #335; */
+
+					background-color: #213;
+					padding: 0.75rem 1rem 0rem;
 					transition: all 0.2s;
 				}
 			}
