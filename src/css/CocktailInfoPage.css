@@ -1,9 +1,20 @@
 #cocktailInformation {
     display: flex;
-    background-color: #f7f7f8;
-    padding-top: 3.5rem;
+    align-items: center;
+    margin: 0 5rem;
+    background-color: #CBB1CE;
+
+    figure {
+        flex: 1;
+        width: 35rem;
+
+        img {
+            width: 100%;
+        }
+    }
 
     article {
+        flex: 1;
         padding: 0 3rem;
 
         #tags {
