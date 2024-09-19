@@ -22,7 +22,7 @@ body {
 	background: url("../assets/bar-counter-1.jpg") no-repeat center center;
 	background-size: cover;
 	backdrop-filter: grayscale(90%) blur(6px);
-	height: 100vh;
+	min-height: 100vh;
 
 	#root {
 		display: flex;
