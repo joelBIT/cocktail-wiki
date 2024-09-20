@@ -18,7 +18,7 @@
 		align-items: center;
 	}
 
-	section {
-		width: 30rem;
+	.drinkCard {
+		width: clamp(10rem, 80vw, 30rem);
 	}
 }
