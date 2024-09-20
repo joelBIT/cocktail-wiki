@@ -14,18 +14,16 @@ export function IngredientPage(): ReactElement {
     return (
         <section id="ingredientTabs">
             <input type="radio" id="tabIngredient" name="tabs" defaultChecked/>
-            <label htmlFor="tabIngredient">Ingredients</label>
+            <label htmlFor="tabIngredient">Ingredient</label>
             <div className="tab">
                 <section id="ingredientInformation">
-                    <article>
-                        <figure>
-                            <img
-                                src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.name}-Medium.png`}
-                            />
-                        </figure>
-                    </article>
+                    <figure>
+                        <img
+                            src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.name}-Medium.png`}
+                        />
+                    </figure>
                     <article id="ingredientDescription">
-                        <h1>
+                        <h1 id="ingredientName">
                             {ingredient.name}
                         </h1>
                         <div id="tags">
