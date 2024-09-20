@@ -35,7 +35,6 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 						</div>
 					</Link>
 				</figure>
-				{/* <div className="card-space-between-col"> */}
 				<h3 className="card-name">
 					<Link to={`/cocktailinfo/${drink.id}`}>{drink.name}</Link>
 				</h3>
@@ -51,7 +50,6 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 					{/* dynamic button content is handled by :hover and ::after selectors in DrinkCard.css */}
 				</div>
 			</div>
-			{/* </div> */}
 		</section>
 	);
 }
