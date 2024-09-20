@@ -40,8 +40,8 @@ export function IngredientPage(): ReactElement {
             <input type="radio" id="tabDrinks" name="tabs" />
             <label htmlFor="tabDrinks">Drinks</label>
             <div className="tab">
-                <section>
-                    <h3>Drinks containing {ingredient.name}: </h3>
+                <section id="drinksList">
+                    <h3>Drinks containing {ingredient.name} </h3>
                     <ul>
                         {ingredient.cocktails.map((cocktail, index) => (
                             <li key={index}>
