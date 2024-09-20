@@ -123,7 +123,7 @@ export function SearchPage(): ReactElement {
         setErrorMessage("");
         setLoading(true);
 
-        let foundDrinks: IDrinkCard[] = [];
+        let foundDrinks: IDrinkCard[] | undefined = undefined;
 
         // Send fetch request
         try {
@@ -155,7 +155,11 @@ export function SearchPage(): ReactElement {
                     nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
                 }
 
-                foundDrinks = [...nonAlcoholicDrinks];
+                // If nothing found, make foundDrinks undefined
+                foundDrinks =
+                    nonAlcoholicDrinks.length > 0
+                        ? [...nonAlcoholicDrinks]
+                        : undefined;
             } else {
                 // Fetch all kinds of drinks
                 const response: Response = await fetch(
@@ -163,7 +167,7 @@ export function SearchPage(): ReactElement {
                 );
                 const { drinks }: ICocktailResponseList = await response.json();
 
-                foundDrinks = extractDrinkData(drinks);
+                foundDrinks = drinks ? extractDrinkData(drinks) : undefined;
             }
 
             setLoading(false);
@@ -171,12 +175,16 @@ export function SearchPage(): ReactElement {
             // Add found drinks to drinks state
             setDrinks(foundDrinks);
 
-            // Put first drinksPerPage number of drinks into paginated state
-            setPaginated(foundDrinks.slice(0, drinksPerPage));
+            if (foundDrinks) {
+                // Put first drinksPerPage number of drinks into paginated state
+                setPaginated(foundDrinks.slice(0, drinksPerPage));
 
-            // Calculate states for pagination info
-            setTotalPages(Math.ceil(foundDrinks.length / drinksPerPage));
-            setCurrentPage(1);
+                // Calculate states for pagination info
+                setTotalPages(Math.ceil(foundDrinks.length / drinksPerPage));
+                setCurrentPage(1);
+            } else {
+                throw new Error("Could not find that drink");
+            }
 
             // Reset input field
             setSearchDrink("");
@@ -218,7 +226,7 @@ export function SearchPage(): ReactElement {
                 paginated && (
                     <SearchResult
                         currentPage={currentPage}
-                        drinks={drinks ? drinks : []}
+                        drinks={drinks ? drinks : undefined}
                         drinksPerPage={drinksPerPage}
                         handleNextDrinks={handleNextDrinks}
                         handlePreviousDrinks={handlePreviousDrinks}
