@@ -28,7 +28,7 @@ export function createIngredient(ingredient: IIngredientResponse): IIngredientIn
         name: ingredient.strIngredient,
         type: ingredient.strType,
         description: ingredient.strDescription,
-        alcohol: ingredient.strAlcohol,
+        alcohol: ingredient.strAlcohol === "Yes" ? true : false,
         cocktails: []
     }
 }

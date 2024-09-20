@@ -45,7 +45,7 @@ export interface IFavouritesContextProviderChildren {
 export interface IIngredientInformation {
     name: string;
     type: string;
-    alcohol: string;
+    alcohol: boolean;
     description: string;
     cocktails: IDrinkCard[];
 }

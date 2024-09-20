@@ -1,26 +1,89 @@
-#ingredientInformation {
+
+#ingredientTabs {
     display: flex;
-    background-color: #CBB1CE;
-    padding-right: 1rem;
-    margin: 0 5rem;
+    flex-wrap: wrap;
+    margin: 5rem 10rem;
 
-    h1 {
-        font-size: 3.2em;
-        line-height: 1.1;
+    input[type="radio"] {
+        display: none;
     }
 
-    p {
-        display: inline;
-        font-weight: 400;
-    }
-
-    li {
+    input[type='radio']:checked + label + .tab {
         display: block;
     }
 
-    #ingredientDescription {
+    input[type="radio"]:checked + label {
+        background: #CBB1CE;
+    }
+
+    label {
+        padding: 25px;
+        background: #e2e2e2;
+        font-weight: bold;
+    }
+
+    label:hover {
+        cursor: pointer;
+    }
+
+    .tab {
+        width: 100%;
+        background-color: #CBB1CE;
+        order: 1;
+        display: none;
         text-align: left;
-        padding-right: 2rem;
-        margin-top: 4rem
+        padding: 2rem;
+
+        h2 {
+            font-size: 3em;
+        }
+
+        #ingredientInformation {
+            display: flex;
+            background-color: #CBB1CE;
+            padding-right: 1rem;
+        
+            h1 {
+                font-size: 3.2em;
+                line-height: 1.1;
+            }
+        
+            p {
+                display: inline;
+                font-weight: 400;
+            }
+        
+            li {
+                display: block;
+            }
+        
+            #ingredientDescription {
+                text-align: left;
+                padding-right: 2rem;
+
+                h1 {
+                    text-align: center;
+                    margin: 0;
+                }
+
+                #tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 1rem;
+                    margin-bottom: 3rem;
+                    margin-top: 1rem;
+    
+                    p {
+                        display: block;
+                        background-color: rgb(131, 68, 131);
+                        font-size: larger;
+                        font-weight: 600;
+                        border-radius: 8px;
+                        padding: 0 1rem;
+                    }
+                }
+            }
+        }
     }
 }
