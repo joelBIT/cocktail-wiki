@@ -69,7 +69,8 @@ body {
     }
 
     .errorMessage {
-        color: red;
+        color: rgb(255, 255, 83);
+        margin-block: 1rem;
     }
 
     .material-symbols-outlined {
