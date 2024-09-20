@@ -3,8 +3,6 @@
 }
 
 #searchDrink {
-    margin-top: 3rem;
-
     #searchDrinkForm {
         #searchFormInput {
             height: 2.7rem;
@@ -18,8 +16,9 @@
         }
 
         label {
-            font-weight: 800;
+            font-weight: 600;
             font-size: 1.5rem;
+            color: white;
         }
 
         div {

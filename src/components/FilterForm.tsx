@@ -12,13 +12,13 @@ export function FilterForm({
     return (
         <form id="searchFilters">
             <input
-                type="checkbox"
+                checked={nonAlcoholic}
                 id="alcoholicFilterInput"
                 onChange={() => setNonAlcoholic(!nonAlcoholic)}
-                checked={nonAlcoholic}
+                type="checkbox"
             />
             <label htmlFor="alcoholicFilterInput" id="alcoholicFilterLabel">
-                No alcohol, please!
+                Make that non-alcoholic, please!
             </label>{" "}
         </form>
     );

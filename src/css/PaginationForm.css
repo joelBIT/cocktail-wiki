@@ -1,0 +1,19 @@
+#paginationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+        font-size: 1.2rem;
+
+        span {
+            font-weight: 600;
+            font-size: 2rem;
+        }
+    }
+
+    input {
+        width: 60%;
+        margin-top: 0.5rem;
+    }
+}

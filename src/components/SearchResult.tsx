@@ -17,10 +17,7 @@ interface ISearchResultProps {
 export function SearchResult(props: ISearchResultProps): ReactElement {
     return (
         <article id="searchResult">
-            <p>
-                <span>{props.drinks.length}</span>
-                <span>Drinks found</span>
-            </p>
+            <h2>{props.drinks.length} drinks found</h2>
             <PaginationForm
                 drinksPerPage={props.drinksPerPage}
                 handleSetDrinksPerPage={props.handleSetDrinksPerPage}

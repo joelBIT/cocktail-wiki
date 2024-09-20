@@ -1,66 +1,69 @@
 @import url("./CocktailInfoPage.css");
 @import url("./DrinkCard.css");
+@import url("./FavouritesPage.css");
+@import url("./FilterForm.css");
+@import url("./Footer.css");
 @import url("./Header.css");
 @import url("./IngredientPage.css");
-@import url("./SearchPage.css");
 @import url("./LandingPage.css");
+@import url("./PaginateButtons.css");
+@import url("./PaginationForm.css");
+@import url("./SearchPage.css");
 @import url("./SearchResult.css");
-@import url("./FavouritesPage.css");
 @import url("./Spinner.css");
-@import url("./Footer.css");
 
 /******************
 * General Styling *
 ******************/
 
 body {
-	margin: 0;
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	text-align: center;
+    margin: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    text-align: center;
 
-	background-color: rgb(85, 68, 102);
-	min-height: 100vh;
+    background-color: rgb(85, 68, 102);
+    min-height: 100vh;
 
-	#root {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		min-height: 100vh;
-	}
+    #root {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+    }
 
-	main {
-		min-height: 80vh;
-		margin-top: 5rem;
+    main {
+        min-height: 80vh;
+        margin-top: 5rem;
 
-		@media (max-width: 900px) {
-			margin-top: 10rem;
-		}
-	}
+        @media (max-width: 900px) {
+            margin-top: 10rem;
+        }
+    }
 
-	a {
-		text-decoration: inherit;
-	}
+    a {
+        text-decoration: inherit;
+    }
 
-	button {
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 0.6em 1.2em;
-		font-size: 1em;
-		font-weight: 500;
-		font-family: inherit;
-		background-color: #CBB1CE;
+    button {
+        border-radius: 8px;
+        border: 1px solid transparent;
+        padding: 0.6em 1.2em;
+        font-size: 1em;
+        font-weight: 500;
+        font-family: inherit;
+        background-color: #cbb1ce;
         color: #434343;
-		cursor: pointer;
-		margin: 0.5rem;
-	}
+        cursor: pointer;
+        margin: 0.5rem;
+    }
 
-	button:hover {
-		background-color: #213547;
-		color: white;
-	}
+    button:hover {
+        background-color: #213547;
+        color: white;
+    }
 
-	.errorMessage {
-		color: red;
-	}
+    .errorMessage {
+        color: red;
+    }
 }
