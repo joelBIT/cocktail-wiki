@@ -22,8 +22,6 @@ header {
 	#header-title {
 		color: #fff;
 
-		/* min-width: 30rem; */
-
 		font-size: clamp(1rem, calc(18vw / 3), 2rem);
 
 		margin-left: 1rem;
