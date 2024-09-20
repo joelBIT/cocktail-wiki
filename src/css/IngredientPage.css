@@ -101,3 +101,43 @@
         }
     }
 }
+
+@media (max-width: 1250px) {
+    #ingredientTabs {
+        .tab {
+            #ingredientInformation {
+                flex-direction: column;
+        
+                figure {
+                    align-self: center;
+                }
+        
+                #ingredientDescription {
+                    padding: 0;
+    
+                    #ingredientName {
+                        font-size: 40px;
+                        margin: 2rem 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 950px) {
+
+    #ingredientTabs {
+        margin: 3rem 2rem;
+        .tab {
+            #drinksList {
+                h3 {
+                    font-size: 20px;
+                }
+                ul {
+                    columns: 1;
+                }
+            }
+        }
+    }
+}
