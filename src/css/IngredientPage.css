@@ -102,19 +102,13 @@
     }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1350px) {
     #ingredientTabs {
         .tab {
             #ingredientInformation {
-                flex-direction: column;
-        
-                figure {
-                    align-self: center;
-                }
-        
                 #ingredientDescription {
                     padding: 0;
-    
+
                     #ingredientName {
                         font-size: 40px;
                         margin: 2rem 0;
@@ -125,15 +119,46 @@
     }
 }
 
-@media (max-width: 950px) {
-
+@media (max-width: 1000px) {
     #ingredientTabs {
-        margin: 3rem 2rem;
+        .tab {
+            #ingredientInformation {
+                flex-direction: column;
+                padding-right: 0;
+        
+                figure {
+                    align-self: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    #ingredientTabs {
         .tab {
             #drinksList {
                 h3 {
                     font-size: 20px;
                 }
+                ul {
+                    columns: 2;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    #ingredientTabs {
+        margin: 3rem 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #ingredientTabs {
+        .tab {
+            #drinksList {
                 ul {
                     columns: 1;
                 }
