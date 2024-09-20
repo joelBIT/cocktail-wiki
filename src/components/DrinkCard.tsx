@@ -24,19 +24,21 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 
 	return (
 		<section className="drinkCard">
-			<figure>
-				<Link to={`/cocktailinfo/${drink.id}`}>
-					<div className="card-image-container">
-						<img src={drink.image} alt="Example" className="image" />
-						<div className="card-hover-text">
-							<h5>Go to details</h5>
+			<div className="card-fig-plus-name">
+				<figure>
+					<Link to={`/cocktailinfo/${drink.id}`}>
+						<div className="card-image-container">
+							<img src={drink.image} alt="Example" className="image" />
+							<div className="card-hover-text">
+								<h5>Go to details</h5>
+							</div>
 						</div>
-					</div>
-				</Link>
-			</figure>
-			<Link to={`/cocktailinfo/${drink.id}`}>
-				<h3 className="card-name">{drink.name}</h3>
-			</Link>
+					</Link>
+				</figure>
+				<h3 className="card-name">
+					<Link to={`/cocktailinfo/${drink.id}`}>{drink.name}</Link>
+				</h3>
+			</div>
 			<div className="card-flex-row">
 				<p>{drink.alcoholic}</p>
 				<div className="button-fav-wrapper">
