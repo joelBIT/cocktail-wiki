@@ -27,10 +27,20 @@ export function IngredientPage(): ReactElement {
                             {ingredient.name}
                         </h1>
                         <div id="tags">
-                            <p>{ingredient.type}</p>
+                            {ingredient.type ? <p>{ingredient.type}</p> : <></>}
                             <p>{ingredient.alcohol ? "Alcoholic" : "Non-alcoholic"}</p>
                         </div>
-                        <p>{ingredient.description}</p>
+                        <p>{ingredient.description.length > 0 ? ingredient.description[0] : <></>}</p>
+                        <details>
+                            <summary>
+                                {ingredient.description.length > 1 ? <span className="material-symbols-outlined">expand_circle_down</span> : <></>}
+                            </summary>
+                            <div id="description">
+                                {ingredient.description.length > 1 ? ingredient.description.slice(1).map(
+                                    (paragraph, index) => <p key={index}>{paragraph}</p>
+                                ) : <></>}
+                            </div>
+                        </details>
                     </article>
                 </section>
             </div>
