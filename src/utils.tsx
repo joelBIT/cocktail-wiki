@@ -23,11 +23,12 @@ export function createCocktail(drink: ICocktailResponse): ICocktailInformation {
     };
 }
 
+// The strDescription property is converted into an array of paragraphs using split().
 export function createIngredient(ingredient: IIngredientResponse): IIngredientInformation {
     return {
         name: ingredient.strIngredient,
         type: ingredient.strType,
-        description: ingredient.strDescription,
+        description: ingredient.strDescription ? ingredient.strDescription.split('\r\n\r\n') : [],
         alcohol: ingredient.strAlcohol === "Yes" ? true : false,
         cocktails: []
     }

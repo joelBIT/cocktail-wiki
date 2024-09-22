@@ -46,7 +46,7 @@ export interface IIngredientInformation {
     name: string;
     type: string;
     alcohol: boolean;
-    description: string;
+    description: string[];
     cocktails: IDrinkCard[];
 }
 
