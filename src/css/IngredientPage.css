@@ -73,6 +73,7 @@
             #ingredientDescription {
                 text-align: left;
                 padding-right: 2rem;
+                width: 100%;
 
                 h1 {
                     text-align: center;
@@ -81,23 +82,17 @@
                 }
 
                 details {
-                    user-select: none;
-
                     summary {
                         display: flex;
-                        cursor: pointer;
+                        flex-direction: column;
                         margin-bottom: 1rem;
-    
-                        .icon {
-                            width: 24px;
-                            height: 24px;
+
+                        .material-symbols-outlined {
+                            cursor: pointer;
+                            font-size: 45px;
                             transition: all 0.3s;
                             margin-left: auto;
-                          }
-                    }
-    
-                    summary::-webkit-details-marker {
-                        display: none;
+                        }
                     }
 
                     #description {
@@ -107,10 +102,10 @@
                     }
                 }
 
-                details[open] 
-                    summary {
-                        .icon {
-                            transform: rotate(180deg);
+                details[open] {
+                    .material-symbols-outlined {
+                        transform: rotate(180deg);
+                        transform-origin: center center;
                     } 
                 }
 
