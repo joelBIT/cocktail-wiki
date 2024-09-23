@@ -80,5 +80,31 @@
 @media (max-width: 1100px) {
     #cocktailInformation {
         flex-direction: column;
+
+        figure {
+            width: auto;
+        }
+
+        article {
+            h1 {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    #cocktailInformation {
+        margin: 3rem 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    #cocktailInformation {
+        article {
+            h1 {
+                font-size: 25px;
+            }
+        }
     }
 }
