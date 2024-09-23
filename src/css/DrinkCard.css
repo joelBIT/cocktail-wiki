@@ -130,3 +130,18 @@
         }
     }
 }
+
+/* fade out */
+
+.is-fading {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
