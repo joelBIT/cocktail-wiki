@@ -1,11 +1,18 @@
-import { IDrinkCard, ICocktailResponse, ICocktailInformation, IIngredientResponse, IIngredientInformation } from "./interfaces";
+import {
+    IDrinkCard,
+    ICocktailResponse,
+    ICocktailInformation,
+    IIngredientResponse,
+    IIngredientInformation,
+} from "./interfaces";
 
 export function createDrinkCard(drink: ICocktailResponse): IDrinkCard {
     return {
-        id: drink.idDrink,
-        name: drink.strDrink,
         alcoholic: drink.strAlcoholic,
+        id: drink.idDrink,
         image: drink.strDrinkThumb,
+        isFading: false,
+        name: drink.strDrink,
     };
 }
 
@@ -13,25 +20,29 @@ export function createDrinkCard(drink: ICocktailResponse): IDrinkCard {
 export function createCocktail(drink: ICocktailResponse): ICocktailInformation {
     return {
         drink: drink.strDrink,
-        tags: drink.strTags ? drink.strTags.split(',') : [],
+        tags: drink.strTags ? drink.strTags.split(",") : [],
         category: drink.strCategory,
         instructions: drink.strInstructions,
         glass: drink.strGlass,
         ingredients: [],
         measures: [],
-        imageAddress: drink.strDrinkThumb
+        imageAddress: drink.strDrinkThumb,
     };
 }
 
 // The strDescription property is converted into an array of paragraphs using split().
-export function createIngredient(ingredient: IIngredientResponse): IIngredientInformation {
+export function createIngredient(
+    ingredient: IIngredientResponse
+): IIngredientInformation {
     return {
         name: ingredient.strIngredient,
         type: ingredient.strType,
-        description: ingredient.strDescription ? ingredient.strDescription.split('\r\n\r\n') : [],
+        description: ingredient.strDescription
+            ? ingredient.strDescription.split("\r\n\r\n")
+            : [],
         alcohol: ingredient.strAlcohol === "Yes" ? true : false,
-        cocktails: []
-    }
+        cocktails: [],
+    };
 }
 
-export const baseURL = 'https://www.thecocktaildb.com/api/json/v1/1';
+export const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
