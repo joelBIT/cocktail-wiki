@@ -13,36 +13,41 @@ export function CocktailInfoPage(): ReactElement {
     const cocktail = useLoaderData() as ICocktailInformation;
 
     return (
-        <section id="cocktailInformation">
-            <figure>
-                <img src={cocktail.imageAddress} />
-            </figure>
-            <article>
-                <h1>
-                    {cocktail.drink}
-                </h1>
-                <div id="tags">
-                    <List list={[cocktail.glass, cocktail.category, ...cocktail.tags]} />
-                </div>
-                <article id="ingredients">
-                    <h3>Ingredients: </h3>
-                    <ul id="ingredientsList">
-                        {cocktail.ingredients.map(
-                            (ingredient, index) => (
-                                <li key={index}>
-                                    {cocktail.measures[index] ? cocktail.measures[index] + " " : ""}  
-                                    <Link
-                                        to={`/ingredient/${ingredient}`}
-                                    >
-                                        { ingredient}
-                                    </Link>
-                                </li>
-                            )
-                        )}
-                    </ul>
+        <section id="cocktailPage">
+            <h1 id="cocktailHeading">
+                Details about the drink {cocktail.drink}
+            </h1>
+            <section id="cocktailInformation">
+                <figure>
+                    <img src={cocktail.imageAddress} />
+                </figure>
+                <article>
+                    <h1>
+                        {cocktail.drink}
+                    </h1>
+                    <div id="tags">
+                        <List list={[cocktail.glass, cocktail.category, ...cocktail.tags]} />
+                    </div>
+                    <article id="ingredients">
+                        <h3>Ingredients: </h3>
+                        <ul id="ingredientsList">
+                            {cocktail.ingredients.map(
+                                (ingredient, index) => (
+                                    <li key={index}>
+                                        {cocktail.measures[index] ? cocktail.measures[index] + " " : ""}  
+                                        <Link
+                                            to={`/ingredient/${ingredient}`}
+                                        >
+                                            { ingredient}
+                                        </Link>
+                                    </li>
+                                )
+                            )}
+                        </ul>
+                    </article>
+                    <p>{cocktail.instructions}</p>
                 </article>
-                <p>{cocktail.instructions}</p>
-            </article>
+            </section>
         </section>
     );
 }
