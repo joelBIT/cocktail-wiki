@@ -50,7 +50,7 @@ header {
 			}
 
 			a > * {
-				color: white;
+				color: var(--color-header-nav-text);
 
 				min-width: 7rem;
 				padding: 1.125rem 1rem 0.625rem;
@@ -58,7 +58,7 @@ header {
 				border-bottom: 0.25rem var(--color-header-nav-ribbon) solid;
 
 				&:hover {
-					color: #a4abff;
+					color: var(--color-header-nav-text-hover);
 					background-color: var(--color-header-nav-background-hover);
 					padding: 0.875rem 1rem 0.875rem;
 					transition: all 0.2s;
