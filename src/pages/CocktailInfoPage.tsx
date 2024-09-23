@@ -19,14 +19,11 @@ export function CocktailInfoPage(): ReactElement {
             </figure>
             <article>
                 <h1>
-                    <p>{cocktail.drink}</p>
+                    {cocktail.drink}
                 </h1>
                 <div id="tags">
-                    <List list={cocktail.tags} />
+                    <List list={[cocktail.glass, cocktail.category, ...cocktail.tags]} />
                 </div>
-                <h3>
-                    Category: <p>{cocktail.category}</p>
-                </h3>
                 <article id="ingredients">
                     <h3>Ingredients: </h3>
                     <ul id="ingredientsList">
@@ -44,12 +41,7 @@ export function CocktailInfoPage(): ReactElement {
                         )}
                     </ul>
                 </article>
-                <h3>
-                    Serve in: <p>{cocktail.glass}</p>
-                </h3>
-                <h3>
-                    Instructions: <p>{cocktail.instructions}</p>
-                </h3>
+                <p>{cocktail.instructions}</p>
             </article>
         </section>
     );
