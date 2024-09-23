@@ -134,14 +134,17 @@
 /* fade out */
 
 .is-fading {
-    animation: fadeOut 0.5s forwards;
+    animation: fadeOut 600ms forwards;
 }
 
 @keyframes fadeOut {
-    from {
+    0% {
         opacity: 1;
     }
-    to {
+    30% {
+        opacity: 0.3;
+    }
+    100% {
         opacity: 0;
     }
 }

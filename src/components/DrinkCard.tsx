@@ -18,21 +18,26 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
                 // if it is, remove it.
                 if (location.pathname === "/favourites") {
                     console.log(location.pathname);
-                    const fadingFavouritesList: IDrinkCard[] =
-                        favouritesList.map((favourite) => {
-                            if (favourite.id === drink.id) {
-                                drink.isFading === true;
-                            }
-                            return favourite;
-                        });
-                    setFavouritesList(fadingFavouritesList);
-                }
 
-                setTimeout(() => {
+                    let fadingFavouritesList = [...favouritesList];
+                    for (let favourite of fadingFavouritesList) {
+                        if (favourite.id === drink.id) {
+                            favourite.isFading = true;
+                        }
+                    }
+
+                    setFavouritesList(fadingFavouritesList);
+
+                    setTimeout(() => {
+                        setFavouritesList(
+                            favouritesList.filter((fav) => fav.id !== drink.id)
+                        );
+                    }, 600);
+                } else {
                     setFavouritesList(
                         favouritesList.filter((fav) => fav.id !== drink.id)
                     );
-                }, 500);
+                }
             }
         } catch (e) {
             console.log(e);
@@ -41,7 +46,7 @@ export function DrinkCard({ drink }: { drink: IDrinkCard }): ReactElement {
 
     return (
         <section
-            className={drink.isFading ? "is-fading, drinkCard" : "drinkCard"}
+            className={drink.isFading ? "is-fading drinkCard" : "drinkCard"}
         >
             <div className="card-fig-plus-name">
                 <figure>
