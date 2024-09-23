@@ -3,7 +3,7 @@ header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: rgb(51, 34, 68);
+	background-color: var(--color-header-background);
 
 	position: fixed;
 	z-index: 1;
@@ -45,7 +45,7 @@ header {
 				}
 				a.active > * {
 					/* highlights current page's navlink */
-					background-color: #213;
+					background-color: var(--color-header-nav-background-active);
 				}
 			}
 
@@ -55,11 +55,11 @@ header {
 				min-width: 7rem;
 				padding: 1.125rem 1rem 0.625rem;
 
-				border-bottom: 0.25rem #436 solid;
+				border-bottom: 0.25rem var(--color-header-nav-ribbon) solid;
 
 				&:hover {
 					color: #a4abff;
-					background-color: #213;
+					background-color: var(--color-header-nav-background-hover);
 					padding: 0.875rem 1rem 0.875rem;
 					transition: all 0.2s;
 				}
