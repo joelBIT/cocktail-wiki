@@ -1,7 +1,7 @@
 #cocktailInformation {
     display: flex;
     margin: 5rem 10rem;
-    background-color: #CBB1CE;
+    background-color: var(--color-purple-3);
     padding: 2rem;
 
     figure {
@@ -28,7 +28,8 @@
 
                 li {
                     display: block;
-                    background-color: rgb(131, 68, 131);
+                    background-color: rgb(131 68 114 / 68%);
+                    color: #292a2de6;
                     font-size: larger;
                     font-weight: 600;
                     border-radius: 8px;
