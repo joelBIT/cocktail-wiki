@@ -15,7 +15,7 @@ export function CocktailInfoPage(): ReactElement {
     return (
         <section id="cocktailPage">
             <h1 id="cocktailHeading">
-                Details about the drink {cocktail.drink}
+                Details about the drink
             </h1>
             <section id="cocktailInformation">
                 <figure>

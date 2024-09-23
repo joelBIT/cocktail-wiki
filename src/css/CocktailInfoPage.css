@@ -4,6 +4,8 @@
     #cocktailHeading {
         color: white;
         text-align: left;
+        font-size: 30px;
+        margin-bottom: 1rem;
     }
 
     #cocktailInformation {
@@ -117,6 +119,10 @@
 
 @media (max-width: 700px) {
     #cocktailPage {
+        #cocktailHeading {
+            font-size: 20px;
+        }
+
         #cocktailInformation {
             article {
                 padding: 0;
