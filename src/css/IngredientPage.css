@@ -1,4 +1,3 @@
-
 #ingredientTabs {
     display: flex;
     flex-wrap: wrap;
@@ -13,7 +12,7 @@
     }
 
     input[type="radio"]:checked + label {
-        background: #CBB1CE;
+        background: var(--color-purple-3);
     }
 
     label {
@@ -28,7 +27,7 @@
 
     .tab {
         width: 100%;
-        background-color: #CBB1CE;
+        background-color: var(--color-purple-3);
         order: 1;
         display: none;
         text-align: left;
@@ -53,7 +52,6 @@
 
         #ingredientInformation {
             display: flex;
-            background-color: #CBB1CE;
             padding-right: 1rem;
         
             h1 {
@@ -116,14 +114,16 @@
                     gap: 1rem;
                     margin-bottom: 3rem;
                     margin-top: 1rem;
-    
+
                     p {
-                        display: block;
-                        background-color: rgb(131, 68, 131);
-                        font-size: larger;
-                        font-weight: 600;
-                        border-radius: 8px;
-                        padding: 0 1rem;
+                        letter-spacing: 0.025rem;
+                        text-transform: uppercase;
+                        color: #251f1f;
+                        border-radius: 1.25rem;
+                        padding: 0.35rem 0.75rem;
+                        border-style: solid;
+                        border-width: 0.125rem;
+                        border-color: var(--color-purple-1);
                     }
                 }
             }
