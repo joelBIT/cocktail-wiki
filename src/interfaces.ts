@@ -27,10 +27,11 @@ export interface ICocktailResponseList {
 }
 
 export interface IDrinkCard {
-    id: string;
-    name: string;
     alcoholic: string;
+    id: string;
     image: string;
+    isFading: boolean;
+    name: string;
 }
 
 export interface IFavouritesContext {
