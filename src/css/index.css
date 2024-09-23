@@ -16,70 +16,91 @@
 * General Styling *
 ******************/
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
-/* <weight>: Use a value from 100 to 900 */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	--color-purple-0: #213;
+	--color-purple-1: #324;
+	--color-purple-2: #546;
+	--color-purple-3: rgb(203, 177, 206);
+
+	--color-header-background: var(--color-purple-1);
+	--color-header-nav-background: var(--color-purple-1);
+	--color-header-nav-background-active: var(--color-purple-0);
+	--color-header-nav-background-hover: var(--color-purple-0);
+	--color-header-nav-ribbon: #436;
+	--color-header-nav-text-hover: #a4abff;
+
+	--color-footer-background: var(--color-purple-1);
+	--color-body-background: var(--color-purple-2);
+	--color-card-background: var(--color-purple-3);
+
+	--color-header-text: white;
+	--color-footer-text: white;
+	--color-header-nav-text: white;
+
+	--color-button-text: #434343;
+	--color-button-background: var(--color-purple-3);
+	--color-button-text-hover: white;
+	--color-button-background-hover: #213547;
+
+	--color-error-text: rgb(255, 255, 83);
 }
 
 body {
-    font-family: "Roboto Slab", system-ui;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.5;
-    text-align: center;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	text-align: center;
 
-    background-color: rgb(85, 68, 102);
-    min-height: 100vh;
+	background-color: var(--color-body-background);
+	min-height: 100vh;
 
-    #root {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100vh;
-    }
+	#root {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100vh;
+	}
 
-    main {
-        min-height: 80vh;
-        margin-top: 5rem;
+	main {
+		min-height: 80vh;
+		margin-top: 5rem;
 
-        @media (max-width: 900px) {
-            margin-top: 10rem;
-        }
-    }
+		@media (max-width: 900px) {
+			margin-top: 10rem;
+		}
+	}
 
-    a {
-        text-decoration: inherit;
-    }
+	a {
+		text-decoration: inherit;
+	}
 
-    button {
-        border-radius: 8px;
-        border: 1px solid transparent;
-        padding: 0.6em 1.2em;
-        font-size: 1em;
-        font-weight: 500;
-        font-family: inherit;
-        background-color: #cbb1ce;
-        color: #434343;
-        cursor: pointer;
-        margin: 0.5rem;
-    }
+	button {
+		border-radius: 8px;
+		border: 1px solid transparent;
+		padding: 0.6em 1.2em;
+		font-size: 1em;
+		font-weight: 500;
+		font-family: inherit;
+		background-color: var(--color-button-background);
+		color: var(--color-button-text);
+		cursor: pointer;
+		margin: 0.5rem;
+	}
 
-    button:hover {
-        background-color: #213547;
-        color: white;
-    }
+	button:hover {
+		background-color: var(--color-button-background-hover);
+		color: var(--color-button-text-hover);
+	}
 
-    .errorMessage {
-        color: rgb(255, 255, 83);
-        margin-block: 1rem;
-    }
+	.errorMessage {
+		color: var(--color-error-text);
+		margin-block: 1rem;
+	}
 
-    .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-    }
+	.material-symbols-outlined {
+		font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+	}
 }
