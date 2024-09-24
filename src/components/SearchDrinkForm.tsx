@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { FormEvent, ReactElement } from "react";
 
 interface ISearchDrinkFormProps {
-    handleSubmitSearch: () => Promise<void>;
+    handleSubmitSearch: (e: FormEvent<HTMLFormElement>) => Promise<void>;
     searchDrink: string;
     setSearchDrink: (searchDrink: string) => void;
 }
