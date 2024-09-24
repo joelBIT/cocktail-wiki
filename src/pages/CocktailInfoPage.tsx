@@ -27,7 +27,7 @@ export function CocktailInfoPage(): ReactElement {
                         {cocktail.drink}
                     </h1>
                     <div id="tags">
-                        <List list={[cocktail.glass, cocktail.category, ...cocktail.tags]} />
+                        <List list={[cocktail.glass, cocktail.category, cocktail.alcohol, ...cocktail.tags]} />
                     </div>
                     <article id="ingredients">
                         <h3>Ingredients: </h3>
