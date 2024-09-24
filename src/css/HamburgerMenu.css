@@ -1,0 +1,24 @@
+
+#hamburger {
+    button {
+        padding: 0 0.4rem;
+
+        .material-symbols-outlined {
+            font-size: 50px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #hamburger {
+        display: block;
+
+        #navbar {
+            display: contents;
+
+            ul {
+                flex-direction: column;
+            }
+        }
+    }
+}

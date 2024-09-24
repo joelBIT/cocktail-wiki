@@ -67,3 +67,27 @@ header {
 		}
 	}
 }
+
+@media (max-width: 400px) {
+    #hamburger {
+        display: block;
+    }
+
+	#navbar {
+		display: none;
+	}
+}
+
+@media (min-width: 401px) {
+	nav button {
+		display: none;
+	}
+
+    #hamburger {
+        display: none;
+    }
+
+	#navbar {
+		display: block;
+	}
+}
