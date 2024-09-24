@@ -1,24 +1,18 @@
 #landingPage {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
 
-	#randomDrinkButton {
-		margin-top: 2rem;
-	}
+    #randomDrinkButton {
+        margin-top: 2rem;
+    }
 
-	.spinner-wrapper {
-		width: 30rem;
-		height: 35.75rem; /* height should match DrinkCard's height. */
+    .spinner-wrapper {
+        margin-top: 7rem;
+    }
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.drinkCard {
-		width: clamp(10rem, 80vw, 30rem);
-	}
+    .drinkCard {
+        width: clamp(10rem, 80vw, 30rem);
+    }
 }
