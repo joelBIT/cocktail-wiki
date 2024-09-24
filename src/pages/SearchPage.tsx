@@ -61,6 +61,48 @@ export function SearchPage(): ReactElement {
         return -1;
     };
 
+    // Acquire a list of all non-alcoholic drinks from API
+    const getAllNonAlcoholicDrinks = async (): Promise<
+        INonAlcoholicDrink[]
+    > => {
+        const response: Response = await fetch(
+            `${baseURL}/filter.php?a=Non_Alcoholic`
+        );
+        const { drinks }: INonAlcoholicDrinkList = await response.json();
+
+        return drinks;
+    };
+
+    // Filter out relevant non-alcoholic drinks from search result
+    const getFilteredNonAlcoholicDrincs = (
+        allNonAlcoholicDrinks: INonAlcoholicDrink[]
+    ): INonAlcoholicDrink[] => {
+        const filteredNonAlcoholicDrinks: INonAlcoholicDrink[] =
+            allNonAlcoholicDrinks.filter((drink: INonAlcoholicDrink) => {
+                return drink.strDrink.toLowerCase().includes(searchDrink);
+            });
+
+        return filteredNonAlcoholicDrinks;
+    };
+
+    // Acquire card info for found non-alcoholic drinks from API
+    const getNonAlcoholicDrinks = async (
+        filteredNonAcoholicDrins: INonAlcoholicDrink[]
+    ): Promise<IDrinkCard[]> => {
+        const nonAlcoholicDrinks: IDrinkCard[] = [];
+
+        for (let drink of filteredNonAcoholicDrins) {
+            const response: Response = await fetch(
+                `${baseURL}/lookup.php?i=${drink.idDrink}`
+            );
+            const { drinks }: ICocktailResponseList = await response.json();
+
+            nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
+        }
+
+        return nonAlcoholicDrinks;
+    };
+
     // Next Drinks button clicked
     const handleNextDrinks = (): void => {
         if (paginated && drinks) {
@@ -121,39 +163,25 @@ export function SearchPage(): ReactElement {
     ): Promise<void> => {
         e.preventDefault();
         setErrorMessage("");
+
+        // Show the loading spinner
         setLoading(true);
 
         let foundDrinks: IDrinkCard[] | undefined = undefined;
 
-        // Send fetch request
+        // Acquire drinks from API
         try {
             if (nonAlcoholic) {
-                // Acquire a list of non-alcoholic drinks
-                const response: Response = await fetch(
-                    `${baseURL}/filter.php?a=Non_Alcoholic`
-                );
-                const { drinks }: INonAlcoholicDrinkList =
-                    await response.json();
-
-                const filteredDrinks: INonAlcoholicDrink[] = drinks.filter(
-                    (drink: INonAlcoholicDrink) => {
-                        return drink.strDrink
-                            .toLowerCase()
-                            .includes(searchDrink);
-                    }
+                // Find non-alcoholic drinks that match search term
+                const allNonAlcoholicDrinks = await getAllNonAlcoholicDrinks();
+                const filteredNonAcoholicDrins = getFilteredNonAlcoholicDrincs(
+                    allNonAlcoholicDrinks
                 );
 
-                // Acquire card info for all the non-alcoholic drinks found
-                const nonAlcoholicDrinks: IDrinkCard[] = [];
-                for (let drink of filteredDrinks) {
-                    const response: Response = await fetch(
-                        `${baseURL}/lookup.php?i=${drink.idDrink}`
-                    );
-                    const { drinks }: ICocktailResponseList =
-                        await response.json();
-
-                    nonAlcoholicDrinks.push(createDrinkCard(drinks[0]));
-                }
+                // Acquire card info for the found non-alcoholic drinks
+                const nonAlcoholicDrinks = await getNonAlcoholicDrinks(
+                    filteredNonAcoholicDrins
+                );
 
                 // If nothing found, make foundDrinks undefined
                 foundDrinks =
@@ -170,9 +198,10 @@ export function SearchPage(): ReactElement {
                 foundDrinks = drinks ? extractDrinkData(drinks) : undefined;
             }
 
+            // Clear the loading spinner
             setLoading(false);
 
-            // Add found drinks to drinks state
+            // Add found drinks to the drinks state
             setDrinks(foundDrinks);
 
             if (foundDrinks) {
