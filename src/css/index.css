@@ -25,34 +25,11 @@
 	padding: 0;
 	box-sizing: border-box;
 
-	--color-purple-0: #213;
-	--color-purple-1: #324;
-	--color-purple-2: #546;
-	--color-purple-3: rgb(203, 177, 206);
-	--color-bluish-purple: #a4abff;
-
-	--color-header-background: var(--color-purple-1);
-	--color-header-nav-background: var(--color-purple-1);
-	--color-header-nav-background-active: var(--color-purple-0);
-	--color-header-nav-background-hover: var(--color-purple-0);
-	--color-header-nav-ribbon: #436;
-	--color-header-nav-text-hover: #a4abff;
-	--color-header-text: white;
-
-	--color-footer-background: var(--color-purple-1);
-	--color-body-background: var(--color-purple-2);
-	--color-card-background: var(--color-purple-3);
-
-	--color-header-text: white;
-	--color-footer-text: white;
-	--color-header-nav-text: white;
-
-	--color-button-text: #434343;
-	--color-button-background: var(--color-purple-3);
-	--color-button-text-hover: white;
-	--color-button-background-hover: #213547;
-
-	--color-error-text: rgb(255, 255, 83);
+	--color-purple-darkest: #213;
+	--color-purple-darker: #324;
+	--color-purple-dark: #436;
+	--color-purple: #546;
+	--color-purple-light: rgb(203, 177, 206);
 }
 
 body {
@@ -63,7 +40,7 @@ body {
 	line-height: 1.5;
 	text-align: center;
 
-	background-color: var(--color-body-background);
+	background-color: var(--color-purple);
 	min-height: 100vh;
 
 	#root {
@@ -93,19 +70,19 @@ body {
 		font-size: 1em;
 		font-weight: 500;
 		font-family: inherit;
-		background-color: var(--color-button-background);
-		color: var(--color-button-text);
+		background-color: var(--color-purple-light);
+		color: #434343;
 		cursor: pointer;
 		margin: 0.5rem;
 	}
 
 	button:hover {
-		background-color: var(--color-button-background-hover);
-		color: var(--color-button-text-hover);
+		background-color: var(--color-purple-darker);
+		color: white;
 	}
 
 	.errorMessage {
-		color: var(--color-error-text);
+		color: rgb(255, 255, 83);
 		margin-block: 1rem;
 	}
 
