@@ -27,6 +27,8 @@ export function createCocktail(drink: ICocktailResponse): ICocktailInformation {
         ingredients: [],
         measures: [],
         imageAddress: drink.strDrinkThumb,
+        id: drink.idDrink,
+        alcohol: drink.strAlcoholic
     };
 }
 
@@ -43,6 +45,16 @@ export function createIngredient(
         alcohol: ingredient.strAlcohol === "Yes" ? true : false,
         cocktails: [],
     };
+}
+
+export function createDrinkCardFromCocktail(cocktail: ICocktailInformation): IDrinkCard {
+    return {
+        alcoholic: cocktail.alcohol,
+        id: cocktail.id,
+        image: cocktail.imageAddress,
+        isFading: false,
+        name: cocktail.drink,
+    }
 }
 
 export const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";

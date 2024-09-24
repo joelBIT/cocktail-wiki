@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export interface ICocktailInformation {
+    id: string;
     drink: string;
     tags: string[];
     category: string;
@@ -9,6 +10,7 @@ export interface ICocktailInformation {
     ingredients: string[];
     imageAddress: string;
     measures: string[];
+    alcohol: string;
 }
 
 export interface ICocktailResponse {

@@ -2,6 +2,8 @@ import { ReactElement } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { List } from "../components";
 import { ICocktailInformation } from "../interfaces";
+import { FavouriteButton } from "../components/FavouriteButton";
+import { createDrinkCardFromCocktail } from "../utils";
 
 /**
  * The cocktail info page includes information such as drink name, ingredients, and instructions 
@@ -46,6 +48,7 @@ export function CocktailInfoPage(): ReactElement {
                         </ul>
                     </article>
                     <p>{cocktail.instructions}</p>
+                    <FavouriteButton drink={createDrinkCardFromCocktail(cocktail)}/>
                 </article>
             </section>
         </section>

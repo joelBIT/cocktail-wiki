@@ -10,20 +10,22 @@
 
     #cocktailInformation {
         display: flex;
-        
         background-color: var(--color-purple-3);
         padding: 2rem;
 
         figure {
             flex: 1;
-            width: 35rem;
+            text-align: left;
+            align-content: center;
 
             img {
-                width: 100%;
+                width: 80%;
             }
         }
 
         article {
+            display: flex;
+            flex-direction: column;
             flex: 1;
             padding: 0 3rem;
 
@@ -79,6 +81,11 @@
                     }
                 }
             }
+
+            div:not(#tags) {
+                align-self: end;
+                margin-top: 2rem;
+            }
         }
     }
 }
@@ -86,8 +93,8 @@
 @media (max-width: 1250px) {
     #cocktailPage {
         #cocktailInformation {
-            img {
-                max-width: 30rem;
+            figure {
+                text-align: center;
             }
         }
     }
