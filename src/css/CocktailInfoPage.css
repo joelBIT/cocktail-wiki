@@ -12,6 +12,7 @@
         display: flex;
         background-color: var(--color-purple-3);
         padding: 2rem;
+        border-radius: 0.5rem;
 
         figure {
             flex: 1;
@@ -20,6 +21,7 @@
 
             img {
                 width: 80%;
+                border-radius: 0.5rem;
             }
         }
 

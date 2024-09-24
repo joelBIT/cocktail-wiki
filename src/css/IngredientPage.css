@@ -19,6 +19,8 @@
         padding: 25px;
         background: #e2e2e2;
         font-weight: bold;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
     }
 
     label:hover {
@@ -32,6 +34,9 @@
         display: none;
         text-align: left;
         padding: 2rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
 
         h2 {
             font-size: 3em;
