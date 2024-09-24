@@ -18,7 +18,7 @@
 ******************/
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
-/* <weight>: Use a value from 100 to 900 */
+/* weight: Use a value from 100 to 900 */
 
 * {
     margin: 0;
@@ -41,7 +41,6 @@ body {
     text-align: center;
 
     background-color: var(--color-purple);
-    /* min-height: 100vh; */
 
     #root {
         display: flex;
@@ -51,7 +50,6 @@ body {
     }
 
     main {
-        /* min-height: 80vh; */
         min-height: 100vh-5rem;
         margin-top: 5rem;
 
