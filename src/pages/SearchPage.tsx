@@ -78,6 +78,13 @@ export function SearchPage(): ReactElement {
         return drinks;
     };
 
+    const getAlphabeticalList = (foundDrinks: IDrinkCard[]): IDrinkCard[] => {
+        const alphabeticalDrinks = foundDrinks.sort((a, b) =>
+            a.name.localeCompare(b.name)
+        );
+        return alphabeticalDrinks;
+    };
+
     // Filter out relevant non-alcoholic drinks from search result
     const getFilteredNonAlcoholicDrincs = (
         allNonAlcoholicDrinks: INonAlcoholicDrink[]
@@ -206,15 +213,22 @@ export function SearchPage(): ReactElement {
             // Clear the loading spinner
             setLoading(false);
 
-            // Add found drinks to the drinks state
-            setDrinks(foundDrinks);
+            // Arrange found drinks in alphabetical order
+            const alphabeticalList = foundDrinks
+                ? getAlphabeticalList(foundDrinks)
+                : foundDrinks;
 
-            if (foundDrinks) {
+            // Add found drinks to the drinks state
+            setDrinks(alphabeticalList);
+
+            if (alphabeticalList) {
                 // Put first drinksPerPage number of drinks into paginated state
-                setPaginated(foundDrinks.slice(0, drinksPerPage));
+                setPaginated(alphabeticalList.slice(0, drinksPerPage));
 
                 // Calculate states for pagination info
-                setTotalPages(Math.ceil(foundDrinks.length / drinksPerPage));
+                setTotalPages(
+                    Math.ceil(alphabeticalList.length / drinksPerPage)
+                );
                 setCurrentPage(1);
             } else {
                 throw new Error("Could not find that drink");
