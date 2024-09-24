@@ -10,6 +10,10 @@
 }
 
 @media (max-width: 400px) {
+	#navbar {
+		display: none;
+	}
+
     #hamburger {
         display: block;
 
@@ -21,4 +25,18 @@
             }
         }
     }
+}
+
+@media (min-width: 401px) {
+	nav button {
+		display: none;
+	}
+
+    #hamburger {
+        display: none;
+    }
+
+	#navbar {
+		display: block;
+	}
 }
