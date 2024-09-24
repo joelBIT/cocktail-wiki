@@ -1,14 +1,10 @@
 .spinner {
-    /* box-sizing: border-box; */
     color: white;
-    /* display: inline-block; */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    /* width: 80px; */
     width: 100vw;
-    /* height: 80px; */
     height: 30vh;
 
     div {
