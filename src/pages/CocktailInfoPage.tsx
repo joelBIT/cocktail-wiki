@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { List } from "../components";
+import { FavouriteButton, List } from "../components";
 import { ICocktailInformation } from "../interfaces";
-import { FavouriteButton } from "../components/FavouriteButton";
 import { createDrinkCardFromCocktail } from "../utils";
 
 /**

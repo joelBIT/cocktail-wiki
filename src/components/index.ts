@@ -8,3 +8,4 @@ export * from "./PaginateButtons";
 export * from "./PaginationForm";
 export * from "./SearchResult";
 export * from "./Spinner";
+export * from "./FavouriteButton";
