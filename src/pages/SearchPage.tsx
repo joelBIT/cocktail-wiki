@@ -6,7 +6,12 @@ import {
     INonAlcoholicDrink,
     INonAlcoholicDrinkList,
 } from "../interfaces";
-import { FilterForm, SearchResult, Spinner } from "../components";
+import {
+    FilterForm,
+    SearchDrinkForm,
+    SearchResult,
+    Spinner,
+} from "../components";
 import { baseURL, createDrinkCard } from "../utils";
 
 export function SearchPage(): ReactElement {
@@ -227,23 +232,12 @@ export function SearchPage(): ReactElement {
     return (
         <article id="searchDrink">
             <h1 className="errorMessage">{errorMessage}</h1>
-            <form id="searchDrinkForm" onSubmit={handleSubmitSearch}>
-                <label htmlFor="searchFormInput">
-                    What do you want to drink?
-                </label>
-                <div>
-                    <input
-                        autoFocus
-                        className="input"
-                        id="searchFormInput"
-                        onChange={(e) => setSearchDrink(e.target.value)}
-                        placeholder="I feel like a..."
-                        type="text"
-                        value={searchDrink}
-                    />
-                    <button>Search</button>
-                </div>
-            </form>
+            <SearchDrinkForm
+                handleSubmitSearch={handleSubmitSearch}
+                searchDrink={searchDrink}
+                setSearchDrink={setSearchDrink}
+            />
+
             <FilterForm
                 nonAlcoholic={nonAlcoholic}
                 setNonAlcoholic={setNonAlcoholic}
