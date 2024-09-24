@@ -1,10 +1,12 @@
 import { ReactElement } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export function Header(): ReactElement {
 	return (
 		<header>
-			<h1 id="header-title">Fantastic Ninjas' Cocktail Wiki</h1>
+			<Link to="/">
+				<h1 id="header-title">Fantastic Ninjas' Cocktail Wiki</h1>
+			</Link>
 
 			<nav>
 				<ul>
