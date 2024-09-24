@@ -3,7 +3,7 @@ header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: var(--color-header-background);
+	background-color: var(--color-purple-darker);
 
 	position: fixed;
 	z-index: 1;
@@ -20,7 +20,7 @@ header {
 	}
 
 	#header-title {
-		color: var(--color-header-text);
+		color: white;
 
 		font-size: clamp(1rem, calc(18vw / 3), 2rem);
 
@@ -45,21 +45,21 @@ header {
 				}
 				a.active > * {
 					/* highlights current page's navlink */
-					background-color: var(--color-header-nav-background-active);
+					background-color: var(--color-purple-darkest);
 				}
 			}
 
 			a > * {
-				color: var(--color-header-nav-text);
+				color: white;
 
 				min-width: 7rem;
 				padding: 1.125rem 1rem 0.625rem;
 
-				border-bottom: 0.25rem var(--color-header-nav-ribbon) solid;
+				border-bottom: 0.25rem var(--color-purple-dark) solid;
 
 				&:hover {
-					color: var(--color-header-nav-text-hover);
-					background-color: var(--color-header-nav-background-hover);
+					color: #a4abff;
+					background-color: var(--color-purple-darkest);
 					padding: 0.875rem 1rem 0.875rem;
 					transition: all 0.2s;
 				}
