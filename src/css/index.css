@@ -97,6 +97,7 @@ body {
         color: var(--color-button-text);
         cursor: pointer;
         margin: 0.5rem;
+        transition: 0.25s;
     }
 
     button:hover {
