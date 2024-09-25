@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     height: 30vh;
+    margin-right: 5rem;
 
     div {
         transform-origin: 40px 40px;
