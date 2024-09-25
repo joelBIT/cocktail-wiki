@@ -57,7 +57,7 @@ body {
 
     @media screen and (min-width: 400px) and (max-width: 900px) {
         main {
-            min-height: 100vh - 8rem;
+            min-height: 100vh - 11rem;
             margin-top: 11rem;
         }
     }
