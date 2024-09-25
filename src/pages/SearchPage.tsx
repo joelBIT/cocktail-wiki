@@ -245,7 +245,10 @@ export function SearchPage(): ReactElement {
 
     return (
         <article id="searchDrink">
-            <h1 className="errorMessage">{errorMessage}</h1>
+            {errorMessage ? (
+                <h1 className="errorMessage">{errorMessage}</h1>
+            ) : null}
+
             <SearchDrinkForm
                 handleSubmitSearch={handleSubmitSearch}
                 searchDrink={searchDrink}
