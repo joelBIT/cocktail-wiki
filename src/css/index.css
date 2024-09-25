@@ -55,6 +55,13 @@ body {
         margin-top: 8rem;
     }
 
+    @media screen and (min-width: 400px) and (max-width: 900px) {
+        main {
+            min-height: 100vh - 8rem;
+            margin-top: 11rem;
+        }
+    }
+
     a {
         text-decoration: inherit;
     }
