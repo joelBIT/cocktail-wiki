@@ -1,32 +1,30 @@
-
 #hamburger {
-    display: block;
-    text-align: start;
-    height: 100%;
-    margin-left: 0.5rem;
+	display: block;
+	text-align: start;
+	height: 100%;
 
-    button {
-        background-color: var(--color-purple-darker);
-        padding: 0;
-        margin-right: 2rem;
+	button {
+		background-color: var(--color-purple-darker);
+		padding: 0;
+		margin-right: 2rem;
 
-        span {
-            font-size: 39px;
-            background-color: var(--color-purple-light);
-            border-radius: 0.5rem;
-            padding-left: 6px;
-            padding-right: 6px;
-            margin: 0.5rem;
-        }
+		span {
+			font-size: 39px;
+			background-color: var(--color-purple-light);
+			border-radius: 0.5rem;
+			padding-left: 6px;
+			padding-right: 6px;
+			margin: 0.5rem;
+		}
 
-        span:hover {
-            background-color: var(--color-purple-darker);
-        }
-    }
+		span:hover {
+			background-color: var(--color-purple-darker);
+		}
+	}
 
-    button:hover {
-        span {
-            background-color: var(--color-purple-darker);
-        }
-    }
+	button:hover {
+		span {
+			background-color: var(--color-purple-darker);
+		}
+	}
 }
