@@ -1,141 +1,130 @@
 header {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	background-color: var(--color-purple-darker);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-purple-darker);
 
-	position: fixed;
-	z-index: 1;
-	@media (max-width: 900px) {
-		flex-direction: column;
-		align-items: center;
-	}
+    position: fixed;
+    z-index: 1;
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+    }
 
-	&,
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
+    #header-title {
+        color: white;
 
-	#header-title {
-		color: white;
+        font-size: clamp(1rem, calc(18vw / 3), 2rem);
 
-		font-size: clamp(1rem, calc(18vw / 3), 2rem);
+        margin-left: 1rem;
+        margin-top: 0.75rem;
 
-		margin-left: 1rem;
-		margin-top: 0.75rem;
+        @media (max-width: 900px) {
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+        }
+    }
 
-		@media (max-width: 900px) {
-			margin-left: 0.25rem;
-			margin-right: 0.25rem;
-		}
-	}
+    nav {
+        ul {
+            display: flex;
+            list-style-type: none;
+            li {
+                a.active > * {
+                    /* highlights current page's navlink */
+                    background-color: var(--color-purple-darkest);
+                }
+            }
 
-	nav {
-		ul {
-			display: flex;
+            a > * {
+                color: white;
 
-			li {
-				&::marker {
-					/* display: none; */ /* interestingly, this doesn't hide the list item markers, so we'll resort to making them transparent instead.. */
-					color: rgba(0, 0, 0, 0);
-				}
-				a.active > * {
-					/* highlights current page's navlink */
-					background-color: var(--color-purple-darkest);
-				}
-			}
+                min-width: 7rem;
+                padding: 1.125rem 1rem 0.625rem;
 
-			a > * {
-				color: white;
+                border-bottom: 0.25rem var(--color-purple-dark) solid;
+                transition: all 0.2s;
 
-				min-width: 7rem;
-				padding: 1.125rem 1rem 0.625rem;
-
-				border-bottom: 0.25rem var(--color-purple-dark) solid;
-
-				&:hover {
-					color: #a4abff;
-					background-color: var(--color-purple-darkest);
-					padding: 0.875rem 1rem 0.875rem;
-					transition: all 0.2s;
-				}
-			}
-		}
-	}
+                &:hover {
+                    color: #a4abff;
+                    background-color: var(--color-purple-darkest);
+                    padding: 0.875rem 1rem 0.875rem;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 400px) {
-	header {
-		display: flex;
+    header {
+        display: flex;
 
-		> a {
-			display: none;
-		}
-		
-		#hamburger {
-			width: 100%;
+        > a {
+            display: none;
+        }
 
-			> a {
-				vertical-align: super;
-				margin-bottom: 0.5rem;
-				text-align: end;
+        #hamburger {
+            width: 100%;
 
-				#header-title {
-					display: inline-flex;
-				}
-			}
+            > a {
+                vertical-align: super;
+                margin-bottom: 0.5rem;
+                text-align: end;
 
-			#navbar {
-				display: contents;
-	
-				ul {
-					flex-direction: column;
-				}
-			}
-		}
-	}
+                #header-title {
+                    display: inline-flex;
+                }
+            }
 
-	#navbar {
-		display: none;
-	}
+            #navbar {
+                display: contents;
+
+                ul {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+
+    #navbar {
+        display: none;
+    }
 }
 
 @media (max-width: 250px) {
-	header {
-		#hamburger {
-			#navbar {
-				font-size: 12px;
-			}
+    header {
+        #hamburger {
+            #navbar {
+                font-size: 12px;
+            }
 
-			> button {
-				margin-right: 0;
-			}
-		}
-	}
+            > button {
+                margin-right: 0;
+            }
+        }
+    }
 }
 
 @media (max-width: 200px) {
-	header {
-		#hamburger {
-			> a #header-title {
-				display: none;
-			}
-		}
-	}
+    header {
+        #hamburger {
+            > a #header-title {
+                display: none;
+            }
+        }
+    }
 }
 
 @media (min-width: 401px) {
-	nav button {
-		display: none;
-	}
+    nav button {
+        display: none;
+    }
 
     #hamburger {
         display: none;
     }
 
-	#navbar {
-		display: block;
-	}
+    #navbar {
+        display: block;
+    }
 }
