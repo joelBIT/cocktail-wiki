@@ -1,101 +1,97 @@
 .drinkCard {
-	background-color: var(--color-purple-light);
-	border-radius: 0.5rem;
+    background-color: var(--color-purple-light);
+    border-radius: 0.5rem;
 
-	margin: 0;
-	width: 15rem;
-	box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
-	text-align: left;
+    width: 15rem;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+    text-align: left;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-	figure {
-		margin: 0;
+    figure {
+        img {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            width: 100%;
+        }
+    }
 
-		img {
-			border-top-left-radius: 0.5rem;
-			border-top-right-radius: 0.5rem;
-			width: 100%;
-		}
-	}
+    .card-name {
+        margin: 0.25rem 0.5rem;
 
-	.card-name {
-		margin: 0.25rem 0.5rem;
+        > a {
+            color: #000;
+        }
+    }
+    .card-flex-row {
+        padding: 0.25rem 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
 
-		> a {
-			color: #000;
-		}
-	}
-	.card-flex-row {
-		padding: 0.25rem 0.5rem;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 0.5rem;
+        font-weight: 500;
 
-		font-weight: 500;
+        p {
+            color: black;
+        }
+    }
+    .card-image-container {
+        position: relative;
+    }
 
-		p {
-			margin: 0;
-			color: black;
-		}
-	}
-	.card-image-container {
-		position: relative;
-	}
+    .image {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 
-	.image {
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
+    .card-hover-text {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
 
-	.card-hover-text {
-		border-top-left-radius: 0.5rem;
-		border-top-right-radius: 0.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
 
-		position: absolute;
-		top: 0;
-		left: 0;
+        width: 100%;
+        height: 100%;
 
-		width: 100%;
-		height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+        text-align: center;
+        font-size: 1.5rem;
 
-		text-align: center;
-		font-size: 1.5rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
 
-		color: white;
-		background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
 
-		opacity: 0;
-		transition: opacity 0.2s ease;
-	}
-
-	.card-image-container:hover .card-hover-text {
-		opacity: 1;
-	}
+    .card-image-container:hover .card-hover-text {
+        opacity: 1;
+    }
 }
 
 /* fade out */
 
 .is-fading {
-	animation: fadeOut 600ms forwards;
+    animation: fadeOut 600ms forwards;
 }
 
 @keyframes fadeOut {
-	0% {
-		opacity: 1;
-	}
-	30% {
-		opacity: 0.3;
-	}
-	100% {
-		opacity: 0;
-	}
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+    }
 }
