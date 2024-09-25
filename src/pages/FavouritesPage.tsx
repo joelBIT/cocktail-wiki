@@ -5,7 +5,6 @@ import { DrinkCard } from "../components";
 export function FavouritesPage(): ReactElement {
 	const { favouritesList, setFavouritesList } = useContext(FavouritesContext);
 	const [randomMessage, setRandomMessage] = useState<string>("");
-	const [messagesList, setMessagesList] = useState<string[]>([]);
 
 	const getRandomMessage = (): string => {
 		const messages = [
@@ -36,7 +35,7 @@ export function FavouritesPage(): ReactElement {
 
 	return (
 		<section id="favouritesPage">
-			<h2>{favouritesList ? "" : randomMessage}</h2>
+			<h2>{favouritesList.length ? "" : randomMessage}</h2>
 			{favouritesList.map((favourite) => (
 				<DrinkCard key={favourite.id} drink={favourite} />
 			))}
