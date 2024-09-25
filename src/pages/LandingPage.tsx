@@ -34,7 +34,9 @@ export function LandingPage(): ReactElement {
 
     return (
         <section id="landingPage">
-            <h1 className="errorMessage">{errorMessage}</h1>
+            {errorMessage ? (
+                <h1 className="errorMessage">{errorMessage}</h1>
+            ) : null}{" "}
             {loading ? (
                 <div className="spinner-wrapper">
                     <Spinner />
