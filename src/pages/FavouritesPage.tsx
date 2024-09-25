@@ -36,7 +36,7 @@ export function FavouritesPage(): ReactElement {
 
 	return (
 		<section id="favouritesPage">
-			<h2>{randomMessage}</h2>
+			<h2>{favouritesList ? "" : randomMessage}</h2>
 			{favouritesList.map((favourite) => (
 				<DrinkCard key={favourite.id} drink={favourite} />
 			))}
