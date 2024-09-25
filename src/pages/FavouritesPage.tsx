@@ -8,7 +8,6 @@ export function FavouritesPage(): ReactElement {
 	const [messagesList, setMessagesList] = useState<string[]>([]);
 
 	const getRandomMessage = (): string => {
-		// returns a random message!
 		const messages = [
 			"This is where your favorites would show up. If you had any! 🍸",
 			"No favourite drinks? How boring. 🍹",
@@ -31,9 +30,9 @@ export function FavouritesPage(): ReactElement {
 	};
 
 	useEffect(() => {
-		// Set the random message on component mount
+		// message is randomly picked on page/component load.
 		setRandomMessage(getRandomMessage());
-	}, []); // The empty dependency array ensures this runs only on component mount
+	}, []);
 
 	return (
 		<section id="favouritesPage">
