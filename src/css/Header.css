@@ -76,9 +76,12 @@ header {
 
 		> a {
 			align-self: flex-start;
+			margin: 1rem;
+			margin-left: 0;
+    		text-align: end;
 
 			#header-title {
-				margin-top: 1rem;
+				margin-top: 0rem;
 			}
 		}
 		
@@ -87,16 +90,22 @@ header {
 		}
 	
 		#hamburger {
-			display: block;
-			text-align: start;
-			grid-row: 1;
-	
 			#navbar {
 				display: contents;
 	
 				ul {
 					flex-direction: column;
 				}
+			}
+		}
+	}
+}
+
+@media (max-width: 250px) {
+	header {
+		#hamburger {
+			#navbar {
+				font-size: 12px;
 			}
 		}
 	}

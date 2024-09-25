@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { HamburgerMenu } from "./HamburgerMenu";
-import { NavBar } from "./NavBar";
+import { HamburgerMenu, NavBar } from ".";
 
 export function Header(): ReactElement {
 
