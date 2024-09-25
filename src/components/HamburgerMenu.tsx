@@ -7,7 +7,7 @@ export function HamburgerMenu(): ReactElement {
     return (
         <nav id="hamburger">
 			<button onClick={() => setIsOpen(!isOpen)}>
-                <span className="material-symbols-outlined">menu</span>
+                <span className="material-symbols-outlined">{isOpen ? "close" : "menu" }</span>
             </button>
             {isOpen && <div onClick={() => setIsOpen(!isOpen)}><NavBar /></div>}
 		</nav>
