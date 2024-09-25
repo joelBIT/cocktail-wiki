@@ -1,13 +1,12 @@
 import { useLocation } from "react-router-dom";
-import { IFavouritesContextProviderChildren } from "../interfaces";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 
-export const ScrollToTop = (props: IFavouritesContextProviderChildren) => {
+export const ScrollToTop = (): ReactElement => {
     const location = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location]);
 
-    return <>{props.children}</>;
+    return <></>;
 };
