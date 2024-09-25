@@ -6,6 +6,8 @@ import {
     IIngredientInformation,
 } from "./interfaces";
 
+export const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
+
 export function createDrinkCard(drink: ICocktailResponse): IDrinkCard {
     return {
         alcoholic: drink.strAlcoholic,
@@ -28,7 +30,7 @@ export function createCocktail(drink: ICocktailResponse): ICocktailInformation {
         measures: [],
         imageAddress: drink.strDrinkThumb,
         id: drink.idDrink,
-        alcohol: drink.strAlcoholic
+        alcohol: drink.strAlcoholic,
     };
 }
 
@@ -47,14 +49,14 @@ export function createIngredient(
     };
 }
 
-export function createDrinkCardFromCocktail(cocktail: ICocktailInformation): IDrinkCard {
+export function createDrinkCardFromCocktail(
+    cocktail: ICocktailInformation
+): IDrinkCard {
     return {
         alcoholic: cocktail.alcohol,
         id: cocktail.id,
         image: cocktail.imageAddress,
         isFading: false,
         name: cocktail.drink,
-    }
+    };
 }
-
-export const baseURL = "https://www.thecocktaildb.com/api/json/v1/1";
