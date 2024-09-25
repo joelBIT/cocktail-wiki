@@ -1,5 +1,6 @@
 @import url("./CocktailInfoPage.css");
 @import url("./DrinkCard.css");
+@import url("./FavouriteButton.css");
 @import url("./FavouritesPage.css");
 @import url("./FilterForm.css");
 @import url("./Footer.css");
@@ -12,7 +13,6 @@
 @import url("./SearchPage.css");
 @import url("./SearchResult.css");
 @import url("./Spinner.css");
-@import url("./FavouriteButton.css");
 
 /******************
 * General Styling *
