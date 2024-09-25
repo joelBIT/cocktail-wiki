@@ -3,8 +3,10 @@ export * from "./DrinkCard";
 export * from "./FavouriteButton";
 export * from "./FilterForm";
 export * from "./Footer";
+export * from "./HamburgerMenu";
 export * from "./Header";
 export * from "./List";
+export * from "./NavBar"
 export * from "./PaginateButtons";
 export * from "./PaginationForm";
 export * from "./ScrollToTop";
