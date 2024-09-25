@@ -69,21 +69,37 @@ header {
 }
 
 @media (max-width: 400px) {
-	#navbar {
-		display: none;
+	header {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+
+		> a {
+			align-self: flex-start;
+
+			#header-title {
+				margin-top: 1rem;
+			}
+		}
+		
+		#navbar {
+			display: none;
+		}
+	
+		#hamburger {
+			display: block;
+			text-align: start;
+			grid-row: 1;
+	
+			#navbar {
+				display: contents;
+	
+				ul {
+					flex-direction: column;
+				}
+			}
+		}
 	}
-
-    #hamburger {
-        display: block;
-
-        #navbar {
-            display: contents;
-
-            ul {
-                flex-direction: column;
-            }
-        }
-    }
 }
 
 @media (min-width: 401px) {
