@@ -5,12 +5,6 @@
 
 -   [Introductin](#introduction)
 -   [Features](#features)
-    -   [Landing Page](#landing-page)
-    -   [Search Page](#search-page)
-    -   [Favourites Page](#favourites-page)
-    -   [Cocktail Info Page](#cocktail-info-page)
-    -   [Ingredient Page](#ingredient-page)
-    -   [404 Page](#404-page)
 
 </details>
 
