@@ -20,3 +20,16 @@
         font-size: 1.2rem;
     }
 }
+
+@media screen and (max-width: 374px) {
+    #searchFilters {
+        #alcoholicFilterInput,
+        #alcoholicFilterLabel {
+            align-self: flex-start;
+        }
+
+        #alcoholicFilterInput {
+            margin-top: 0.4rem;
+        }
+    }
+}
