@@ -1,20 +1,28 @@
 # Cocktail-Wiki
 
 <details>
-  <summary>Innehållsförteckning</summary>
+  <summary>Content</summary>
 
-- [Instruktioner](#instruktioner)
-- [Krav](#krav)
-  - [Första veckan: Landing Page & Search Page](#första-veckan-landing-page--search-page)
-  - [Andra veckan: Cocktail Info Page & Favorites Page](#andra-veckan-cocktail-info-page--favorites-page)
-  - [Tredje veckan: Ingredient Page & Bonusfunktioner](#tredje-veckan-ingredient-page--bonusfunktioner)
-- [Extra funktioner](#extra-funktioner---välj-dina-utmaningar)
-  - [Search Page++](#search-page-1)
-  - [General features](#general-features)
+-   [Introductin](#introduction)
+-   [Features](#features)
+    -   [Första veckan: Landing Page & Search Page](#första-veckan-landing-page--search-page)
+    -   [Andra veckan: Cocktail Info Page & Favorites Page](#andra-veckan-cocktail-info-page--favorites-page)
+    -   [Tredje veckan: Ingredient Page & Bonusfunktioner](#tredje-veckan-ingredient-page--bonusfunktioner)
+-   [Extra funktioner](#extra-funktioner---välj-dina-utmaningar)
+    -   [Search Page++](#search-page-1)
+    -   [General features](#general-features)
 
 </details>
 
-## Instruktioner
+## Introduction
+
+Cocktail Wiki is a project created by Erik Hallgren, Joel Rollny, and Johan Stjernholm, i.e. the "Fantastic Ninjas". The project showcases our skills in React / TypeScript, and is part of an intensive React Frontend development course held by Lexicon, Stockholm, Sweden.
+
+The project is about presenting an interface with a searchable library of cocktails and their ingredients, drawing data from [The Cocktail DB API](https://www.thecocktaildb.com/api.php).
+
+In terms of functionality, the project utilises several features inherent to React, including Loaders, Context, States, Component Based Design, and Router. Moreover, our working methodology has been deploying agile methods, primarily SCRUM and Kanban.
+
+## Features
 
 Ni ska bygga en cocktail-wiki som använder data från [The Cocktail DB API](https://www.thecocktaildb.com/api.php). Ni kan se ett exempel på en cocktail-wiki på deras [hemsida](https://www.thecocktaildb.com/).
 
@@ -28,16 +36,17 @@ Applikationen ska byggas med Vite och React TypeScript och innehålla minst sex 
 
 Mål: Sätt upp projektet och skapa både en landningssida där användaren kan se en slumpmässig cocktail och en söksida där användaren kan söka efter cocktails.
 
-- **Landing Page (Random Cocktail)**
-  - Användare ska kunna se en slumpmässig cocktail när de besöker sidan.
-  - Användare ska kunna hämta en ny slumpmässig cocktail genom att klicka på en knapp.
-  - Cocktailens namn och bild ska visas som ett kort.
-  - Användare ska kunna klicka på **Se mer** för att navigera till en `Cocktail Info Page`.
+-   **Landing Page (Random Cocktail)**
 
-- **Search Page**
-  - Användare ska kunna söka efter en cocktail med hjälp av dess namn.
-  - Resultaten ska visas i en lista med max 10 resultat, och listan ska vara paginerad om det finns fler än 10 resultat.
-  - Vid klick på en cocktail i listan ska användaren navigeras till `Cocktail Info Page`.
+    -   Användare ska kunna se en slumpmässig cocktail när de besöker sidan.
+    -   Användare ska kunna hämta en ny slumpmässig cocktail genom att klicka på en knapp.
+    -   Cocktailens namn och bild ska visas som ett kort.
+    -   Användare ska kunna klicka på **Se mer** för att navigera till en `Cocktail Info Page`.
+
+-   **Search Page**
+    -   Användare ska kunna söka efter en cocktail med hjälp av dess namn.
+    -   Resultaten ska visas i en lista med max 10 resultat, och listan ska vara paginerad om det finns fler än 10 resultat.
+    -   Vid klick på en cocktail i listan ska användaren navigeras till `Cocktail Info Page`.
 
 Denna vecka bör ni sätta upp projektet i Vite med React TypeScript. Implementera React Router för att kunna navigera mellan olika sidor. Använd useEffect och useState för att hantera API-anrop och lagra cocktails. Dessutom ska ni läsa på om loaders och actions i React Router för att senare kunna implementera dem i projektet.
 
@@ -54,13 +63,14 @@ Denna vecka bör ni sätta upp projektet i Vite med React TypeScript. Implemente
 
 Mål: Skapa en sida för detaljerad information om cocktails och en favoritsida där användaren kan spara sina favoritcocktails.
 
-- **Cocktail Info Page**
-  - Denna sida ska visa detaljerad information om en cocktail, inklusive kategori, bild, taggar, ingredienser och mått, samt vilket glas den ska serveras i.
+-   **Cocktail Info Page**
 
-- **Favorites Page**
-  - Användare ska kunna spara sina favoritcocktails och visa dem på en separat sida.
-  - Användare ska kunna ta bort favoriter.
-  - Favoriter ska lagras mhs useContext.
+    -   Denna sida ska visa detaljerad information om en cocktail, inklusive kategori, bild, taggar, ingredienser och mått, samt vilket glas den ska serveras i.
+
+-   **Favorites Page**
+    -   Användare ska kunna spara sina favoritcocktails och visa dem på en separat sida.
+    -   Användare ska kunna ta bort favoriter.
+    -   Favoriter ska lagras mhs useContext.
 
 Denna vecka ska ni fokusera på att implementera användning av React useContext för att hantera favoriterna mellan komponenter och React Router för navigering. Använd också useEffect för att hämta cocktailinformation baserat på URL-parametrar.
 
@@ -76,8 +86,8 @@ Denna vecka ska ni fokusera på att implementera användning av React useContext
 
 Mål: Skapa en sida för detaljerad information om ingredienser och implementera eventuella bonusfunktioner.
 
-- **Ingredient Page**
-  - Användare ska kunna se detaljerad information om en ingrediens genom att klicka på den. Informationen ska inkludera namn, beskrivning, alkoholhalt (om tillämpligt), och vilka andra cocktails som innehåller den.
+-   **Ingredient Page**
+    -   Användare ska kunna se detaljerad information om en ingrediens genom att klicka på den. Informationen ska inkludera namn, beskrivning, alkoholhalt (om tillämpligt), och vilka andra cocktails som innehåller den.
 
 Denna vecka ska ni också slutföra och implementera eventuella bonusfunktioner som ni har valt att arbeta med.
 
@@ -94,15 +104,16 @@ Om ni blir klara med grundkraven kan ni välja att implementera några av dessa 
 
 ### Search Page++
 
-- Användare ska kunna göra avancerade sökningar baserat på kategori, ingrediens eller glas.
-- Resultaten ska cachas så att API-anrop inte görs om för redan besökta cocktails.
+-   Användare ska kunna göra avancerade sökningar baserat på kategori, ingrediens eller glas.
+-   Resultaten ska cachas så att API-anrop inte görs om för redan besökta cocktails.
 
 ### Generella funktioner
 
-- Implementera oändlig scroll för stora datamängder istället för paginering.
-- Lägg till felhantering för API-anrop och visa användarvänliga felmeddelanden.
-- Lägg till laddningstillstånd och platshållare för datahämtning.
-- Användare ska kunna filtrera bort alkoholhaltiga drinkar.
+-   Implementera oändlig scroll för stora datamängder istället för paginering.
+-   Lägg till felhantering för API-anrop och visa användarvänliga felmeddelanden.
+-   Lägg till laddningstillstånd och platshållare för datahämtning.
+-   Användare ska kunna filtrera bort alkoholhaltiga drinkar.
 
 ## Gruppindelning:
+
 ![Gruppindelning](screenshot-groupie-1725867454486.png "Gruppindelning")
