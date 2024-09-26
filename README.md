@@ -26,7 +26,7 @@ One key design goal was to create robust code, with explicitly typed variables a
 
 ## Features
 
--   **Landing Page (Random Cocktail)**
+-   **Landing Page**
 
     -   A randomly chosen cocktail is displayed upon loading the page.
     -   New random cocktails may be seem by clicking a button.
