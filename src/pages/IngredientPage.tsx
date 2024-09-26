@@ -4,7 +4,10 @@ import { IIngredientInformation } from "../interfaces";
 
 /**
  * The ingredient page contains information such as if the ingredient contains alcohol, cocktails
- * containing the ingredient, and a description.
+ * containing the ingredient, and a description. The page consists of two tabs. One tab contains
+ * the information about the ingredient, and the other tab contains a list of all drinks that
+ * contains this ingredient. The ingredient description text is collapsible if the text consists
+ * of more than one paragraph.
  * 
  * @returns the ingredient page containing information about an ingredient
  */
