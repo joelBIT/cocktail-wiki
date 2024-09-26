@@ -25,35 +25,6 @@ header {
             margin-right: 0.25rem;
         }
     }
-
-    nav {
-        ul {
-            display: flex;
-            list-style-type: none;
-            li {
-                a.active > * {
-                    /* highlights current page's navlink */
-                    background-color: var(--color-purple-darkest);
-                }
-            }
-
-            a > * {
-                color: white;
-
-                min-width: 7rem;
-                padding: 1.125rem 1rem 0.625rem;
-
-                border-bottom: 0.25rem var(--color-purple-dark) solid;
-                transition: all 0.2s;
-
-                &:hover {
-                    color: #a4abff;
-                    background-color: var(--color-purple-darkest);
-                    padding: 0.875rem 1rem 0.875rem;
-                }
-            }
-        }
-    }
 }
 
 @media (max-width: 400px) {
