@@ -1,19 +1,17 @@
 import { ReactElement, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { IDrinkCard } from "../interfaces";
-import { DrinkCard, Spinner } from "../components";
+import { DrinkCard } from "../components";
 import { baseURL, createDrinkCard } from "../utils";
 
 export function LandingPage(): ReactElement {
     const drink_old = useLoaderData() as IDrinkCard;
     const [drink, setDrink] = useState<IDrinkCard>(drink_old);
     const [errorMessage, setErrorMessage] = useState("");
-    const [loading, setLoading] = useState(false);
 
     // Fetches a new random drink from API
     async function handleRandomDrinkButton(): Promise<void> {
         setErrorMessage("");
-        setLoading(true);
 
         try {
             // Send fetch request
@@ -23,12 +21,10 @@ export function LandingPage(): ReactElement {
             const { drinks } = await resp.json();
 
             // Update data to display
-            setLoading(false);
             setDrink(createDrinkCard(drinks[0]));
         } catch (e) {
             console.error(e);
             setErrorMessage("Could not retrieve another drink");
-            setLoading(false);
         }
     }
 
@@ -36,22 +32,14 @@ export function LandingPage(): ReactElement {
         <section id="landingPage">
             {errorMessage ? (
                 <h1 className="errorMessage">{errorMessage}</h1>
-            ) : null}{" "}
-            {loading ? (
-                <div className="spinner-wrapper">
-                    <Spinner />
-                </div>
-            ) : (
-                <>
-                    <DrinkCard drink={drink} />
-                    <button
-                        id="randomDrinkButton"
-                        onClick={() => handleRandomDrinkButton()}
-                    >
-                        Show another
-                    </button>
-                </>
-            )}
+            ) : null}
+            {drink ? <DrinkCard drink={drink} /> : <></>}
+                <button
+                    id="randomDrinkButton"
+                    onClick={() => handleRandomDrinkButton()}
+                >
+                    Show another
+                </button>
         </section>
     );
 }
