@@ -238,6 +238,8 @@ export function SearchPage(): ReactElement {
             setSearchDrink("");
         } catch (e) {
             console.error(e);
+            setDrinks(null);
+            setPaginated(null);
             setErrorMessage("Could not find that drink");
             setLoading(false);
         }
