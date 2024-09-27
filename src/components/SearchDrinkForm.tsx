@@ -16,7 +16,7 @@ export function SearchDrinkForm(props: ISearchDrinkFormProps): ReactElement {
                     className="input"
                     id="searchFormInput"
                     onChange={(e) => props.setSearchDrink(e.target.value)}
-                    placeholder="I feel like a..."
+                    placeholder="What's the name of that drink...?"
                     type="text"
                     value={props.searchDrink}
                 />
