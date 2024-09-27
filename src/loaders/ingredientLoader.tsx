@@ -1,3 +1,4 @@
+import { LoaderFunctionArgs } from "react-router-dom";
 import { IIngredientInformation } from "../interfaces";
 import { baseURL, createDrinkCard, createIngredient } from "../utils";
 
@@ -9,7 +10,7 @@ import { baseURL, createDrinkCard, createIngredient } from "../utils";
  * @param name      the name of the ingredient
  * @returns         an IIngredientInformation object
  */
-export const ingredientLoader = async ({params}: any): Promise<IIngredientInformation> => {
+export const ingredientLoader = async ({params}: LoaderFunctionArgs): Promise<IIngredientInformation> => {
     const ingredientResponse = await fetch(`${baseURL}/search.php?i=${params.name}`);
     const { ingredients } = await ingredientResponse.json();
     
