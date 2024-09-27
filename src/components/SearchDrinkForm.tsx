@@ -9,14 +9,14 @@ interface ISearchDrinkFormProps {
 export function SearchDrinkForm(props: ISearchDrinkFormProps): ReactElement {
     return (
         <form id="searchDrinkForm" onSubmit={props.handleSubmitSearch}>
-            <label htmlFor="searchFormInput">What do you want to drink?</label>
+            <label htmlFor="searchFormInput">Which drink would you like?</label>
             <div>
                 <input
                     autoFocus
                     className="input"
                     id="searchFormInput"
                     onChange={(e) => props.setSearchDrink(e.target.value)}
-                    placeholder="What's the name of that drink...?"
+                    placeholder="Name of drink..."
                     type="text"
                     value={props.searchDrink}
                 />
